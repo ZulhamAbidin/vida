@@ -28,11 +28,11 @@ class DatabaseSeeder extends Seeder
 
         // 2. Settings
         $settings = [
-            'whatsapp_number' => '6281234567890',
+            'whatsapp_number' => '6285711696970',
             'whatsapp_template' => "Halo Admin VIDALIDAY, saya ingin memesan/tanya ketersediaan unit:\n- Lokasi: {apartment}\n- Unit: {unit_name} ({room_type})\n- Harga: {price} / {period}\n\nMohon info ketersediaan kamar. Terima kasih!",
             'promo_banner_text' => 'FLASH DEAL VIDALIDAY: Nikmati diskon promo hingga 30% untuk pemesanan hari ini! Sewa harian, mingguan, & bulanan.',
             'company_legal_name' => 'PT PERDANA MEGA TRANS',
-            'contact_phone' => '+62 812-3456-7890',
+            'contact_phone' => '+62 857-1169-6970',
             'contact_email' => 'info@vidaliday.com',
             'office_hours' => 'Setiap Hari: 08.00 - 23.00 WITA',
         ];

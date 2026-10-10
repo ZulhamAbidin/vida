@@ -102,33 +102,116 @@
                     </div>
                 </div>
 
-                <!-- Upload File Gambar Baru (Maks 5MB) -->
-                <div class="p-5 rounded-2xl bg-blue-50/60 border border-blue-200/80 space-y-3">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-800 uppercase tracking-wider">
-                            Ganti Foto Kamar (File Upload)
-                        </label>
-                        <span class="text-xs text-slate-500">Pilih file baru jika ingin mengganti foto. Maksimal 5MB (JPG, JPEG, PNG, HEIC, WEBP).</span>
+                <!-- Upload File Foto Kamar & Galeri Slider -->
+                <div class="p-5 rounded-2xl bg-blue-50/60 border border-blue-200/80 space-y-6">
+                    <div class="flex items-center justify-between border-b border-blue-200/60 pb-3">
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                Kelola Foto Utama & Galeri Slider Kamar
+                            </h4>
+                            <span class="text-xs text-slate-500">Maksimal 5MB per file • Format: JPG, JPEG, PNG, HEIC, WEBP</span>
+                        </div>
                     </div>
 
-                    <div class="mt-2 flex flex-col sm:flex-row items-center gap-4">
-                        <!-- Current & Preview Box -->
-                        <div class="w-32 h-24 rounded-xl border border-slate-300 bg-white overflow-hidden shrink-0 shadow-sm relative group">
-                            <img id="image-preview" src="{{ $unit->image_url }}" alt="Foto Kamar" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-slate-900/40 text-white text-[10px] font-bold flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                                Foto Saat Ini
+                    <!-- 1. Foto Utama (Sampul Depan) -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                            1. Foto Utama (Sampul Depan)
+                        </label>
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <!-- Current & Preview Box -->
+                            <div class="w-32 h-24 rounded-xl border border-slate-300 bg-white overflow-hidden shrink-0 shadow-sm relative group">
+                                <img id="image-preview" src="{{ $unit->image_url }}" alt="Foto Kamar" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-slate-900/40 text-white text-[10px] font-bold flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                                    Foto Saat Ini
+                                </div>
+                            </div>
+
+                            <!-- File Input -->
+                            <div class="flex-1 w-full">
+                                <input type="file" 
+                                       name="image" 
+                                       id="image-file" 
+                                       accept=".jpg,.jpeg,.png,.heic,.heif,.webp" 
+                                       onchange="previewImage(event)" 
+                                       class="block w-full text-xs text-slate-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-2">
+                                <span class="text-[11px] text-slate-400 mt-1 block">Biarkan kosong jika tidak ingin mengubah foto sampul saat ini.</span>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- File Input -->
-                        <div class="flex-1 w-full">
-                            <input type="file" 
-                                   name="image" 
-                                   id="image-file" 
-                                   accept=".jpg,.jpeg,.png,.heic,.heif,.webp" 
-                                   onchange="previewImage(event)" 
-                                   class="block w-full text-xs text-slate-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-2">
-                            <span class="text-[11px] text-slate-400 mt-1 block">Biarkan kosong jika tidak ingin mengubah foto saat ini.</span>
+                    <!-- 2. Foto Galeri Slider Saat Ini & Hapus Foto -->
+                    <div class="pt-4 border-t border-blue-200/60 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                                    2. Foto Galeri Slider Saat Ini
+                                </label>
+                                <span class="text-xs text-slate-500">Foto yang sedang aktif tampil di slider thumbnail kartu kamar.</span>
+                            </div>
+                            <span class="text-xs font-bold text-blue-700 bg-blue-100/80 px-2.5 py-0.5 rounded-full">
+                                {{ is_array($unit->gallery_images) ? count($unit->gallery_images) : 0 }} Foto Galeri
+                            </span>
+                        </div>
+
+                        @if(is_array($unit->gallery_images) && count($unit->gallery_images) > 0)
+                            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3" id="existing-gallery-grid">
+                                @foreach($unit->gallery_images as $gIndex => $gPath)
+                                    @php
+                                        $gUrl = str_starts_with($gPath, 'http') ? $gPath : asset('storage/' . $gPath);
+                                    @endphp
+                                    <div class="existing-gallery-item relative rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm group" data-path="{{ $gPath }}">
+                                        <div class="aspect-video w-full overflow-hidden">
+                                            <img src="{{ $gUrl }}" alt="Galeri #{{ $gIndex + 1 }}" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="p-1.5 bg-slate-50 flex items-center justify-between text-[10px]">
+                                            <span class="font-bold text-slate-500">#{{ $gIndex + 1 }}</span>
+                                            <button type="button" 
+                                                    onclick="toggleDeleteGallery(this, '{{ addslashes($gPath) }}')" 
+                                                    class="delete-btn text-rose-600 hover:text-rose-800 font-bold hover:underline">
+                                                ✕ Hapus
+                                            </button>
+                                        </div>
+                                        <div class="deleted-overlay absolute inset-0 bg-rose-600/85 backdrop-blur-[2px] text-white flex flex-col items-center justify-center p-2 hidden">
+                                            <span class="text-[10px] font-extrabold uppercase tracking-wider mb-1">Akan Dihapus</span>
+                                            <button type="button" onclick="cancelDeleteGallery(this, '{{ addslashes($gPath) }}')" class="px-2 py-0.5 bg-white text-rose-700 rounded text-[10px] font-bold shadow-sm">
+                                                Batal
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <!-- Container for hidden deleted_gallery_images inputs -->
+                            <div id="deleted-gallery-inputs"></div>
+                        @else
+                            <p class="text-xs text-slate-400 italic bg-white/70 p-3 rounded-xl border border-dashed border-slate-300 text-center">
+                                Belum ada foto galeri tambahan untuk unit ini. Unggah di bawah untuk menambahkan slider.
+                            </p>
+                        @endif
+                    </div>
+
+                    <!-- 3. Unggah Tambahan Foto Galeri Baru -->
+                    <div class="pt-4 border-t border-blue-200/60">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            3. Tambah Foto Galeri Baru (Bisa Banyak File)
+                        </label>
+                        <p class="text-xs text-slate-500 mb-2">
+                            Pilih beberapa foto baru sekaligus untuk ditambahkan ke slider. Tekan tombol <kbd class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-mono text-[10px]">Ctrl</kbd> atau <kbd class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-mono text-[10px]">Shift</kbd> saat memilih file.
+                        </p>
+
+                        <input type="file" 
+                               name="gallery_images[]" 
+                               id="gallery-files" 
+                               multiple 
+                               accept=".jpg,.jpeg,.png,.heic,.heif,.webp" 
+                               onchange="previewGalleryImages(event)" 
+                               class="block w-full text-xs text-slate-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-slate-700 file:text-white hover:file:bg-slate-800 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-2">
+
+                        <!-- Multi-preview Grid -->
+                        <div id="gallery-preview-container" class="mt-3 hidden">
+                            <span class="text-xs font-bold text-slate-600 block mb-2" id="gallery-count-text">0 foto galeri baru dipilih:</span>
+                            <div id="gallery-preview-grid" class="grid grid-cols-3 sm:grid-cols-6 gap-2"></div>
                         </div>
                     </div>
                 </div>
@@ -233,6 +316,60 @@
             }
             reader.readAsDataURL(file);
         }
+    }
+
+    function previewGalleryImages(event) {
+        const files = event.target.files;
+        const container = document.getElementById('gallery-preview-container');
+        const grid = document.getElementById('gallery-preview-grid');
+        const countText = document.getElementById('gallery-count-text');
+
+        grid.innerHTML = '';
+        if (!files || files.length === 0) {
+            container.classList.add('hidden');
+            return;
+        }
+
+        container.classList.remove('hidden');
+        countText.textContent = `${files.length} foto baru siap ditambahkan ke galeri:`;
+
+        Array.from(files).forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const item = document.createElement('div');
+                item.className = 'relative rounded-xl border border-slate-200 bg-white overflow-hidden aspect-video shadow-sm';
+                item.innerHTML = `
+                    <img src="${e.target.result}" alt="Foto Baru ${index + 1}" class="w-full h-full object-cover">
+                    <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-blue-600 text-[9px] font-bold text-white">+Baru</span>
+                `;
+                grid.appendChild(item);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function toggleDeleteGallery(btn, path) {
+        const item = btn.closest('.existing-gallery-item');
+        const overlay = item.querySelector('.deleted-overlay');
+        overlay.classList.remove('hidden');
+
+        const inputsContainer = document.getElementById('deleted-gallery-inputs');
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'deleted_gallery_images[]';
+        input.value = path;
+        input.id = 'del-' + btoa(path).replace(/[^a-zA-Z0-9]/g, '');
+        inputsContainer.appendChild(input);
+    }
+
+    function cancelDeleteGallery(btn, path) {
+        const item = btn.closest('.existing-gallery-item');
+        const overlay = item.querySelector('.deleted-overlay');
+        overlay.classList.add('hidden');
+
+        const inputId = 'del-' + btoa(path).replace(/[^a-zA-Z0-9]/g, '');
+        const input = document.getElementById(inputId);
+        if (input) input.remove();
     }
 
     // Helper Rupiah Formatter

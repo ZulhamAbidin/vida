@@ -97,32 +97,63 @@
                     </div>
                 </div>
 
-                <!-- Upload File Gambar (Sesuai Permintaan User: Form Upload Maks 5MB) -->
-                <div class="p-5 rounded-2xl bg-blue-50/60 border border-blue-200/80 space-y-3">
-                    <div class="flex items-center justify-between">
+                <!-- Upload Foto Kamar & Galeri Slider -->
+                <div class="p-5 rounded-2xl bg-blue-50/60 border border-blue-200/80 space-y-5">
+                    <div class="flex items-center justify-between border-b border-blue-200/60 pb-3">
                         <div>
-                            <label class="block text-xs font-bold text-slate-800 uppercase tracking-wider">
-                                Upload Foto Kamar (File Gambar)
-                            </label>
-                            <span class="text-xs text-slate-500">Maksimal 5MB • Format yang didukung: JPG, JPEG, PNG, HEIC, WEBP</span>
+                            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                Foto Utama & Galeri Slider Kamar
+                            </h4>
+                            <span class="text-xs text-slate-500">Maksimal 5MB per file • Format: JPG, JPEG, PNG, HEIC, WEBP</span>
                         </div>
                     </div>
 
-                    <div class="mt-2 flex flex-col sm:flex-row items-center gap-4">
-                        <!-- File Input Wrapper -->
-                        <div class="flex-1 w-full">
-                            <input type="file" 
-                                   name="image" 
-                                   id="image-file" 
-                                   accept=".jpg,.jpeg,.png,.heic,.heif,.webp" 
-                                   onchange="previewImage(event)" 
-                                   class="block w-full text-xs text-slate-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-2">
-                        </div>
+                    <!-- 1. Foto Utama (Cover) -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                            1. Foto Utama (Sampul Depan) *
+                        </label>
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <div class="flex-1 w-full">
+                                <input type="file" 
+                                       name="image" 
+                                       id="image-file" 
+                                       accept=".jpg,.jpeg,.png,.heic,.heif,.webp" 
+                                       onchange="previewImage(event)" 
+                                       class="block w-full text-xs text-slate-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-2">
+                                <span class="text-[11px] text-slate-400 mt-1 block">Foto ini akan menjadi thumbnail slide pertama di kartu kamar.</span>
+                            </div>
 
-                        <!-- Live Preview Box -->
-                        <div id="preview-wrapper" class="w-28 h-20 rounded-xl border border-slate-300 bg-white overflow-hidden flex items-center justify-center shrink-0">
-                            <img id="image-preview" src="#" alt="Preview" class="w-full h-full object-cover hidden">
-                            <span id="preview-placeholder" class="text-[10px] text-slate-400 text-center px-1">Preview Foto</span>
+                            <!-- Live Preview Box -->
+                            <div id="preview-wrapper" class="w-28 h-20 rounded-xl border border-slate-300 bg-white overflow-hidden flex items-center justify-center shrink-0 shadow-sm">
+                                <img id="image-preview" src="#" alt="Preview" class="w-full h-full object-cover hidden">
+                                <span id="preview-placeholder" class="text-[10px] text-slate-400 text-center px-1">Preview Sampul</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Foto Galeri Tambahan (Slider) -->
+                    <div class="pt-3 border-t border-blue-200/60">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            2. Foto Galeri Tambahan (Slider Carousel)
+                        </label>
+                        <p class="text-xs text-slate-500 mb-2">
+                            Pilih beberapa foto sekaligus untuk slider thumbnail kartu kamar. Tekan tombol <kbd class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-mono text-[10px]">Ctrl</kbd> atau <kbd class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-mono text-[10px]">Shift</kbd> saat memilih file.
+                        </p>
+
+                        <input type="file" 
+                               name="gallery_images[]" 
+                               id="gallery-files" 
+                               multiple 
+                               accept=".jpg,.jpeg,.png,.heic,.heif,.webp" 
+                               onchange="previewGalleryImages(event)" 
+                               class="block w-full text-xs text-slate-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-slate-700 file:text-white hover:file:bg-slate-800 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-2">
+
+                        <!-- Multi-preview Grid -->
+                        <div id="gallery-preview-container" class="mt-3 hidden">
+                            <span class="text-xs font-bold text-slate-600 block mb-2" id="gallery-count-text">0 foto galeri dipilih:</span>
+                            <div id="gallery-preview-grid" class="grid grid-cols-3 sm:grid-cols-6 gap-2"></div>
                         </div>
                     </div>
                 </div>
@@ -228,6 +259,36 @@
             }
             reader.readAsDataURL(file);
         }
+    }
+
+    function previewGalleryImages(event) {
+        const files = event.target.files;
+        const container = document.getElementById('gallery-preview-container');
+        const grid = document.getElementById('gallery-preview-grid');
+        const countText = document.getElementById('gallery-count-text');
+
+        grid.innerHTML = '';
+        if (!files || files.length === 0) {
+            container.classList.add('hidden');
+            return;
+        }
+
+        container.classList.remove('hidden');
+        countText.textContent = `${files.length} foto galeri dipilih untuk slider:`;
+
+        Array.from(files).forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const item = document.createElement('div');
+                item.className = 'relative rounded-xl border border-slate-200 bg-white overflow-hidden aspect-video shadow-sm';
+                item.innerHTML = `
+                    <img src="${e.target.result}" alt="Galeri ${index + 1}" class="w-full h-full object-cover">
+                    <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/60 text-[9px] font-bold text-white">#${index + 1}</span>
+                `;
+                grid.appendChild(item);
+            };
+            reader.readAsDataURL(file);
+        });
     }
 
     // Helper Rupiah Formatter

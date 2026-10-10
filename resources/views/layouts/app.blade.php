@@ -87,7 +87,7 @@
 
                 <!-- WhatsApp CTA & Mobile Menu Toggle -->
                 @php
-                    $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6281234567890');
+                    $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6285711696970');
                     $defaultWaUrl = 'https://wa.me/' . $waClean . '?text=' . urlencode("Halo Admin VIDALIDAY, saya ingin tanya ketersediaan sewa apartemen di Makassar.");
                 @endphp
                 <div class="flex items-center gap-3">
@@ -191,7 +191,7 @@
                         <ul class="space-y-2.5 text-sm text-slate-600">
                             <li class="flex items-center gap-2">
                                 <span class="text-emerald-600 font-bold">WA:</span>
-                                <a href="{{ $defaultWaUrl }}" target="_blank" class="hover:underline font-mono text-emerald-700 font-bold">{{ $settings['contact_phone'] ?? '+62 812-3456-7890' }}</a>
+                                <a href="{{ $defaultWaUrl }}" target="_blank" class="hover:underline font-mono text-emerald-700 font-bold">{{ $settings['contact_phone'] ?? '+62 857-1169-6970' }}</a>
                             </li>
                             <li class="flex items-center gap-2">
                                 <span class="text-slate-400">Jam Layanan:</span>
@@ -234,6 +234,71 @@
             const nav = document.getElementById('mobile-nav');
             if (nav) nav.classList.toggle('hidden');
         }
+
+        // Unit Card Multi-Image Slider Functions
+        function nextUnitSlide(sliderId, total) {
+            const slider = document.getElementById(sliderId);
+            if (!slider || total <= 1) return;
+            let current = parseInt(slider.getAttribute('data-current-index') || '0', 10);
+            current = (current + 1) % total;
+            updateUnitSlider(slider, current, total);
+        }
+
+        function prevUnitSlide(sliderId, total) {
+            const slider = document.getElementById(sliderId);
+            if (!slider || total <= 1) return;
+            let current = parseInt(slider.getAttribute('data-current-index') || '0', 10);
+            current = (current - 1 + total) % total;
+            updateUnitSlider(slider, current, total);
+        }
+
+        function updateUnitSlider(slider, current, total) {
+            slider.setAttribute('data-current-index', current);
+            const track = slider.querySelector('.slider-track');
+            if (track) {
+                // If track has width: total * 100%, shifting by 1 slide means shifting by (100 / total)% of the track
+                const percent = (current * 100) / total;
+                track.style.transform = `translateX(-${percent}%)`;
+            }
+            const counter = slider.querySelector('.slide-counter');
+            if (counter) {
+                counter.textContent = `${current + 1}/${total}`;
+            }
+            const dots = slider.querySelectorAll('.slide-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === current) {
+                    dot.className = 'slide-dot h-1.5 rounded-full transition-all duration-300 bg-white w-3';
+                } else {
+                    dot.className = 'slide-dot h-1.5 rounded-full transition-all duration-300 bg-white/40 w-1.5';
+                }
+            });
+        }
+
+        // Swipe Touch Support for Unit Card Sliders
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.group\\/slider').forEach(slider => {
+                let startX = 0;
+                let startY = 0;
+                slider.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
+
+                slider.addEventListener('touchend', (e) => {
+                    const diffX = e.changedTouches[0].clientX - startX;
+                    const diffY = e.changedTouches[0].clientY - startY;
+                    const total = slider.querySelectorAll('.slider-track > div').length;
+                    if (total <= 1) return;
+                    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
+                        if (diffX < 0) {
+                            nextUnitSlide(slider.id, total);
+                        } else {
+                            prevUnitSlide(slider.id, total);
+                        }
+                    }
+                }, { passive: true });
+            });
+        });
 
         function switchLocation(slug) {
             // Update Tab Buttons UI with High-Contrast Active States

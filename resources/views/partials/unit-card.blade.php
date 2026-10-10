@@ -1,5 +1,5 @@
 @php
-    $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6281234567890');
+    $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6285711696970');
     $priceDisplay = $unit->is_promo_active ? $unit->formatted_promo_price : $unit->formatted_normal_price;
     $msg = "Halo Admin VIDALIDAY, saya ingin memesan/tanya ketersediaan unit:\n" .
            "- Lokasi: {$locationName}\n" .
@@ -12,6 +12,9 @@
 @php
     $effectivePrice = $unit->is_promo_active && $unit->promo_price ? (int)$unit->promo_price : (int)$unit->normal_price;
     $createdTimestamp = $unit->created_at ? $unit->created_at->timestamp : $unit->id;
+    $cardImages = $unit->all_images;
+    $hasMultipleImages = count($cardImages) > 1;
+    $sliderId = 'slider-' . $unit->id . '-' . rand(100, 999);
 @endphp
 
 <div class="unit-card-item glass-card glass-card-hover rounded-2xl overflow-hidden border border-slate-200/90 flex flex-col justify-between group transition-all duration-300"
@@ -20,38 +23,79 @@
      data-unit-id="{{ $unit->id }}">
     
     <div>
-        <!-- Image & Badges Container -->
-        <div class="relative h-56 sm:h-60 overflow-hidden bg-slate-100">
-            <img src="{{ $unit->image_url }}" 
-                 alt="{{ $unit->name }}" 
-                 loading="lazy"
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+        <!-- Image & Badges Container with Multi-image Slider -->
+        <div class="relative h-56 sm:h-60 overflow-hidden bg-slate-900 group/slider select-none" id="{{ $sliderId }}" data-current-index="0">
+            <!-- Slides Track -->
+            <div class="slider-track flex h-full transition-transform duration-300 ease-out" style="transform: translateX(0%); width: {{ count($cardImages) * 100 }}%;">
+                @foreach($cardImages as $idx => $img)
+                    <div class="h-full relative overflow-hidden" style="width: {{ 100 / count($cardImages) }}%; flex: 0 0 {{ 100 / count($cardImages) }}%;">
+                        <img src="{{ $img }}" 
+                             alt="{{ $unit->name }} - Foto {{ $idx + 1 }}" 
+                             loading="lazy"
+                             class="w-full h-full object-cover">
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent pointer-events-none z-10"></div>
 
             <!-- Top Badges -->
-            <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 pointer-events-none">
-                <span class="px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-md text-[11px] font-bold text-slate-800 uppercase tracking-wider shadow-sm border border-white/50">
+            <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 pointer-events-none z-20">
+                <span class="px-2.5 py-1 rounded-lg bg-white/95 backdrop-blur-md text-[11px] font-bold text-slate-800 uppercase tracking-wider shadow-sm border border-white/60">
                     {{ $unit->room_type }}
                 </span>
 
-                @if($unit->is_promo_active && !empty($unit->promo_badge))
-                    <span class="px-3 py-1 rounded-lg bg-blue-600 text-white text-[11px] font-extrabold tracking-wide shadow-md shadow-blue-500/30">
-                        {{ $unit->promo_badge }}
-                    </span>
-                @endif
+                <div class="flex items-center gap-1.5">
+                    @if($hasMultipleImages)
+                        <span class="slide-counter px-2 py-0.5 rounded-md bg-slate-900/80 backdrop-blur-md text-[10px] font-bold text-white tracking-wider border border-white/20 shadow-sm">
+                            1/{{ count($cardImages) }}
+                        </span>
+                    @endif
+
+                    @if($unit->is_promo_active && !empty($unit->promo_badge))
+                        <span class="px-3 py-1 rounded-lg bg-blue-600 text-white text-[11px] font-extrabold tracking-wide shadow-md shadow-blue-500/30">
+                            {{ $unit->promo_badge }}
+                        </span>
+                    @endif
+                </div>
             </div>
 
             <!-- Bottom Left Info on Image -->
-            <div class="absolute bottom-3 left-3 flex items-center gap-2 text-xs text-white">
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-900/70 backdrop-blur-md text-[11px] font-medium">
+            <div class="absolute bottom-3 left-3 flex items-center gap-2 text-xs text-white z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-900/75 backdrop-blur-md text-[11px] font-medium">
                     <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                     Maks. {{ $unit->max_guests }} Tamu
                 </span>
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-900/70 backdrop-blur-md text-[11px] font-medium">
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-900/75 backdrop-blur-md text-[11px] font-medium">
                     <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     Unit Bersih
                 </span>
             </div>
+
+            @if($hasMultipleImages)
+                <!-- Navigation Arrows (Always visible or high-contrast on hover) -->
+                <button type="button" 
+                        onclick="event.stopPropagation(); event.preventDefault(); prevUnitSlide('{{ $sliderId }}', {{ count($cardImages) }});" 
+                        aria-label="Foto Sebelumnya"
+                        class="absolute left-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-all opacity-80 sm:opacity-0 sm:group-hover/slider:opacity-100 focus:opacity-100 active:scale-90 hover:scale-110 cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+
+                <button type="button" 
+                        onclick="event.stopPropagation(); event.preventDefault(); nextUnitSlide('{{ $sliderId }}', {{ count($cardImages) }});" 
+                        aria-label="Foto Berikutnya"
+                        class="absolute right-2.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-all opacity-80 sm:opacity-0 sm:group-hover/slider:opacity-100 focus:opacity-100 active:scale-90 hover:scale-110 cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                </button>
+
+                <!-- Indicator Dots (Bottom Right) -->
+                <div class="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 pointer-events-none bg-slate-900/50 backdrop-blur-xs px-2 py-1 rounded-full">
+                    @foreach($cardImages as $idx => $img)
+                        <span class="slide-dot h-1.5 rounded-full transition-all duration-300 {{ $idx === 0 ? 'bg-white w-3' : 'bg-white/50 w-1.5' }}" data-dot-index="{{ $idx }}"></span>
+                    @endforeach
+                </div>
+            @endif
         </div>
 
         <!-- Card Body -->

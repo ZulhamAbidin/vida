@@ -20,7 +20,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \Illuminate\Support\Facades\View::composer('*', function ($view) {
-            $view->with('siteLogo', \App\Models\Setting::get('site_logo'));
+            $logo = \App\Models\Setting::get('site_logo');
+            if ($logo && !\Illuminate\Support\Facades\Storage::disk('public')->exists($logo)) {
+                $logo = null;
+            }
+            $view->with('siteLogo', $logo);
             $view->with('companyLegalName', \App\Models\Setting::get('company_legal_name', 'PT PERDANA MEGA TRANS'));
         });
     }

@@ -2,12 +2,20 @@
 
 namespace App\Models;
 
+use App\Support\StorageHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Facility extends Model
 {
     use HasFactory;
+
+    protected static function booted(): void
+    {
+        static::deleting(function (Facility $facility) {
+            StorageHelper::delete($facility->image);
+        });
+    }
 
     protected $fillable = [
         'location_id',

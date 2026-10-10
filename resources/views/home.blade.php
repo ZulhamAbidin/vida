@@ -52,7 +52,7 @@
                             LIHAT PILIHAN KAMAR & PROMO
                         </a>
                         @php
-                            $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6281234567890');
+                            $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6285711696970');
                             $heroWa = "https://wa.me/{$waClean}?text=" . urlencode("Halo Admin VIDALIDAY, saya ingin konsultasi ketersediaan sewa apartemen di Makassar.");
                         @endphp
                         <a href="{{ $heroWa }}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 rounded-xl glass-card hover:border-emerald-500 text-slate-800 hover:text-emerald-700 font-bold text-sm flex items-center justify-center gap-2.5 transition-all text-center">
@@ -133,7 +133,7 @@
 
                         <!-- Special Price Highlight Card -->
                         @php
-                            $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6281234567890');
+                            $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6285711696970');
                             $featuredLocName = $featuredUnit->location->name ?? 'Makassar';
                             $featuredPrice = $featuredUnit->is_promo_active ? $featuredUnit->formatted_promo_price : $featuredUnit->formatted_normal_price;
                             $featuredMsg = "Halo Admin VIDALIDAY, saya tertarik memesan unit Pilihan Favorit Tamu:\n- Unit: " . ($featuredUnit->name ?? '') . " (" . ($featuredUnit->room_type ?? '') . ")\n- Lokasi: " . $featuredLocName . "\n- Harga: " . $featuredPrice . " / " . ($featuredUnit->rental_period ?? 'Malam') . "\n\nMohon info ketersediaan kamar. Terima kasih!";
@@ -707,7 +707,7 @@
         maxGuests: 2
     };
 
-    const waAdminNumber = "{{ preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6281234567890') }}";
+    const waAdminNumber = "{{ preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6285711696970') }}";
 
     function openBookingModal(name, roomType, location, price, period, image, maxGuests) {
         maxGuests = parseInt(maxGuests, 10) || 2;

@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use App\Models\Unit;
 use App\Models\Location;
+use App\Models\Facility;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
@@ -139,9 +140,11 @@ class VidalidayTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Kelola Tanya Jawab (FAQ)');
 
+        $testQuestion = 'Apakah diperbolehkan membawa hewan peliharaan? (Uji Coba ' . uniqid() . ')';
+
         // Test create FAQ
         $createResponse = $this->actingAs($admin)->post('/admin/faqs', [
-            'question' => 'Apakah diperbolehkan membawa hewan peliharaan?',
+            'question' => $testQuestion,
             'answer' => 'Mohon maaf, demi kenyamanan bersama seluruh penghuni, hewan peliharaan tidak diperkenankan di dalam unit.',
             'badge' => 'Ketentuan',
             'sort_order' => 10,
@@ -150,9 +153,12 @@ class VidalidayTest extends TestCase
 
         $createResponse->assertSessionHas('success');
         $this->assertDatabaseHas('faqs', [
-            'question' => 'Apakah diperbolehkan membawa hewan peliharaan?',
+            'question' => $testQuestion,
             'badge' => 'Ketentuan',
         ]);
+
+        // Clean up test FAQ so it doesn't pollute user database
+        \App\Models\Faq::where('question', $testQuestion)->delete();
     }
 
     public function test_landmarks_displayed_on_homepage()
@@ -160,7 +166,7 @@ class VidalidayTest extends TestCase
         $response = $this->get('/');
         $response->assertStatus(200);
         $response->assertSee('Dekat dengan Berbagai Landmark Makassar');
-        $response->assertSee('Masjid 99 Kubah Makassar');
+        $response->assertSee('Masjid 99 Kubah');
         $response->assertSee('Mall Panakkukang (MP)');
     }
 
@@ -173,10 +179,12 @@ class VidalidayTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Kelola Akses & Landmark Makassar');
 
+        $testLandmarkName = 'Benteng Rotterdam Test ' . uniqid();
+
         // Test create landmark
         $createResponse = $this->actingAs($admin)->post('/admin/landmarks', [
             'location_id' => $location->id,
-            'name' => 'Benteng Rotterdam Makassar',
+            'name' => $testLandmarkName,
             'distance_time' => '6 Menit',
             'notes' => 'Wisata Bersejarah',
             'sort_order' => 10,
@@ -185,10 +193,13 @@ class VidalidayTest extends TestCase
 
         $createResponse->assertSessionHas('success');
         $this->assertDatabaseHas('landmarks', [
-            'name' => 'Benteng Rotterdam Makassar',
+            'name' => $testLandmarkName,
             'distance_time' => '6 Menit',
             'location_id' => $location->id,
         ]);
+
+        // Clean up test landmark
+        \App\Models\Landmark::where('name', $testLandmarkName)->delete();
     }
 
     public function test_about_page_loads_and_displays_content()
@@ -235,8 +246,10 @@ class VidalidayTest extends TestCase
 
     public function test_admin_can_upload_and_manage_site_logo()
     {
-        // Preserve user existing uploaded logo
+        // Preserve user existing uploaded logo and settings
         $originalSiteLogo = \App\Models\Setting::get('site_logo');
+        $originalWa = \App\Models\Setting::get('whatsapp_number', '6285711696970');
+        $originalPhone = \App\Models\Setting::get('contact_phone', '+62 857-1169-6970');
 
         \Illuminate\Support\Facades\Storage::fake('public');
 
@@ -245,9 +258,9 @@ class VidalidayTest extends TestCase
 
         $response = $this->actingAs($admin)->post('/admin/settings', [
             'site_logo' => $file,
-            'whatsapp_number' => '6281234567890',
+            'whatsapp_number' => '6285711696970',
             'company_legal_name' => 'PT PERDANA MEGA TRANS',
-            'contact_phone' => '+62 812-3456-7890',
+            'contact_phone' => '+62 857-1169-6970',
             'contact_email' => 'info@vidaliday.com',
             'office_hours' => 'Setiap Hari: 08.00 - 23.00 WITA',
             'promo_banner_text' => 'Promo sewa apartemen.',
@@ -271,9 +284,9 @@ class VidalidayTest extends TestCase
         // Test remove logo back to default
         $removeResponse = $this->actingAs($admin)->post('/admin/settings', [
             'remove_logo' => '1',
-            'whatsapp_number' => '6281234567890',
+            'whatsapp_number' => $originalWa,
             'company_legal_name' => 'PT PERDANA MEGA TRANS',
-            'contact_phone' => '+62 812-3456-7890',
+            'contact_phone' => $originalPhone,
             'contact_email' => 'info@vidaliday.com',
             'office_hours' => 'Setiap Hari: 08.00 - 23.00 WITA',
             'promo_banner_text' => 'Promo sewa apartemen.',
@@ -283,10 +296,12 @@ class VidalidayTest extends TestCase
         $removeResponse->assertSessionHas('success');
         $this->assertNull(\App\Models\Setting::get('site_logo'));
 
-        // Restore user actual logo so test suite does NOT wipe real user uploaded logo
+        // Restore user actual logo and phone numbers so test suite does NOT wipe real user settings
         if ($originalSiteLogo) {
             \App\Models\Setting::set('site_logo', $originalSiteLogo);
         }
+        \App\Models\Setting::set('whatsapp_number', $originalWa);
+        \App\Models\Setting::set('contact_phone', $originalPhone);
     }
 
     public function test_homepage_has_unit_sorting_and_limiting()
@@ -298,6 +313,193 @@ class VidalidayTest extends TestCase
         $response->assertSee('Termahal (Kamar Eksklusif)');
         $response->assertSee('Terbaru (Baru Ditambahkan)');
         $response->assertSee('unit-card-item');
+    }
+
+    public function test_deleting_unit_deletes_its_image_from_storage()
+    {
+        \Illuminate\Support\Facades\Storage::fake('public');
+
+        $admin = User::first();
+        $location = Location::first();
+        $file = UploadedFile::fake()->image('test-unit.jpg', 600, 400);
+        $testName = 'Unit For Deletion ' . uniqid();
+
+        $createResponse = $this->actingAs($admin)->post('/admin/units', [
+            'location_id' => $location->id,
+            'name' => $testName,
+            'room_type' => 'Studio',
+            'max_guests' => 2,
+            'normal_price' => 500000,
+            'promo_price' => 350000,
+            'promo_badge' => 'Hemat',
+            'rental_period' => 'Malam',
+            'description' => 'Test Unit Description',
+            'image' => $file,
+        ]);
+
+        $createResponse->assertRedirect('/admin/units');
+        $unit = Unit::where('name', $testName)->first();
+        $this->assertNotNull($unit);
+        $this->assertTrue(\Illuminate\Support\Facades\Storage::disk('public')->exists($unit->main_image));
+
+        $imagePath = $unit->main_image;
+
+        // Delete the unit
+        $deleteResponse = $this->actingAs($admin)->delete('/admin/units/' . $unit->id);
+        $deleteResponse->assertRedirect('/admin/units');
+
+        $this->assertDatabaseMissing('units', ['id' => $unit->id]);
+        $this->assertFalse(\Illuminate\Support\Facades\Storage::disk('public')->exists($imagePath));
+    }
+
+    public function test_updating_unit_image_deletes_old_image_from_storage()
+    {
+        \Illuminate\Support\Facades\Storage::fake('public');
+
+        $admin = User::first();
+        $location = Location::first();
+        $file1 = UploadedFile::fake()->image('unit-old.jpg', 600, 400);
+        $testName = 'Unit For Update ' . uniqid();
+
+        $res = $this->actingAs($admin)->post('/admin/units', [
+            'location_id' => $location->id,
+            'name' => $testName,
+            'room_type' => 'Studio',
+            'max_guests' => 2,
+            'normal_price' => 500000,
+            'promo_price' => 350000,
+            'promo_badge' => 'Hemat',
+            'rental_period' => 'Malam',
+            'description' => 'Unit for test',
+            'image' => $file1,
+        ]);
+        $res->assertSessionHasNoErrors();
+
+        $unit = Unit::where('name', $testName)->first();
+        $this->assertNotNull($unit);
+        $oldImagePath = $unit->main_image;
+        $this->assertTrue(\Illuminate\Support\Facades\Storage::disk('public')->exists($oldImagePath));
+
+        $file2 = UploadedFile::fake()->image('unit-new.jpg', 600, 400);
+        $updateRes = $this->actingAs($admin)->put('/admin/units/' . $unit->id, [
+            'location_id' => $location->id,
+            'name' => $testName,
+            'room_type' => 'Studio',
+            'max_guests' => 2,
+            'normal_price' => 500000,
+            'promo_price' => 350000,
+            'promo_badge' => 'Hemat',
+            'rental_period' => 'Malam',
+            'description' => 'Unit for test',
+            'image' => $file2,
+        ]);
+        $updateRes->assertSessionHasNoErrors();
+
+        $unit->refresh();
+        $newImagePath = $unit->main_image;
+        $this->assertNotEquals($oldImagePath, $newImagePath);
+        $this->assertFalse(\Illuminate\Support\Facades\Storage::disk('public')->exists($oldImagePath));
+        $this->assertTrue(\Illuminate\Support\Facades\Storage::disk('public')->exists($newImagePath));
+
+        // Clean up
+        $unit->delete();
+    }
+
+    public function test_deleting_facility_deletes_its_image_from_storage()
+    {
+        \Illuminate\Support\Facades\Storage::fake('public');
+
+        $admin = User::first();
+        $location = Location::first();
+        $file = UploadedFile::fake()->image('facility.jpg', 600, 400);
+        $testName = 'Kolam Uji Coba ' . uniqid();
+
+        $res = $this->actingAs($admin)->post('/admin/facilities', [
+            'location_id' => $location->id,
+            'name' => $testName,
+            'icon' => 'swimming-pool',
+            'description' => 'Fasilitas uji coba',
+            'image' => $file,
+        ]);
+        $res->assertSessionHasNoErrors();
+
+        $facility = Facility::where('name', $testName)->first();
+        $this->assertNotNull($facility);
+        $imagePath = $facility->image;
+        $this->assertNotNull($imagePath);
+        $this->assertTrue(\Illuminate\Support\Facades\Storage::disk('public')->exists($imagePath));
+
+        // Delete facility
+        $deleteRes = $this->actingAs($admin)->delete('/admin/facilities/' . $facility->id);
+        $deleteRes->assertSessionHas('success');
+        $this->assertDatabaseMissing('facilities', ['id' => $facility->id]);
+        $this->assertFalse(\Illuminate\Support\Facades\Storage::disk('public')->exists($imagePath));
+    }
+
+    public function test_unit_multiple_gallery_images_slider_and_deletion()
+    {
+        \Illuminate\Support\Facades\Storage::fake('public');
+
+        $admin = User::first();
+        $location = Location::first();
+        $mainImg = UploadedFile::fake()->image('main.jpg', 600, 400);
+        $gallery1 = UploadedFile::fake()->image('gallery1.jpg', 600, 400);
+        $gallery2 = UploadedFile::fake()->image('gallery2.jpg', 600, 400);
+        $testName = 'Unit Slider Test ' . uniqid();
+
+        // 1. Create with gallery
+        $res = $this->actingAs($admin)->post('/admin/units', [
+            'location_id' => $location->id,
+            'name' => $testName,
+            'room_type' => '2 Bedroom',
+            'max_guests' => 4,
+            'normal_price' => 700000,
+            'promo_price' => 500000,
+            'rental_period' => 'Malam',
+            'promo_badge' => 'Promo',
+            'description' => 'Test Desc',
+            'image' => $mainImg,
+            'gallery_images' => [$gallery1, $gallery2],
+        ]);
+        $res->assertRedirect('/admin/units');
+
+        $unit = Unit::where('name', $testName)->first();
+        $this->assertNotNull($unit);
+        $this->assertCount(2, $unit->gallery_images);
+        $this->assertCount(3, $unit->all_images);
+
+        $g1Path = $unit->gallery_images[0];
+        $g2Path = $unit->gallery_images[1];
+        $this->assertTrue(\Illuminate\Support\Facades\Storage::disk('public')->exists($g1Path));
+        $this->assertTrue(\Illuminate\Support\Facades\Storage::disk('public')->exists($g2Path));
+
+        // 2. Homepage should show slider counter
+        $homeRes = $this->get('/');
+        $homeRes->assertStatus(200);
+        $homeRes->assertSee('1/3');
+
+        // 3. Update: delete 1 gallery photo
+        $updateRes = $this->actingAs($admin)->put('/admin/units/' . $unit->id, [
+            'location_id' => $location->id,
+            'name' => $testName,
+            'room_type' => '2 Bedroom',
+            'max_guests' => 4,
+            'normal_price' => 700000,
+            'promo_price' => 500000,
+            'rental_period' => 'Malam',
+            'deleted_gallery_images' => [$g1Path],
+        ]);
+        $updateRes->assertSessionHasNoErrors();
+
+        $unit->refresh();
+        $this->assertCount(1, $unit->gallery_images);
+        $this->assertFalse(\Illuminate\Support\Facades\Storage::disk('public')->exists($g1Path));
+        $this->assertTrue(\Illuminate\Support\Facades\Storage::disk('public')->exists($g2Path));
+
+        // 4. Delete unit completely: should delete all remaining images
+        $unit->delete();
+        $this->assertFalse(\Illuminate\Support\Facades\Storage::disk('public')->exists($g2Path));
+        $this->assertFalse(\Illuminate\Support\Facades\Storage::disk('public')->exists($unit->main_image));
     }
 }
 

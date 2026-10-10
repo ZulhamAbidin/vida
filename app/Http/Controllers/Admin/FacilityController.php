@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Facility;
 use App\Models\Location;
+use App\Support\StorageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -51,9 +52,7 @@ class FacilityController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            if ($facility->image && Storage::disk('public')->exists($facility->image)) {
-                Storage::disk('public')->delete($facility->image);
-            }
+            StorageHelper::delete($facility->image);
             $validated['image'] = $request->file('image')->store('facilities', 'public');
         }
 
@@ -64,11 +63,8 @@ class FacilityController extends Controller
 
     public function destroy(Facility $facility)
     {
-        if ($facility->image && Storage::disk('public')->exists($facility->image)) {
-            Storage::disk('public')->delete($facility->image);
-        }
-
+        StorageHelper::delete($facility->image);
         $facility->delete();
-        return back()->with('success', 'Fasilitas gedung berhasil dihapus!');
+        return back()->with('success', 'Fasilitas gedung dan gambar terkait berhasil dihapus dari sistem & storage!');
     }
 }

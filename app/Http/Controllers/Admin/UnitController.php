@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Support\StorageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -54,9 +55,13 @@ class UnitController extends Controller
             'description' => 'nullable|string',
             'facilities_input' => 'nullable|string',
             'image' => 'nullable|file|mimes:jpeg,jpg,png,heic,heif,webp|max:5120',
+            'gallery_images' => 'nullable|array',
+            'gallery_images.*' => 'file|mimes:jpeg,jpg,png,heic,heif,webp|max:5120',
         ], [
-            'image.max' => 'Ukuran file gambar maksimal 5MB.',
-            'image.mimes' => 'Format file gambar harus JPG, JPEG, PNG, WEBP, atau HEIC.',
+            'image.max' => 'Ukuran file foto utama maksimal 5MB.',
+            'image.mimes' => 'Format file foto utama harus JPG, JPEG, PNG, WEBP, atau HEIC.',
+            'gallery_images.*.max' => 'Ukuran setiap foto galeri maksimal 5MB.',
+            'gallery_images.*.mimes' => 'Format file foto galeri harus JPG, JPEG, PNG, WEBP, atau HEIC.',
         ]);
 
         $facilities = [];
@@ -67,6 +72,13 @@ class UnitController extends Controller
         $imagePath = 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80';
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('units', 'public');
+        }
+
+        $galleryPaths = [];
+        if ($request->hasFile('gallery_images')) {
+            foreach ($request->file('gallery_images') as $file) {
+                $galleryPaths[] = $file->store('units', 'public');
+            }
         }
 
         $slug = Str::slug($request->name . '-' . rand(100, 999));
@@ -85,11 +97,12 @@ class UnitController extends Controller
             'description' => $validated['description'],
             'facilities_list' => $facilities,
             'main_image' => $imagePath,
+            'gallery_images' => $galleryPaths,
             'is_featured' => $request->has('is_featured'),
             'is_available' => $request->has('is_available') ? $request->boolean('is_available') : true,
         ]);
 
-        return redirect()->route('admin.units.index')->with('success', 'Unit kamar berhasil ditambahkan dengan foto!');
+        return redirect()->route('admin.units.index')->with('success', 'Unit kamar dan foto-foto galeri berhasil ditambahkan!');
     }
 
     public function edit(Unit $unit)
@@ -121,9 +134,15 @@ class UnitController extends Controller
             'description' => 'nullable|string',
             'facilities_input' => 'nullable|string',
             'image' => 'nullable|file|mimes:jpeg,jpg,png,heic,heif,webp|max:5120',
+            'gallery_images' => 'nullable|array',
+            'gallery_images.*' => 'file|mimes:jpeg,jpg,png,heic,heif,webp|max:5120',
+            'deleted_gallery_images' => 'nullable|array',
+            'deleted_gallery_images.*' => 'string',
         ], [
-            'image.max' => 'Ukuran file gambar maksimal 5MB.',
-            'image.mimes' => 'Format file gambar harus JPG, JPEG, PNG, WEBP, atau HEIC.',
+            'image.max' => 'Ukuran file foto utama maksimal 5MB.',
+            'image.mimes' => 'Format file foto utama harus JPG, JPEG, PNG, WEBP, atau HEIC.',
+            'gallery_images.*.max' => 'Ukuran setiap foto galeri maksimal 5MB.',
+            'gallery_images.*.mimes' => 'Format file foto galeri harus JPG, JPEG, PNG, WEBP, atau HEIC.',
         ]);
 
         $facilities = [];
@@ -134,10 +153,27 @@ class UnitController extends Controller
         $imagePath = $unit->main_image;
         if ($request->hasFile('image')) {
             // Delete old uploaded image if it was a stored file
-            if ($unit->main_image && Storage::disk('public')->exists($unit->main_image)) {
-                Storage::disk('public')->delete($unit->main_image);
-            }
+            StorageHelper::delete($unit->main_image);
             $imagePath = $request->file('image')->store('units', 'public');
+        }
+
+        // Handle Gallery Images
+        $currentGallery = is_array($unit->gallery_images) ? $unit->gallery_images : [];
+
+        // Delete requested gallery images from disk & array
+        if ($request->has('deleted_gallery_images')) {
+            $deletedList = (array) $request->input('deleted_gallery_images', []);
+            foreach ($deletedList as $delPath) {
+                StorageHelper::delete($delPath);
+            }
+            $currentGallery = array_values(array_diff($currentGallery, $deletedList));
+        }
+
+        // Add newly uploaded gallery images
+        if ($request->hasFile('gallery_images')) {
+            foreach ($request->file('gallery_images') as $file) {
+                $currentGallery[] = $file->store('units', 'public');
+            }
         }
 
         $unit->update([
@@ -147,27 +183,29 @@ class UnitController extends Controller
             'max_guests' => $validated['max_guests'],
             'normal_price' => $validated['normal_price'],
             'promo_price' => $validated['promo_price'],
-            'promo_badge' => $validated['promo_badge'],
+            'promo_badge' => $validated['promo_badge'] ?? null,
             'is_promo_active' => $request->has('is_promo_active'),
             'rental_period' => $validated['rental_period'],
-            'description' => $validated['description'],
+            'description' => $validated['description'] ?? null,
             'facilities_list' => $facilities,
             'main_image' => $imagePath,
+            'gallery_images' => $currentGallery,
             'is_featured' => $request->has('is_featured') ? $request->boolean('is_featured') : $unit->is_featured,
             'is_available' => $request->has('is_available') ? $request->boolean('is_available') : true,
         ]);
 
-        return redirect()->route('admin.units.index')->with('success', 'Data unit kamar dan foto berhasil diperbarui!');
+        return redirect()->route('admin.units.index')->with('success', 'Data unit kamar dan foto-foto galeri berhasil diperbarui!');
     }
 
     public function destroy(Unit $unit)
     {
-        if ($unit->main_image && Storage::disk('public')->exists($unit->main_image)) {
-            Storage::disk('public')->delete($unit->main_image);
+        StorageHelper::delete($unit->main_image);
+        if (is_array($unit->gallery_images)) {
+            StorageHelper::deleteMany($unit->gallery_images);
         }
 
         $unit->delete();
-        return redirect()->route('admin.units.index')->with('success', 'Unit kamar berhasil dihapus.');
+        return redirect()->route('admin.units.index')->with('success', 'Unit kamar dan foto terkait berhasil dihapus dari sistem & storage.');
     }
 
     // Quick Update Diskon / Promo dari tabel

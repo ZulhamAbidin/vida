@@ -2,12 +2,24 @@
 
 namespace App\Models;
 
+use App\Support\StorageHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Unit extends Model
 {
     use HasFactory;
+
+    protected static function booted(): void
+    {
+        static::deleting(function (Unit $unit) {
+            StorageHelper::delete($unit->main_image);
+
+            if (is_array($unit->gallery_images)) {
+                StorageHelper::deleteMany($unit->gallery_images);
+            }
+        });
+    }
 
     protected $fillable = [
         'location_id',
@@ -70,6 +82,32 @@ class Unit extends Model
             return $this->main_image;
         }
         return asset('storage/' . $this->main_image);
+    }
+
+    public function getAllImagesAttribute(): array
+    {
+        $images = [];
+        if ($this->main_image) {
+            $images[] = $this->getImageUrlAttribute();
+        }
+
+        if (is_array($this->gallery_images)) {
+            foreach ($this->gallery_images as $img) {
+                if ($img) {
+                    if (str_starts_with($img, 'http://') || str_starts_with($img, 'https://')) {
+                        $images[] = $img;
+                    } else {
+                        $images[] = asset('storage/' . $img);
+                    }
+                }
+            }
+        }
+
+        if (empty($images)) {
+            $images[] = 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80';
+        }
+
+        return array_values(array_unique($images));
     }
 }
 

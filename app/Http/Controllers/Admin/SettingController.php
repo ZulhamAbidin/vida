@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Support\StorageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,8 +12,13 @@ class SettingController extends Controller
 {
     public function index()
     {
+        $siteLogo = Setting::get('site_logo');
+        if ($siteLogo && !Storage::disk('public')->exists($siteLogo)) {
+            $siteLogo = null;
+        }
+
         $settings = [
-            'site_logo' => Setting::get('site_logo'),
+            'site_logo' => $siteLogo,
             'whatsapp_number' => Setting::get('whatsapp_number', '6281234567890'),
             'whatsapp_template' => Setting::get('whatsapp_template', ''),
             'promo_banner_text' => Setting::get('promo_banner_text', ''),
@@ -41,20 +47,14 @@ class SettingController extends Controller
         // Handle upload logo baru
         if ($request->hasFile('site_logo')) {
             $oldLogo = Setting::get('site_logo');
-            if ($oldLogo && Storage::disk('public')->exists($oldLogo)) {
-                Storage::disk('public')->delete($oldLogo);
-            }
+            StorageHelper::delete($oldLogo);
 
             $path = $request->file('site_logo')->store('settings', 'public');
             Setting::set('site_logo', $path);
-        }
-
-        // Handle hapus logo bila tombol hapus logo dipilih
-        if ($request->has('remove_logo') && $request->input('remove_logo') == '1') {
+        } elseif ($request->has('remove_logo') && $request->input('remove_logo') == '1') {
+            // Handle hapus logo bila tombol hapus logo dipilih
             $oldLogo = Setting::get('site_logo');
-            if ($oldLogo && Storage::disk('public')->exists($oldLogo)) {
-                Storage::disk('public')->delete($oldLogo);
-            }
+            StorageHelper::delete($oldLogo);
             Setting::set('site_logo', null);
         }
 
