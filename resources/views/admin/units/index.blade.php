@@ -1,0 +1,219 @@
+@extends('admin.layout')
+
+@section('title', 'Kelola Kamar & Diskon')
+@section('page_title', 'Kelola Unit Kamar')
+
+@section('content')
+
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+        <!-- Filter Lokasi -->
+        <div class="flex flex-wrap items-center gap-2">
+            <span class="text-xs text-slate-500 font-semibold">Filter Lokasi:</span>
+            <a href="{{ route('admin.units.index') }}" class="px-3 py-1.5 rounded-xl text-xs {{ !request('location_id') ? 'bg-blue-600 text-white font-bold shadow-sm' : 'glass-card text-slate-600 hover:text-slate-900 border border-slate-200' }}">
+                Semua Lokasi
+            </a>
+            @foreach($locations as $loc)
+                <a href="{{ route('admin.units.index', ['location_id' => $loc->id]) }}" class="px-3 py-1.5 rounded-xl text-xs {{ request('location_id') == $loc->id ? 'bg-blue-600 text-white font-bold shadow-sm' : 'glass-card text-slate-600 hover:text-slate-900 border border-slate-200' }}">
+                    {{ $loc->name }}
+                </a>
+            @endforeach
+        </div>
+
+        <a href="{{ route('admin.units.create') }}" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-500/20 transition flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Tambah Unit & Upload Foto
+        </a>
+    </div>
+
+    <!-- Units Table -->
+    <div class="glass-card rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-slate-600">
+                <thead class="bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200/80">
+                    <tr>
+                        <th class="py-4 px-4">Foto & Unit</th>
+                        <th class="py-4 px-4">Lokasi & Tipe</th>
+                        <th class="py-4 px-4">Tarif Sewa</th>
+                        <th class="py-4 px-4 text-center">Hero Favorit</th>
+                        <th class="py-4 px-4 text-center">Status Promo</th>
+                        <th class="py-4 px-4 text-right">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    @forelse($units as $unit)
+                        <tr class="hover:bg-slate-50/80 transition">
+                            <td class="py-4 px-4 flex items-center gap-3">
+                                <img src="{{ $unit->image_url }}" alt="{{ $unit->name }}" class="w-14 h-12 object-cover rounded-xl border border-slate-200 shrink-0 bg-slate-100">
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">{{ $unit->name }}</h4>
+                                    <span class="text-xs text-slate-400">Maks. {{ $unit->max_guests }} Tamu</span>
+                                </div>
+                            </td>
+
+                            <td class="py-4 px-4">
+                                <span class="font-bold text-blue-700">{{ $unit->location->name ?? '-' }}</span>
+                                <div class="text-[11px] text-slate-500 mt-0.5">{{ $unit->room_type }} • {{ $unit->rental_period }}</div>
+                            </td>
+
+                            <td class="py-4 px-4">
+                                <div class="flex items-baseline gap-1.5">
+                                    <span class="text-blue-700 font-extrabold text-sm">{{ $unit->formatted_promo_price }}</span>
+                                    @if($unit->is_promo_active && $unit->normal_price > $unit->promo_price)
+                                        <span class="text-[11px] text-rose-500 line-through">{{ $unit->formatted_normal_price }}</span>
+                                    @endif
+                                </div>
+                                @if($unit->promo_badge)
+                                    <span class="inline-block mt-0.5 px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200">
+                                        {{ $unit->promo_badge }}
+                                    </span>
+                                @endif
+                            </td>
+
+                            <!-- Dynamic Favorit Tamu Toggle Button -->
+                            <td class="py-4 px-4 text-center">
+                                <form method="POST" action="{{ route('admin.units.toggle-featured', $unit->id) }}" class="inline">
+                                    @csrf
+                                    <button type="submit" 
+                                            class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition {{ $unit->is_featured ? 'bg-amber-100 text-amber-800 border border-amber-300 shadow-sm' : 'bg-slate-100 text-slate-500 hover:bg-slate-200 border border-slate-200' }}"
+                                            title="Klik untuk ubah pilihan favorit tamu di hero">
+                                        <svg class="w-3.5 h-3.5 {{ $unit->is_featured ? 'text-amber-500 fill-current' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                                        <span>{{ $unit->is_featured ? 'Favorit Tamu' : 'Biasa' }}</span>
+                                    </button>
+                                </form>
+                            </td>
+
+                            <td class="py-4 px-4 text-center">
+                                @if($unit->is_promo_active)
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold">Promo Aktif</span>
+                                @else
+                                    <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px]">Normal</span>
+                                @endif
+                            </td>
+
+                            <!-- Icon-Only Edit & Delete Buttons with Popups -->
+                            <td class="py-4 px-4 text-right space-x-1.5">
+                                <!-- Icon-Only Edit Button -->
+                                <button type="button" 
+                                        onclick="openEditModal('{{ route('admin.units.edit', $unit->id) }}', '{{ addslashes($unit->name) }}')"
+                                        class="p-2 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200 transition shadow-sm inline-flex items-center justify-center"
+                                        title="Edit Unit Kamar">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                                </button>
+
+                                <!-- Icon-Only Delete Button -->
+                                <button type="button" 
+                                        onclick="openDeleteModal('delete-form-{{ $unit->id }}', '{{ addslashes($unit->name) }}')"
+                                        class="p-2 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-600 hover:text-white border border-rose-200 transition shadow-sm inline-flex items-center justify-center"
+                                        title="Hapus Unit Kamar">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                </button>
+
+                                <form id="delete-form-{{ $unit->id }}" method="POST" action="{{ route('admin.units.destroy', $unit->id) }}" class="hidden">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="py-8 text-center text-slate-400">
+                                Belum ada unit kamar di lokasi ini.
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL KONFIRMASI EDIT -->
+    <div id="edit-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-2xl border border-blue-200 p-6 max-w-sm w-full space-y-4 shadow-2xl bg-white transform transition-all">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Konfirmasi Edit</h3>
+                    <p class="text-xs text-slate-500">Edit data unit kamar</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Apakah Anda ingin mengedit data unit kamar <strong id="edit-unit-name" class="text-slate-900 font-bold"></strong>?
+            </p>
+
+            <div class="flex items-center justify-end gap-2 pt-2">
+                <button type="button" onclick="closeEditModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition">
+                    Batal
+                </button>
+                <a id="edit-confirm-btn" href="#" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-sm">
+                    Lanjutkan Edit
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL KONFIRMASI HAPUS -->
+    <div id="delete-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-2xl border border-rose-200 p-6 max-w-sm w-full space-y-4 shadow-2xl bg-white transform transition-all">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 border border-rose-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Konfirmasi Hapus</h3>
+                    <p class="text-xs text-slate-500">Tindakan ini permanen</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Apakah Anda yakin ingin menghapus unit <strong id="delete-unit-name" class="text-slate-900 font-bold"></strong>? Seluruh foto dan data unit ini akan dihapus dari server.
+            </p>
+
+            <div class="flex items-center justify-end gap-2 pt-2">
+                <button type="button" onclick="closeDeleteModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition">
+                    Batal
+                </button>
+                <button type="button" id="delete-confirm-btn" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shadow-sm">
+                    Ya, Hapus Unit
+                </button>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+@push('scripts')
+<script>
+    // Edit Modal Logic
+    function openEditModal(url, name) {
+        document.getElementById('edit-unit-name').innerText = '"' + name + '"';
+        document.getElementById('edit-confirm-btn').href = url;
+        document.getElementById('edit-modal').classList.remove('hidden');
+    }
+
+    function closeEditModal() {
+        document.getElementById('edit-modal').classList.add('hidden');
+    }
+
+    // Delete Modal Logic
+    let activeDeleteFormId = null;
+    function openDeleteModal(formId, name) {
+        activeDeleteFormId = formId;
+        document.getElementById('delete-unit-name').innerText = '"' + name + '"';
+        document.getElementById('delete-modal').classList.remove('hidden');
+    }
+
+    function closeDeleteModal() {
+        document.getElementById('delete-modal').classList.add('hidden');
+        activeDeleteFormId = null;
+    }
+
+    document.getElementById('delete-confirm-btn').addEventListener('click', function() {
+        if (activeDeleteFormId) {
+            document.getElementById(activeDeleteFormId).submit();
+        }
+    });
+</script>
+@endpush
