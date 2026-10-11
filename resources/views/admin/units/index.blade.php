@@ -25,14 +25,90 @@
         </a>
     </div>
 
-    <!-- Units Table -->
-    <div class="glass-card rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm">
-        <div class="sm:hidden px-3.5 py-2 bg-slate-50 border-b border-slate-200/70 text-[11px] text-slate-500 flex items-center justify-between">
-            <span class="flex items-center gap-1">
-                <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                Geser tabel ke samping untuk melihat opsi & aksi
-            </span>
-        </div>
+    <!-- MOBILE VIEW: Interactive Responsive Cards (Khusus Layar HP < 768px) -->
+    <div class="md:hidden space-y-3 mb-6">
+        @forelse($units as $unit)
+            <div class="bg-white rounded-2xl border border-slate-200/90 p-3.5 sm:p-4 shadow-sm space-y-3 transition hover:border-blue-200">
+                <!-- Header Card: Foto + Nama & Lokasi -->
+                <div class="flex items-start gap-3">
+                    <img src="{{ $unit->image_url }}" alt="{{ $unit->name }}" class="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0 bg-slate-100 shadow-xs">
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center justify-between gap-1">
+                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider truncate">{{ $unit->location->name ?? '-' }}</span>
+                            @if($unit->is_promo_active)
+                                <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold shrink-0">Promo Aktif</span>
+                            @else
+                                <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px] shrink-0">Normal</span>
+                            @endif
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm truncate leading-snug mt-0.5">{{ $unit->name }}</h4>
+                        <div class="text-[11px] text-slate-500 mt-0.5 flex items-center gap-1.5 flex-wrap">
+                            <span>{{ $unit->room_type }} • {{ $unit->rental_period }}</span>
+                            <span>• Maks. {{ $unit->max_guests }} Tamu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Card: Tarif Sewa & Promo Badge -->
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                    <div>
+                        <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Tarif Sewa</span>
+                        <div class="flex items-baseline gap-1.5 mt-0.5">
+                            <span class="text-blue-700 font-extrabold text-sm">{{ $unit->formatted_promo_price }}</span>
+                            @if($unit->is_promo_active && $unit->normal_price > $unit->promo_price)
+                                <span class="text-[11px] text-rose-500 line-through">{{ $unit->formatted_normal_price }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    @if($unit->promo_badge)
+                        <span class="px-2 py-0.5 rounded-lg bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200 shrink-0">
+                            {{ $unit->promo_badge }}
+                        </span>
+                    @endif
+                </div>
+
+                <!-- Footer Card: Action Buttons (Touch-Friendly) -->
+                <div class="flex items-center justify-between gap-2 pt-1 border-t border-slate-100">
+                    <!-- Toggle Hero Favorit -->
+                    <form method="POST" action="{{ route('admin.units.toggle-featured', $unit->id) }}" class="inline">
+                        @csrf
+                        <button type="submit" 
+                                class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition {{ $unit->is_featured ? 'bg-amber-100 text-amber-800 border border-amber-300 shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200' }}"
+                                title="Klik untuk ubah pilihan favorit tamu di hero">
+                            <svg class="w-3.5 h-3.5 {{ $unit->is_featured ? 'text-amber-500 fill-current' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                            <span>{{ $unit->is_featured ? 'Favorit Tamu' : 'Set Favorit' }}</span>
+                        </button>
+                    </form>
+
+                    <!-- Edit & Delete Buttons -->
+                    <div class="flex items-center gap-1.5">
+                        <button type="button" 
+                                onclick="openEditModal('{{ route('admin.units.edit', $unit->id) }}', '{{ addslashes($unit->name) }}')"
+                                class="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200 transition text-xs font-bold"
+                                title="Edit Unit Kamar">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                            <span>Edit</span>
+                        </button>
+
+                        <button type="button" 
+                                onclick="openDeleteModal('delete-form-{{ $unit->id }}', '{{ addslashes($unit->name) }}')"
+                                class="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-600 hover:text-white border border-rose-200 transition text-xs font-bold"
+                                title="Hapus Unit Kamar">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            <span>Hapus</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        @empty
+            <div class="bg-white rounded-2xl border border-slate-200 p-8 text-center text-slate-400 text-xs">
+                Belum ada unit kamar di lokasi ini.
+            </div>
+        @endforelse
+    </div>
+
+    <!-- DESKTOP VIEW: Full Data Table (Layar Komputer/Tablet >= 768px) -->
+    <div class="hidden md:block glass-card rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm">
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs text-slate-600 min-w-[650px]">
                 <thead class="bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200/80">
