@@ -12,7 +12,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex items-center justify-center p-4 sm:p-6 py-10 relative overflow-x-clip selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen min-h-[100dvh] flex flex-col items-center justify-center p-4 sm:p-6 relative overflow-x-clip selection:bg-blue-600 selection:text-white">
 
     <!-- Ambient Glowing Orbs Background -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -20,11 +20,11 @@
         <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-sky-300/15 rounded-full blur-[140px]"></div>
     </div>
 
-
-    <div class="relative z-10 w-full max-w-md">
+    <div class="relative z-10 w-full max-w-md my-auto py-4">
         
         <!-- White Glassmorphic Login Card -->
-        <div class="glass-card rounded-3xl p-8 border border-white/80 shadow-xl space-y-6 bg-white/90">
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/80 shadow-xl space-y-5 sm:space-y-6 bg-white/90">
+
             
             <!-- Header Brand -->
             <div class="text-center space-y-2">
