@@ -594,7 +594,7 @@
                     <div class="bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
                         <div>
                             <!-- Header Lokasi dengan Mini Banner Berkelas Sesuai Preview Card Opsi 1 -->
-                            <div class="p-6 bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white relative overflow-hidden">
+                            <div class="p-6 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #0f172a 100%);">
                                 <div class="relative z-10 flex items-start justify-between gap-3">
                                     <div>
                                         <div class="flex items-center gap-1.5 text-blue-300 text-xs font-bold uppercase tracking-wider mb-1">
