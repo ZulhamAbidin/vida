@@ -582,26 +582,79 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 @foreach($locations as $loc)
-                    <div class="p-5 sm:p-6 rounded-2xl glass-card border border-slate-200/80 space-y-3.5 shadow-sm flex flex-col justify-between">
+                    @php
+                        // Bersihkan kata ganda jika nama lokasi sudah mengandung kata "Apartemen"
+                        $locTitle = preg_replace('/^apartemen\s+/i', '', trim($loc->name));
+                        $isDelft = str_contains(strtolower($loc->slug ?? ''), 'delft');
+                        $themeColor = $isDelft ? 'blue' : 'emerald';
+                        $lineColor = $isDelft ? 'before:bg-blue-200' : 'before:bg-emerald-200';
+                        $pinColor = $isDelft ? 'bg-blue-600' : 'bg-emerald-600';
+                        $badgeBorder = $isDelft ? 'border-blue-200 bg-blue-50 text-blue-700' : 'border-emerald-200 bg-emerald-50 text-emerald-700';
+                    @endphp
+                    <div class="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                         <div>
-                            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                                <h4 class="text-sm sm:text-lg font-bold text-slate-900">Dari Apartemen {{ $loc->name }}</h4>
+                            <!-- Header Lokasi dengan Tagline -->
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-3">
+                                <div>
+                                    <span class="text-[10px] sm:text-[11px] font-bold text-blue-600 uppercase tracking-wider block">
+                                        Rute Perjalanan & Akses Cepat
+                                    </span>
+                                    <h3 class="text-base sm:text-lg font-black text-slate-900 mt-0.5">
+                                        Dari Apartemen {{ $locTitle }}
+                                    </h3>
+                                </div>
                                 @if($loc->tagline)
-                                    <span class="text-[11px] sm:text-xs px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-200">{{ $loc->tagline }}</span>
+                                    <span class="text-[10px] sm:text-[11px] px-3 py-1 rounded-xl font-bold border shrink-0 {{ $badgeBorder }}">
+                                        {{ $loc->tagline }}
+                                    </span>
                                 @endif
                             </div>
-                            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 mt-3.5">
-                                @forelse($loc->landmarks as $landmark)
-                                    <li class="flex items-center justify-between gap-3">
-                                        <span class="truncate">{{ $landmark->name }}</span>
-                                        <strong class="text-blue-600 font-mono shrink-0">{{ $landmark->distance_time }}</strong>
-                                    </li>
+
+                            <!-- Vertical Roadmap Timeline -->
+                            <div class="relative pl-6 space-y-5 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 {{ $lineColor }}">
+                                @forelse($loc->landmarks as $index => $landmark)
+                                    @php
+                                        $isLast = $loop->last;
+                                        $dotColor = $isLast ? 'bg-rose-500' : $pinColor;
+                                        $textColor = $isLast ? 'text-rose-600' : ($isDelft ? 'text-blue-600' : 'text-emerald-600');
+                                    @endphp
+                                    <div class="relative group/item">
+                                        <!-- Pin Milestone Dot -->
+                                        <span class="absolute -left-6 top-1.5 w-4 h-4 rounded-full {{ $dotColor }} border-4 border-white shadow-sm transition-transform group-hover/item:scale-125"></span>
+                                        
+                                        <div class="flex items-start justify-between gap-3">
+                                            <div class="min-w-0 flex-1">
+                                                <h4 class="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-blue-600 transition-colors leading-snug">
+                                                    {{ $landmark->name }}
+                                                </h4>
+                                                @if(!empty($landmark->notes))
+                                                    <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
+                                                        {{ $landmark->notes }}
+                                                    </p>
+                                                @endif
+                                            </div>
+                                            <span class="text-xs font-black {{ $textColor }} shrink-0 font-mono bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+                                                {{ $landmark->distance_time }}
+                                            </span>
+                                        </div>
+                                    </div>
                                 @empty
-                                    <li class="text-slate-400 text-xs italic py-2 text-center">
+                                    <div class="text-slate-400 text-xs italic py-4 text-center">
                                         Informasi akses landmark untuk lokasi ini sedang diperbarui.
-                                    </li>
+                                    </div>
                                 @endforelse
-                            </ul>
+                            </div>
+                        </div>
+
+                        <!-- Footer Info Navigasi -->
+                        <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                            <span class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                Estimasi Waktu Tempuh
+                            </span>
+                            <span class="font-bold text-blue-600">
+                                Rute Tercepat
+                            </span>
                         </div>
                     </div>
                 @endforeach
