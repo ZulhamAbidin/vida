@@ -12,7 +12,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative overflow-x-clip selection:bg-blue-600 selection:text-white">
 
     <!-- Ambient Glow Orbs -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -20,7 +20,7 @@
         <div class="absolute top-1/2 -right-40 w-96 h-96 bg-sky-300/10 rounded-full blur-[130px]"></div>
     </div>
 
-    <div class="relative flex min-h-screen">
+    <div class="relative min-h-screen md:flex">
         
         <!-- Modern Collapsible Sidebar (Solid White, No Blur, No Glass Effect) -->
         <aside id="main-sidebar" class="fixed md:sticky top-0 h-screen w-72 max-w-[85vw] md:w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 z-50 transition-transform duration-300 -translate-x-full md:translate-x-0 shadow-2xl md:shadow-none overflow-y-auto">
@@ -103,7 +103,7 @@
         </aside>
 
         <!-- Main Admin Content Area -->
-        <div class="flex-1 flex flex-col min-w-0">
+        <div class="w-full md:flex-1 md:flex md:flex-col md:min-w-0">
             <!-- Topbar Header -->
             <header class="h-16 md:h-20 bg-white border-b border-slate-200 px-3.5 sm:px-6 flex items-center justify-between shrink-0 sticky top-0 z-30 shadow-xs">
                 <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
@@ -129,7 +129,7 @@
             </header>
 
             <!-- Page Body -->
-            <main class="p-4 sm:p-6 md:p-8 pb-24 sm:pb-20 md:pb-28 flex-1 w-full max-w-full">
+            <main class="p-4 sm:p-6 md:p-8 pb-36 sm:pb-28 md:pb-24 w-full md:flex-1">
                 <!-- Flash Messages -->
                 @if(session('success'))
                     <div class="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center justify-between shadow-sm">
@@ -157,7 +157,7 @@
                 @yield('content')
 
                 <!-- Admin Footer Spacing & Info -->
-                <footer class="mt-12 pt-6 border-t border-slate-200 text-center sm:text-left text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-2">
+                <footer class="mt-12 pt-6 border-t border-slate-200 text-center sm:text-left text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-2 pb-12 sm:pb-6">
                     <p>&copy; {{ date('Y') }} VIDALIDAY. Apartment By Us. Seluruh hak cipta dilindungi.</p>
                     <p class="text-[11px] text-slate-400">Panel Pengelola Resmi PT PERDANA MEGA TRANS</p>
                 </footer>
