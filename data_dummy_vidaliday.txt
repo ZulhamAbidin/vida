@@ -1,0 +1,314 @@
+================================================================================
+                    PANDUAN ISIAN DATA DUMMY CMS VIDALIDAY
+            (Sewa Apartemen Delft CPI & Vida View - PT PERDANA MEGA TRANS)
+================================================================================
+File ini berisi contoh data siap pakai yang terstruktur rapi. Anda cukup menyalin
+(copy-paste) kolom nilai di bawah ini ke form input panel admin masing-masing menu.
+================================================================================
+
+
+################################################################################
+1. MENU: KELOLA KAMAR & UNIT (Units) -> Tambah Unit Baru
+   URL Panel Admin: http://127.0.0.1:8000/admin/units/create
+################################################################################
+
+--- [ CONTOH UNIT 1: DELFT CPI - STUDIO OCEAN VIEW ] ---
+Lokasi Apartemen    : Apartemen Delft CPI (Pantai)
+Nama Unit           : Studio Deluxe Sunset Sea View
+Tipe Kamar          : Studio
+Maksimal Tamu       : 2
+Periode Sewa        : Malam
+Tarif Sewa Normal   : 500000
+Tarif Promo (Aktif) : 380000
+Badge / Label Promo : Flash Sale 24%
+Status Promo        : Centang (Aktif)
+URL Video Tur YouTube: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+Deskripsi Kamar     :
+Nikmati pengalaman menginap berkelas dengan pemandangan langsung ke Pantai Losari dan Masjid 99 Kubah. Unit berada di lantai tinggi dengan pencahayaan alami, suasana tenang, interior modern minimalis, dan standar kebersihan setara hotel berbintang. Cocok untuk liburan, honeymoon, maupun perjalanan bisnis di kawasan CPI Makassar.
+
+Fasilitas Kamar (pisahkan dengan koma):
+Smart TV 43 Inch, Netflix Ready, AC Dingin Daikin, High-Speed WiFi, Water Heater, Kitchen Set Lengkap, Kulkas Mini, Dispenser Air, Meja Kerja, Balkon View Laut, Handuk & Amenities Bersih, Queen Bed Premium
+
+
+--- [ CONTOH UNIT 2: DELFT CPI - 2 BEDROOM FAMILY SUITE ] ---
+Lokasi Apartemen    : Apartemen Delft CPI (Pantai)
+Nama Unit           : 2BR Executive Grand Ocean Suite
+Tipe Kamar          : 2 Bedroom
+Maksimal Tamu       : 4
+Periode Sewa        : Malam
+Tarif Sewa Normal   : 850000
+Tarif Promo (Aktif) : 650000
+Badge / Label Promo : Best Family Deal
+Status Promo        : Centang (Aktif)
+URL Video Tur YouTube: 
+Deskripsi Kamar     :
+Pilihan sempurna untuk liburan keluarga atau rombongan. Memiliki 2 kamar tidur terpisah (1 King Bed & 1 Queen Bed), ruang keluarga lega dengan sofa bed empuk, dapur modern berfasilitas masak lengkap, serta balkon pribadi yang menyuguhkan pemandangan sunset CPI Makassar setiap sore.
+
+Fasilitas Kamar (pisahkan dengan koma):
+2 Kamar Tidur Ber-AC, Smart TV 50 Inch, Ruang Tamu Luas, Kitchen Set & Kompor Induksi, Kulkas 2 Pintu, Microwave, Water Heater Ariston, WiFi Fiber Optic, Meja Makan Keluarga, Balkon Panorama Laut, Set Peralatan Mandi Lengkap
+
+
+--- [ CONTOH UNIT 3: VIDA VIEW - STUDIO PANAKKUKANG CITY VIEW ] ---
+Lokasi Apartemen    : Apartemen Vida View (Panakkukang)
+Nama Unit           : Studio Modern Cozy Panakkukang
+Tipe Kamar          : Studio
+Maksimal Tamu       : 2
+Periode Sewa        : Malam
+Tarif Sewa Normal   : 400000
+Tarif Promo (Aktif) : 300000
+Badge / Label Promo : Promo Terlaris
+Status Promo        : Centang (Aktif)
+URL Video Tur YouTube: 
+Deskripsi Kamar     :
+Hunian strategis di jantung pusat bisnis dan kuliner Panakkukang Makassar. Hanya selangkah dari Mall Panakkukang (MP). Unit didesain nyaman dan bersih dengan fasilitas lengkap untuk istirahat optimal setelah beraktivitas seharian di kota Makassar.
+
+Fasilitas Kamar (pisahkan dengan koma):
+AC Super Dingin, Smart TV Android, High-Speed WiFi, Kasur Springbed Empuk, Lemari Pakaian, Kulkas, Water Heater, Dapur Mini, Teko Listrik, Alat Makan, Meja Rias, Perlengkapan Mandi Higienis
+
+
+--- [ CONTOH UNIT 4: VIDA VIEW - 2 BEDROOM CORNER PANAKKUKANG ] ---
+Lokasi Apartemen    : Apartemen Vida View (Panakkukang)
+Nama Unit           : 2BR Corner Suite City Panorama
+Tipe Kamar          : 2 Bedroom
+Maksimal Tamu       : 4
+Periode Sewa        : Malam
+Tarif Sewa Normal   : 700000
+Tarif Promo (Aktif) : 525000
+Badge / Label Promo : Hemat 25%
+Status Promo        : Centang (Aktif)
+URL Video Tur YouTube: 
+Deskripsi Kamar     :
+Unit posisi sudut (corner) dengan jendela ganda yang memberikan panorama lampu kota (city lights) Makassar spektakuler di malam hari. Dilengkapi dua kamar tidur nyaman, ruang santai keluarga ber-AC, dan dapur siap pakai. Pilihan ideal untuk transit, perjalanan dinas, maupun keluarga kecil.
+
+Fasilitas Kamar (pisahkan dengan koma):
+Master Bedroom King Bed, Second Bedroom Single Bed, 3 Unit AC, Smart TV 43 Inch, Sofa Bed Santai, Kulkas, Water Heater, Kitchen Set Kompor Gas, Rice Cooker, Meja Makan, Balkon City View, WiFi Unlimited
+
+
+
+################################################################################
+2. MENU: KELOLA FASILITAS GEDUNG (Facilities)
+   URL Panel Admin: http://127.0.0.1:8000/admin/facilities
+################################################################################
+
+--- [ FASILITAS 1: DELFT CPI ] ---
+Lokasi Apartemen : Apartemen Delft CPI (Pantai)
+Nama Fasilitas   : Infinity Swimming Pool Sea View
+Ikon Fasilitas   : swimming-pool  (atau pilih ikon Kolam Renang)
+Deskripsi        : Kolam renang tanpa batas (infinity pool) di tepi laut menghadap langsung ke panorama Selat Makassar dan sunset CPI.
+
+--- [ FASILITAS 2: DELFT CPI ] ---
+Lokasi Apartemen : Apartemen Delft CPI (Pantai)
+Nama Fasilitas   : Fitness Center & Gym Modern
+Ikon Fasilitas   : dumbbell  (atau pilih ikon Gym)
+Deskripsi        : Pusat kebugaran eksklusif dengan alat kardio dan angkat beban lengkap serta pemandangan waterfront yang menyegarkan.
+
+--- [ FASILITAS 3: DELFT CPI ] ---
+Lokasi Apartemen : Apartemen Delft CPI (Pantai)
+Nama Fasilitas   : Sky Garden & Sunset Promenade
+Ikon Fasilitas   : sun  (atau pilih ikon Taman)
+Deskripsi        : Area terbuka hijau untuk bersantai sore, jogging santai, dan menikmati semilir angin laut tepi Pantai Losari.
+
+--- [ FASILITAS 4: VIDA VIEW ] ---
+Lokasi Apartemen : Apartemen Vida View (Panakkukang)
+Nama Fasilitas   : Olympic-Size Swimming Pool & Kids Pool
+Ikon Fasilitas   : swimming-pool  (atau pilih ikon Kolam Renang)
+Deskripsi        : Area kolam renang luas dengan zona khusus anak-anak dan area bersantai keluarga di lantai fasilitas utama.
+
+--- [ FASILITAS 5: VIDA VIEW ] ---
+Lokasi Apartemen : Apartemen Vida View (Panakkukang)
+Nama Fasilitas   : Lapangan Basket & Jogging Track
+Ikon Fasilitas   : running  (atau pilih ikon Olahraga)
+Deskripsi        : Fasilitas olahraga luar ruangan yang terawat untuk menjaga kebugaran tubuh penghuni dan tamu setiap hari.
+
+--- [ FASILITAS 6: VIDA VIEW ] ---
+Lokasi Apartemen : Apartemen Vida View (Panakkukang)
+Nama Fasilitas   : Akses Keamanan 24 Jam & Smart Card Lift
+Ikon Fasilitas   : shield-check  (atau pilih ikon Keamanan)
+Deskripsi        : Sistem pengamanan berlapis dengan petugas sekuriti 24 jam, CCTV di seluruh koridor, dan akses kartu lift privat.
+
+
+
+################################################################################
+3. MENU: KELOLA AKSES & LANDMARK MAKASSAR (Landmarks)
+   URL Panel Admin: http://127.0.0.1:8000/admin/landmarks
+################################################################################
+
+--- [ LANDMARK DELFT CPI ] ---
+1. Nama: Masjid 99 Kubah Asmaul Husna
+   Waktu Tempuh : 1 Menit
+   Catatan / Ket : Ikon Religi Terbesar Kawasan CPI Makassar
+   Urutan Tampil: 1
+
+2. Nama: Pantai Losari & Kuliner Pisang Epe
+   Waktu Tempuh : 3 Menit
+   Catatan / Ket : Wisata Ikonik Kota Makassar
+   Urutan Tampil: 2
+
+3. Nama: Phinisi Point Mall (PIPO)
+   Waktu Tempuh : 4 Menit
+   Catatan / Ket : Pusat Belanja, Restoran & Bioskop Tepi Laut
+   Urutan Tampil: 3
+
+4. Nama: Rumah Sakit Siloam Makassar
+   Waktu Tempuh : 5 Menit
+   Catatan / Ket : Layanan Medis Internasional 24 Jam
+   Urutan Tampil: 4
+
+5. Nama: Benteng Fort Rotterdam
+   Waktu Tempuh : 6 Menit
+   Catatan / Ket : Destinasi Wisata Bersejarah Kolonial
+   Urutan Tampil: 5
+
+6. Nama: Bandara Internasional Sultan Hasanuddin
+   Waktu Tempuh : 25 Menit (Tol)
+   Catatan / Ket : Akses Cepat Via Jalan Tol Layang AP Pettarani
+   Urutan Tampil: 6
+
+
+--- [ LANDMARK VIDA VIEW ] ---
+1. Nama: Mall Panakkukang (MP) & Carrefour
+   Waktu Tempuh : 2 Menit (Jalan Kaki)
+   Catatan / Ket : Pusat Belanja & Hiburan Terbesar di Makassar
+   Urutan Tampil: 1
+
+2. Nama: Sentra Kuliner & Cafe Jalan Pengayoman
+   Waktu Tempuh : 3 Menit
+   Catatan / Ket : Puluhan Kuliner Legendaris Makassar & Cafe Hits
+   Urutan Tampil: 2
+
+3. Nama: Rumah Sakit Hermina & RS Primaya
+   Waktu Tempuh : 5 Menit
+   Catatan / Ket : Fasilitas Kesehatan & Instalasi Gawat Darurat 24 Jam
+   Urutan Tampil: 3
+
+4. Nama: Pintu Masuk Tol Layang Reformasi
+   Waktu Tempuh : 5 Menit
+   Catatan / Ket : Akses Bebas Hambatan Menuju Bandara & Pelabuhan
+   Urutan Tampil: 4
+
+5. Nama: Nipah Park Mall
+   Waktu Tempuh : 8 Menit
+   Catatan / Ket : Lifestyle Mall Terbuka Berkonsep Green Building
+   Urutan Tampil: 5
+
+6. Nama: Bandara Internasional Sultan Hasanuddin
+   Waktu Tempuh : 20 Menit (Tol)
+   Catatan / Ket : Akses Tol Langsung Cepat & Bebas Macet
+   Urutan Tampil: 6
+
+
+
+################################################################################
+4. MENU: KELOLA TANYA JAWAB (FAQ)
+   URL Panel Admin: http://127.0.0.1:8000/admin/faqs
+################################################################################
+
+--- [ FAQ 1 ] ---
+Pertanyaan   : Bagaimana ketentuan jam check-in dan check-out unit?
+Badge / Label: Waktu Menginap
+Urutan Tampil: 1
+Jawaban      :
+Standar waktu check-in dimulai pukul 14.00 WITA dan check-out maksimal pukul 12.00 WITA. Apabila Anda memerlukan early check-in atau late check-out, silakan koordinasikan terlebih dahulu dengan admin WhatsApp kami tergantung ketersediaan jadwal unit pada hari tersebut.
+
+--- [ FAQ 2 ] ---
+Pertanyaan   : Bagaimana tata cara pemesanan dan pembayaran sewa apartemen?
+Badge / Label: Reservasi & Bayar
+Urutan Tampil: 2
+Jawaban      :
+Pemesanan sangat mudah! Pilih unit yang Anda inginkan di website ini, lalu klik tombol "Pesan via WhatsApp". Anda akan langsung terhubung ke admin resmi kami untuk memilih tanggal dan mengonfirmasi ketersediaan. Pembayaran dapat dilakukan via transfer bank resmi berbadan hukum atas nama PT PERDANA MEGA TRANS.
+
+--- [ FAQ 3 ] ---
+Pertanyaan   : Apakah unit apartemen dibersihkan sebelum tamu masuk?
+Badge / Label: Kebersihan Unit
+Urutan Tampil: 3
+Jawaban      :
+Pasti! Setiap unit melalui proses pembersihan menyeluruh (*deep cleaning*), penggantian seprei dan sarung bantal baru yang telah dicuci higienis, penyemprotan desinfektan, serta pengecekan seluruh fungsi elektronik (AC, TV, Water Heater) sebelum kunci diserahterimakan kepada tamu.
+
+--- [ FAQ 4 ] ---
+Pertanyaan   : Apakah fasilitas gedung seperti kolam renang dapat digunakan tamu?
+Badge / Label: Fasilitas Gedung
+Urutan Tampil: 4
+Jawaban      :
+Ya, seluruh tamu yang menginap di unit VIDALIDAY berhak menikmati fasilitas gedung seperti kolam renang (*swimming pool*), pusat kebugaran (*gym*), serta taman terbuka gedung sesuai ketentuan dan jam operasional pengelola apartemen.
+
+--- [ FAQ 5 ] ---
+Pertanyaan   : Apakah melayani sewa mingguan atau bulanan dengan harga khusus?
+Badge / Label: Durasi Fleksibel
+Urutan Tampil: 5
+Jawaban      :
+Ya, kami menyediakan paket sewa fleksibel mulai dari harian, mingguan, hingga bulanan. Untuk sewa berdurasi mingguan atau bulanan, Anda akan mendapatkan penawaran tarif diskon khusus (*special rate*). Silakan konsultasikan kebutuhan durasi menginap Anda langsung via WhatsApp admin kami.
+
+
+
+################################################################################
+5. MENU: KELOLA TENTANG KAMI (About Us)
+   URL Panel Admin: http://127.0.0.1:8000/admin/about
+################################################################################
+
+Tagline Singkat   : Your Comfort, Our Priority
+Judul Utama       : VIDALIDAY — Partner Terpercaya untuk Menginap Nyaman di Makassar.
+
+Paragraf 1 (Legalitas & Naungan PT):
+VIDALIDAY adalah penyedia layanan akomodasi sewa apartemen resmi, higienis, dan terpercaya di Kota Makassar yang beroperasi di bawah naungan badan hukum resmi PT PERDANA MEGA TRANS. Kami hadir untuk memberikan solusi hunian modern dengan standar kenyamanan hotel berbintang dan privasi maksimal layaknya rumah sendiri.
+
+Paragraf 2 (Pilihan Unit Apartemen & Lokasi):
+Kami mengelola puluhan pilihan unit apartemen eksklusif di dua lokasi paling prestisius di Makassar: Apartemen Delft CPI di kawasan reklamasi modern tepi laut Pantai Losari yang menawarkan pemandangan sunset spektakuler, serta Apartemen Vida View di kawasan pusat bisnis Panakkukang yang berjarak hanya beberapa langkah dari Mall Panakkukang.
+
+Paragraf 3 (Standar Kebersihan & Layanan):
+Setiap unit kami dilengkapi dengan perabotan lengkap (fully furnished), koneksi internet WiFi berkecepatan tinggi, kasur berkualitas tinggi, water heater, dan fasilitas dapur siap pakai. Tim kebersihan profesional kami menjamin setiap sudut unit higienis dan wangi sebelum Anda tiba, didukung oleh layanan respon ramah dan cepat dari staf reservasi kami.
+
+--- [ 6 POIN KEUNGGULAN (MENGAPA MEMILIH VIDALIDAY) ] ---
+Poin 1:
+- Judul       : Terpercaya & Berlegalitas Resmi
+- Penjelasan  : Berada di bawah naungan PT PERDANA MEGA TRANS sehingga transaksi sewa terjamin aman 100%.
+
+Poin 2:
+- Judul       : Standar Kebersihan Higienis
+- Penjelasan  : Seluruh unit melalui proses pembersihan profesional dan penggantian linen steril sebelum tamu masuk.
+
+Poin 3:
+- Judul       : Lokasi Terbaik & Paling Strategis
+- Penjelasan  : Pilihan unit di Delft CPI (view laut) dan Vida View (jantung belanja Panakkukang).
+
+Poin 4:
+- Judul       : Fasilitas Kamar Lengkap
+- Penjelasan  : Dilengkapi Smart TV, AC dingin, WiFi kencang, water heater, kulkas, dan dapur siap masak.
+
+Poin 5:
+- Judul       : Harga Transparan Tanpa Biaya Tersembunyi
+- Penjelasan  : Tarif bersahabat dengan opsi paket sewa harian, mingguan, dan bulanan hemat.
+
+Poin 6:
+- Judul       : Pelayanan Ramah & Siaga 24 Jam
+- Penjelasan  : Respon cepat via WhatsApp untuk bantuan check-in, info unit, dan kebutuhan menginap Anda.
+
+--- [ KOMITMEN KAMI & PESAN PENUTUP ] ---
+Judul Komitmen  : KOMITMEN KAMI TERHADAP KENYAMANAN ANDA
+Teks Komitmen   : Kami percaya bahwa tempat menginap bukan sekadar tempat beristirahat, melainkan bagian penting dari pengalaman berharga Anda selama berada di Makassar. Komitmen kami adalah memberikan rasa aman, ketenangan, dan kepuasan pelayanan terbaik di setiap kunjungan Anda.
+Quote Penutup   : "Kenyamanan Anda adalah prioritas utama kami di setiap waktu."
+Kalimat Ajakan  : Rencanakan kunjungan Anda sekarang dan nikmati penawaran tarif promo terbaik hari ini!
+
+
+
+################################################################################
+6. MENU: PENGATURAN LOGO, KONTAK & BANNER (Settings)
+   URL Panel Admin: http://127.0.0.1:8000/admin/settings
+################################################################################
+
+Nomor WhatsApp Admin (Kode Negara) : 6285711696970
+Tampilan No. Telepon di Footer     : +62 857-1169-6970
+Nama Legalitas Perusahaan          : PT PERDANA MEGA TRANS
+Jam Operasional Layanan            : Setiap Hari: 08.00 - 23.00 WITA
+Teks Banner Promo Berjalan         : PROMO SPESIAL LIBURAN: Dapatkan diskon sewa apartemen harian hingga 25% di Apartemen Delft CPI & Vida View Makassar! Hubungi WhatsApp admin sekarang sebelum kehabisan unit!
+
+Template Pesan Otomatis WhatsApp   :
+Halo Admin VIDALIDAY, saya ingin bertanya ketersediaan dan memesan unit sewa:
+- Apartemen : {apartment}
+- Tipe Unit : {unit_name} ({room_type})
+- Tarif     : {price} / {period}
+
+Mohon informasi ketersediaan unit untuk rencana jadwal menginap saya. Terima kasih!
+
+================================================================================
+                    AKHIR DOKUMEN DATA DUMMY VIDALIDAY
+================================================================================
