@@ -22,7 +22,10 @@
 
     <div class="relative min-h-screen md:flex">
         
-        <!-- Modern Collapsible Sidebar (Solid White, No Blur, No Glass Effect) -->
+        <!-- Mobile Sidebar Overlay (tap outside to close) — no blur, just semi-transparent -->
+        <div id="sidebar-overlay" onclick="closeSidebarMobile()" class="fixed inset-0 bg-slate-900/30 z-40 hidden md:hidden"></div>
+
+
         <aside id="main-sidebar" class="fixed md:sticky top-0 h-screen w-72 max-w-[85vw] md:w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 z-50 transition-transform duration-300 -translate-x-full md:translate-x-0 shadow-2xl md:shadow-none overflow-y-auto">
             <div>
                 <!-- Brand Header -->
@@ -168,20 +171,22 @@
 
     <!-- Vanilla JS Sidebar Toggle Controller -->
     <script>
+        const sidebar = document.getElementById('main-sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
         function toggleSidebar() {
-            const sidebar = document.getElementById('main-sidebar');
-            
-            // Check if mobile (screen width < 768px)
             if (window.innerWidth < 768) {
-                if (sidebar.classList.contains('-translate-x-full')) {
+                // Mobile: slide in/out with overlay
+                const isOpen = !sidebar.classList.contains('-translate-x-full');
+                if (isOpen) {
+                    closeSidebarMobile();
+                } else {
                     sidebar.classList.remove('-translate-x-full');
                     sidebar.classList.add('translate-x-0');
-                } else {
-                    sidebar.classList.add('-translate-x-full');
-                    sidebar.classList.remove('translate-x-0');
+                    overlay.classList.remove('hidden');
                 }
             } else {
-                // Desktop toggle collapse: toggle width between w-64 and w-20
+                // Desktop toggle: collapse sidebar width
                 if (sidebar.classList.contains('w-64')) {
                     sidebar.classList.remove('w-64');
                     sidebar.classList.add('w-20');
@@ -195,24 +200,12 @@
         }
 
         function closeSidebarMobile() {
-            const sidebar = document.getElementById('main-sidebar');
             if (window.innerWidth < 768 && sidebar) {
                 sidebar.classList.add('-translate-x-full');
                 sidebar.classList.remove('translate-x-0');
+                overlay.classList.add('hidden');
             }
         }
-
-        // Close sidebar on mobile when tapping outside (without blocking dashboard scrolling)
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('main-sidebar');
-            const toggleBtn = document.getElementById('sidebar-toggle-btn');
-            
-            if (window.innerWidth < 768 && sidebar && !sidebar.classList.contains('-translate-x-full')) {
-                if (!sidebar.contains(event.target) && (!toggleBtn || !toggleBtn.contains(event.target))) {
-                    closeSidebarMobile();
-                }
-            }
-        });
 
         // Close on Escape key
         document.addEventListener('keydown', function(event) {
@@ -220,7 +213,19 @@
                 closeSidebarMobile();
             }
         });
+
+        // Close sidebar when a nav link is clicked on mobile
+        if (sidebar) {
+            sidebar.querySelectorAll('nav a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 768) {
+                        closeSidebarMobile();
+                    }
+                });
+            });
+        }
     </script>
+
     @stack('scripts')
 </body>
 </html>

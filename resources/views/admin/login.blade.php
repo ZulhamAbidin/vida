@@ -12,13 +12,14 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex items-center justify-center p-4 sm:p-6 py-10 relative overflow-x-clip selection:bg-blue-600 selection:text-white">
 
     <!-- Ambient Glowing Orbs Background -->
-    <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-400/15 rounded-full blur-[140px]"></div>
         <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-sky-300/15 rounded-full blur-[140px]"></div>
     </div>
+
 
     <div class="relative z-10 w-full max-w-md">
         

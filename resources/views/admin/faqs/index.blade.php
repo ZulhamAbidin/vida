@@ -132,9 +132,10 @@
     </div>
 
     <!-- POPUP MODAL EDIT FAQ -->
-    <div id="edit-faq-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-card rounded-2xl border border-blue-200 p-6 max-w-lg w-full space-y-4 shadow-2xl bg-white transform transition-all">
-            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+    <div id="edit-faq-modal" class="fixed inset-0 bg-slate-900/50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl border border-blue-200 w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl">
+            <div class="flex items-center justify-between px-6 pt-5 pb-3 border-b border-slate-100 shrink-0">
+
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
                         ✎
@@ -147,9 +148,10 @@
                 <button type="button" onclick="closeEditFaqModal()" class="text-slate-400 hover:text-slate-700">✕</button>
             </div>
 
-            <form id="edit-faq-form" method="POST" action="" class="space-y-4">
+            <form id="edit-faq-form" method="POST" action="" class="overflow-y-auto flex-1 px-6 py-4 space-y-4">
                 @csrf
                 @method('PUT')
+
 
                 <div>
                     <label for="edit-question" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Pertanyaan *</label>
@@ -191,9 +193,10 @@
         </div>
     </div>
 
+
     <!-- POPUP MODAL HAPUS FAQ -->
-    <div id="delete-faq-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-card rounded-2xl border border-rose-200 p-6 max-w-sm w-full space-y-4 shadow-2xl bg-white transform transition-all">
+    <div id="delete-faq-modal" class="fixed inset-0 bg-slate-900/50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl border border-rose-200 p-6 max-w-sm w-full space-y-4 shadow-2xl">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 border border-rose-200">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
