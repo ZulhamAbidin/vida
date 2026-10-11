@@ -583,64 +583,94 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 @foreach($locations as $loc)
                     @php
-                        // Bersihkan kata ganda jika nama lokasi sudah mengandung kata "Apartemen"
+                        // Bersihkan kata ganda jika nama lokasi sudah diawali dengan kata "Apartemen"
                         $locTitle = preg_replace('/^apartemen\s+/i', '', trim($loc->name));
                         $isDelft = str_contains(strtolower($loc->slug ?? ''), 'delft');
-                        $themeColor = $isDelft ? 'blue' : 'emerald';
-                        $lineColor = $isDelft ? 'before:bg-blue-200' : 'before:bg-emerald-200';
-                        $pinColor = $isDelft ? 'bg-blue-600' : 'bg-emerald-600';
-                        $badgeBorder = $isDelft ? 'border-blue-200 bg-blue-50 text-blue-700' : 'border-emerald-200 bg-emerald-50 text-emerald-700';
+                        $gradientHeader = $isDelft 
+                            ? 'from-blue-900 via-indigo-900 to-slate-900' 
+                            : 'from-blue-900 via-indigo-900 to-slate-900';
+                        $accentColor = $isDelft ? 'text-blue-300' : 'text-blue-300';
                     @endphp
-                    <div class="p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
                         <div>
-                            <!-- Header Lokasi dengan Tagline -->
-                            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-3">
-                                <div>
-                                    <span class="text-[10px] sm:text-[11px] font-bold text-blue-600 uppercase tracking-wider block">
-                                        Rute Perjalanan & Akses Cepat
-                                    </span>
-                                    <h3 class="text-base sm:text-lg font-black text-slate-900 mt-0.5">
-                                        Dari Apartemen {{ $locTitle }}
-                                    </h3>
+                            <!-- Header Lokasi dengan Mini Banner Berkelas -->
+                            <div class="p-6 bg-gradient-to-r {{ $gradientHeader }} text-white relative overflow-hidden">
+                                <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full {{ $isDelft ? 'bg-blue-500/20' : 'bg-indigo-500/20' }} blur-xl pointer-events-none"></div>
+                                <div class="relative z-10 flex items-start justify-between gap-3">
+                                    <div>
+                                        <div class="flex items-center gap-1.5 {{ $accentColor }} text-xs font-bold uppercase tracking-wider mb-1">
+                                            <svg class="w-4 h-4 text-rose-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                                            {{ $isDelft ? 'Akses Waterfront Living' : 'Pusat Kota & Bisnis' }}
+                                        </div>
+                                        <h3 class="text-lg sm:text-xl font-black text-white">
+                                            Dari Apartemen {{ $locTitle }}
+                                        </h3>
+                                    </div>
+                                    @if($loc->tagline)
+                                        <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-white border border-white/30 shrink-0 shadow-sm">
+                                            {{ $loc->tagline }}
+                                        </span>
+                                    @endif
                                 </div>
-                                @if($loc->tagline)
-                                    <span class="text-[10px] sm:text-[11px] px-3 py-1 rounded-xl font-bold border shrink-0 {{ $badgeBorder }}">
-                                        {{ $loc->tagline }}
-                                    </span>
-                                @endif
                             </div>
 
-                            <!-- Vertical Roadmap Timeline -->
-                            <div class="relative pl-8 space-y-6">
-                                <!-- Garis Alur Vertikal Kontinu yang Pasti Muncul -->
-                                <div class="absolute left-2.5 top-2.5 bottom-6 w-0.5 {{ $isDelft ? 'bg-blue-200' : 'bg-emerald-200' }}"></div>
-
-                                @forelse($loc->landmarks as $index => $landmark)
+                            <!-- Landmark List: Destination Strip Cards -->
+                            <div class="p-5 sm:p-6 space-y-2.5">
+                                @forelse($loc->landmarks as $landmark)
                                     @php
-                                        $isLast = $loop->last;
-                                        $dotBg = $isLast ? 'bg-rose-500' : ($isDelft ? 'bg-blue-600' : 'bg-emerald-600');
-                                        $textColor = $isLast ? 'text-rose-600' : ($isDelft ? 'text-blue-600' : 'text-emerald-600');
+                                        $nameLower = strtolower($landmark->name ?? '');
+                                        
+                                        // Deteksi Kategori Ikon & Warna Berdasarkan Nama Landmark
+                                        if (str_contains($nameLower, 'bandara') || str_contains($nameLower, 'airport')) {
+                                            $iconBg = 'bg-rose-100 text-rose-700';
+                                            $chipBg = 'bg-rose-100/90 text-rose-700 border-rose-200';
+                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
+                                        } elseif (str_contains($nameLower, 'mall') || str_contains($nameLower, 'transmart') || str_contains($nameLower, 'tsm') || str_contains($nameLower, 'pipo')) {
+                                            $iconBg = 'bg-purple-100 text-purple-700';
+                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
+                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>';
+                                        } elseif (str_contains($nameLower, 'kuliner') || str_contains($nameLower, 'cafe') || str_contains($nameLower, 'topaz') || str_contains($nameLower, 'pisang epe') || str_contains($nameLower, 'seafood')) {
+                                            $iconBg = 'bg-amber-100 text-amber-700';
+                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
+                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>';
+                                        } elseif (str_contains($nameLower, 'pantai') || str_contains($nameLower, 'losari') || str_contains($nameLower, 'masjid') || str_contains($nameLower, 'benteng') || str_contains($nameLower, 'rotterdam') || str_contains($nameLower, 'kubah')) {
+                                            $iconBg = 'bg-blue-100 text-blue-700';
+                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
+                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>';
+                                        } elseif (str_contains($nameLower, 'sakit') || str_contains($nameLower, 'hospital') || str_contains($nameLower, 'siloam') || str_contains($nameLower, 'primaya') || str_contains($nameLower, 'hermina')) {
+                                            $iconBg = 'bg-emerald-100 text-emerald-700';
+                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
+                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>';
+                                        } elseif (str_contains($nameLower, 'tol') || str_contains($nameLower, 'jalan')) {
+                                            $iconBg = 'bg-teal-100 text-teal-700';
+                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
+                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>';
+                                        } else {
+                                            $iconBg = 'bg-slate-100 text-slate-700';
+                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
+                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>';
+                                        }
                                     @endphp
-                                    <div class="relative group/item flex items-start justify-between gap-3">
-                                        <!-- Titik Pin Milestone (Absolut tepat di atas garis) -->
-                                        <div class="absolute -left-8 top-1 flex items-center justify-center w-5 h-5">
-                                            <span class="w-3.5 h-3.5 rounded-full {{ $dotBg }} border-2 border-white shadow-sm transition-transform group-hover/item:scale-125 z-10"></span>
+                                    <div class="p-3 sm:p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50/70 border border-slate-100/90 hover:border-blue-200 transition-all duration-200 flex items-center justify-between gap-3 group/item">
+                                        <!-- Ikon & Nama Destinasi -->
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <span class="w-8 h-8 rounded-xl {{ $iconBg }} flex items-center justify-center shrink-0 shadow-2xs group-hover/item:scale-105 transition-transform">
+                                                {!! $iconSvg !!}
+                                            </span>
+                                            <div class="min-w-0 flex-1">
+                                                <h4 class="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-blue-600 transition-colors truncate">
+                                                    {{ $landmark->name }}
+                                                </h4>
+                                                @if(!empty($landmark->notes))
+                                                    <p class="text-[11px] text-slate-500 truncate mt-0.5">
+                                                        {{ $landmark->notes }}
+                                                    </p>
+                                                @endif
+                                            </div>
                                         </div>
 
-                                        <!-- Detail Landmark -->
-                                        <div class="min-w-0 flex-1">
-                                            <h4 class="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-blue-600 transition-colors leading-snug">
-                                                {{ $landmark->name }}
-                                            </h4>
-                                            @if(!empty($landmark->notes))
-                                                <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
-                                                    {{ $landmark->notes }}
-                                                </p>
-                                            @endif
-                                        </div>
-
-                                        <!-- Badge Waktu -->
-                                        <span class="text-xs font-black {{ $textColor }} shrink-0 font-mono bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+                                        <!-- Chip Waktu Tempuh -->
+                                        <span class="px-2.5 py-1 rounded-xl text-xs font-black shrink-0 font-mono border shadow-2xs {{ $chipBg }}">
                                             {{ $landmark->distance_time }}
                                         </span>
                                     </div>
@@ -652,14 +682,14 @@
                             </div>
                         </div>
 
-                        <!-- Footer Info Navigasi -->
-                        <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                        <!-- Footer Akses Cepat -->
+                        <div class="p-4 px-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                             <span class="flex items-center gap-1.5">
                                 <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                Estimasi Waktu Tempuh
+                                Akses Transportasi Mudah
                             </span>
                             <span class="font-bold text-blue-600">
-                                Rute Tercepat
+                                {{ $isDelft ? 'Grab & Gojek Siaga 24 Jam' : 'Jalan Kaki Langsung ke Mall' }}
                             </span>
                         </div>
                     </div>
