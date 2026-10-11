@@ -55,12 +55,23 @@
                             </p>
                         </div>
 
-                        <!-- Booking Widget: Full-Width Prominent PROMO Box (Sesuai Permintaan User: Hapus Lokasi agar PROMO Penuh Ruang) -->
+                        <!-- Booking Widget: Full-Width Prominent PROMO Box (Sesuai Permintaan User: Disesuaikan dengan Card Hero Favorit) -->
                         @php
-                            // Ambil harga promo terendah yang aktif dari database, fallback ke unit favorit atau 280.000
-                            $lowestPromoPrice = \App\Models\Unit::where('is_available', true)->where('promo_price', '>', 0)->min('promo_price');
-                            $displayPromoPrice = $lowestPromoPrice ? number_format($lowestPromoPrice, 0, ',', '.') : '280.000';
-                            $displayPromoUnit = $featuredUnit ? $featuredUnit->name : 'Studio & 1 BR';
+                            // Ambil harga dari unit Hero Favorit ($featuredUnit), jika belum diset fallback ke promo aktif terendah
+                            if ($featuredUnit) {
+                                $displayPromoPrice = $featuredUnit->is_promo_active && $featuredUnit->promo_price > 0 
+                                    ? $featuredUnit->formatted_promo_price 
+                                    : $featuredUnit->formatted_normal_price;
+                                $hasStrikePrice = $featuredUnit->is_promo_active && $featuredUnit->normal_price > $featuredUnit->promo_price;
+                                $strikePrice = $hasStrikePrice ? $featuredUnit->formatted_normal_price : null;
+                                $rentalPeriod = strtolower($featuredUnit->rental_period ?? 'malam');
+                            } else {
+                                $lowestPromoPrice = \App\Models\Unit::where('is_available', true)->where('promo_price', '>', 0)->min('promo_price');
+                                $displayPromoPrice = $lowestPromoPrice ? ('Rp ' . number_format($lowestPromoPrice, 0, ',', '.')) : 'Rp 280.000';
+                                $hasStrikePrice = false;
+                                $strikePrice = null;
+                                $rentalPeriod = 'malam';
+                            }
                         @endphp
                         <div class="mb-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-50 via-orange-50/80 to-amber-100/60 border-2 border-amber-400/90 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
                             <div class="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
@@ -74,8 +85,16 @@
                                         </span>
                                         <span class="text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider">HARGA SPESIAL MULAI DARI</span>
                                     </div>
-                                    <div class="text-lg sm:text-2xl lg:text-3xl font-black text-slate-950 tracking-tight leading-none mt-1">
-                                        Rp {{ $displayPromoPrice }}<span class="text-[11px] sm:text-sm font-bold text-amber-600"> /malam</span>
+                                    <div class="flex items-baseline gap-2 mt-1 flex-wrap">
+                                        <span class="text-lg sm:text-2xl lg:text-3xl font-black text-slate-950 tracking-tight leading-none">
+                                            {{ $displayPromoPrice }}
+                                        </span>
+                                        @if($hasStrikePrice)
+                                            <span class="text-xs sm:text-sm font-semibold text-rose-500 line-through">
+                                                {{ $strikePrice }}
+                                            </span>
+                                        @endif
+                                        <span class="text-[11px] sm:text-sm font-bold text-amber-600"> /{{ $rentalPeriod }}</span>
                                     </div>
                                 </div>
                             </div>
