@@ -594,22 +594,20 @@
                     <div class="bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
                         <div>
                             <!-- Header Lokasi dengan Mini Banner Berkelas Sesuai Preview Card Opsi 1 -->
-                            <div class="p-6 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #0f172a 100%);">
-                                <div class="relative z-10 flex items-start justify-between gap-3">
-                                    <div>
+                            <div class="p-4 sm:p-6 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #0f172a 100%);">
+                                <div class="relative z-10 flex items-start justify-between gap-2.5 sm:gap-3">
+                                    <div class="min-w-0 flex-1">
                                         <div class="flex items-center gap-1.5 text-blue-300 text-xs font-bold uppercase tracking-wider mb-1">
-                                            <svg class="w-4 h-4 text-rose-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
-                                            {{ $isDelft ? 'Lokasi Strategis' : 'Pusat Kota & Bisnis' }}
+                                            <svg class="w-4 h-4 text-rose-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                                            <span class="truncate">{{ $isDelft ? 'Lokasi Strategis' : 'Pusat Kota & Bisnis' }}</span>
                                         </div>
-                                        <h3 class="text-lg sm:text-xl font-black text-white">
+                                        <h3 class="text-base sm:text-xl font-black text-white leading-tight">
                                             Dari Apartemen {{ $locTitle }}
                                         </h3>
                                     </div>
-                                    @if($loc->tagline)
-                                        <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-white border border-white/30 shrink-0">
-                                            {{ $loc->tagline }}
-                                        </span>
-                                    @endif
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-white border border-white/25 shrink-0 whitespace-nowrap self-start">
+                                        {{ $isDelft ? 'Waterfront Living' : 'Pusat Panakkukang' }}
+                                    </span>
                                 </div>
                             </div>
 
@@ -682,12 +680,12 @@
                         </div>
 
                         <!-- Footer Akses Cepat -->
-                        <div class="p-4 px-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                            <span class="flex items-center gap-1.5">
-                                <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                Akses Transportasi Mudah
+                        <div class="p-3.5 sm:p-4 px-4 sm:px-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-2 text-[11px] sm:text-xs text-slate-500">
+                            <span class="flex items-center gap-1.5 shrink-0">
+                                <svg class="w-3.5 h-3.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span>Akses Transportasi Mudah</span>
                             </span>
-                            <span class="font-bold text-blue-600">
+                            <span class="font-bold text-blue-600 truncate text-right">
                                 {{ $isDelft ? 'Grab & Gojek Siaga 24 Jam' : 'Jalan Kaki Langsung ke Mall' }}
                             </span>
                         </div>
