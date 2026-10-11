@@ -7,7 +7,7 @@
 
     <div class="max-w-4xl mx-auto">
         <div class="mb-4">
-            <a href="{{ route('admin.units.index') }}" class="text-xs text-slate-500 hover:text-blue-600 transition flex items-center gap-1.5 font-semibold">
+            <a href="{{ route('admin.units.index') }}" class="text-xs text-slate-500 hover:text-red-600 transition flex items-center gap-1.5 font-semibold">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 Kembali ke Daftar Kamar
             </a>
@@ -49,7 +49,7 @@
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
                             <label for="room_type_select" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Tipe Kamar *</label>
-                            <button type="button" onclick="toggleCustomType()" id="custom-type-toggle-btn" class="text-[11px] text-blue-600 hover:underline font-bold">
+                            <button type="button" onclick="toggleCustomType()" id="custom-type-toggle-btn" class="text-[11px] text-red-600 hover:underline font-bold">
                                 + Tipe Baru
                             </button>
                         </div>
@@ -65,7 +65,7 @@
                                value="{{ old('room_type', 'Studio') }}" 
                                required 
                                placeholder="Ketik tipe kamar baru..." 
-                               class="w-full px-4 py-3 rounded-xl glass-input text-sm mt-2 hidden border-blue-400">
+                               class="w-full px-4 py-3 rounded-xl glass-input text-sm mt-2 hidden border-red-400">
                     </div>
 
                     <div>
@@ -77,7 +77,7 @@
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
                             <label for="rental_period_select" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Periode Tarif *</label>
-                            <button type="button" onclick="toggleCustomPeriod()" id="custom-period-toggle-btn" class="text-[11px] text-blue-600 hover:underline font-bold">
+                            <button type="button" onclick="toggleCustomPeriod()" id="custom-period-toggle-btn" class="text-[11px] text-red-600 hover:underline font-bold">
                                 + Periode Baru
                             </button>
                         </div>
@@ -93,16 +93,16 @@
                                value="{{ old('rental_period', 'Malam') }}" 
                                required 
                                placeholder="e.g. 3 Hari, Semester, Tahun" 
-                               class="w-full px-4 py-3 rounded-xl glass-input text-sm mt-2 hidden border-blue-400">
+                               class="w-full px-4 py-3 rounded-xl glass-input text-sm mt-2 hidden border-red-400">
                     </div>
                 </div>
 
                 <!-- Upload Foto Kamar & Galeri Slider -->
-                <div class="p-5 rounded-2xl bg-blue-50/60 border border-blue-200/80 space-y-5">
-                    <div class="flex items-center justify-between border-b border-blue-200/60 pb-3">
+                <div class="p-5 rounded-2xl bg-red-50/50 border border-red-200/80 space-y-5">
+                    <div class="flex items-center justify-between border-b border-red-200/60 pb-3">
                         <div>
                             <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
-                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                                 Foto Utama & Galeri Slider Kamar
                             </h4>
                             <span class="text-xs text-slate-500">Maksimal 5MB per file • Format: JPG, JPEG, PNG, HEIC, WEBP</span>
@@ -121,7 +121,7 @@
                                        id="image-file" 
                                        accept=".jpg,.jpeg,.png,.heic,.heif,.webp" 
                                        onchange="previewImage(event)" 
-                                       class="block w-full text-xs text-slate-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-2">
+                                       class="block w-full text-xs text-slate-600 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-red-600 file:text-white hover:file:bg-red-700 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-2">
                                 <span class="text-[11px] text-slate-400 mt-1 block">Foto ini akan menjadi thumbnail slide pertama di kartu kamar.</span>
                             </div>
 
@@ -134,7 +134,7 @@
                     </div>
 
                     <!-- 2. Foto Galeri Tambahan (Slider) -->
-                    <div class="pt-3 border-t border-blue-200/60">
+                    <div class="pt-3 border-t border-red-200/60">
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                             2. Foto Galeri Tambahan (Slider Carousel)
                         </label>
@@ -161,8 +161,8 @@
                 <!-- Pricing & Promo Section -->
                 <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-4">
                     <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-                        <h4 class="text-xs font-bold text-blue-700 uppercase tracking-wider">Pengaturan Harga Coret & Diskon</h4>
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>
+                        <h4 class="text-xs font-bold text-red-700 uppercase tracking-wider">Pengaturan Harga Coret & Diskon</h4>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -179,15 +179,15 @@
                         </div>
 
                         <div>
-                            <label for="promo_price_display" class="block text-xs font-bold text-blue-700 uppercase tracking-wider mb-1.5">Harga Promo (Aktif) *</label>
+                            <label for="promo_price_display" class="block text-xs font-bold text-red-700 uppercase tracking-wider mb-1.5">Harga Promo (Aktif) *</label>
                             <input type="text" 
                                    id="promo_price_display" 
                                    inputmode="numeric"
                                    placeholder="Rp 0"
                                    required 
-                                   class="w-full px-4 py-3 rounded-xl glass-input text-sm font-bold text-blue-700">
+                                   class="w-full px-4 py-3 rounded-xl glass-input text-sm font-bold text-red-700">
                             <input type="hidden" name="promo_price" id="promo_price" value="{{ old('promo_price', 350000) }}">
-                            <span class="text-[10px] text-blue-600 mt-1 block">Tarif yang dibayarkan tamu</span>
+                            <span class="text-[10px] text-red-600 mt-1 block">Tarif yang dibayarkan tamu</span>
                         </div>
 
                         <div>
@@ -199,7 +199,7 @@
 
                     <div class="pt-2 border-t border-slate-200/80 flex flex-wrap gap-4 sm:gap-6">
                         <label class="flex items-center gap-2.5 cursor-pointer">
-                            <input type="checkbox" name="is_promo_active" value="1" {{ old('is_promo_active', true) ? 'checked' : '' }} class="rounded bg-white border-slate-300 text-blue-600 focus:ring-0">
+                            <input type="checkbox" name="is_promo_active" value="1" {{ old('is_promo_active', true) ? 'checked' : '' }} class="rounded bg-white border-slate-300 text-red-600 focus:ring-0">
                             <span class="text-xs font-bold text-emerald-700">Aktifkan promo harga coret</span>
                         </label>
 
@@ -209,7 +209,7 @@
                         </label>
 
                         <label class="flex items-center gap-2.5 cursor-pointer">
-                            <input type="checkbox" name="is_available" value="1" {{ old('is_available', true) ? 'checked' : '' }} class="rounded bg-white border-slate-300 text-blue-600 focus:ring-0">
+                            <input type="checkbox" name="is_available" value="1" {{ old('is_available', true) ? 'checked' : '' }} class="rounded bg-white border-slate-300 text-red-600 focus:ring-0">
                             <span class="text-xs font-bold text-slate-700">Kamar Tersedia untuk Disewa</span>
                         </label>
                     </div>
@@ -242,7 +242,7 @@
                     <a href="{{ route('admin.units.index') }}" class="w-full sm:w-auto text-center px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
                         Batal
                     </a>
-                    <button type="submit" class="w-full sm:w-auto text-center px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/25 transition">
+                    <button type="submit" class="w-full sm:w-auto text-center px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs tracking-wider shadow-md shadow-red-500/25 transition">
                         SIMPAN UNIT & FOTO
                     </button>
                 </div>

@@ -18,10 +18,10 @@
                 @csrf
 
                 <!-- Section: Logo Upload & Visual Identity -->
-                <div class="p-5 rounded-2xl bg-blue-50/50 border border-blue-200/80 space-y-4">
+                <div class="p-5 rounded-2xl bg-red-50/50 border border-red-200/80 space-y-4">
                     <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-                        <h4 class="text-xs font-bold text-blue-800 uppercase tracking-wider">Logo Brand Website</h4>
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>
+                        <h4 class="text-xs font-bold text-red-800 uppercase tracking-wider">Logo Brand Website</h4>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
@@ -59,7 +59,7 @@
                                        id="site_logo" 
                                        accept="image/png,image/jpeg,image/jpg,image/webp,image/svg+xml"
                                        onchange="previewUploadedLogo(event)"
-                                       class="w-full px-3.5 py-2.5 rounded-xl glass-input text-xs file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 file:cursor-pointer">
+                                       class="w-full px-3.5 py-2.5 rounded-xl glass-input text-xs file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-red-600 file:text-white hover:file:bg-red-700 file:cursor-pointer">
                                 <span class="text-[10px] text-slate-500 mt-1.5 block">
                                     Maksimal ukuran file 5 MB. Disarankan menggunakan file PNG transparan (berlatar belakang bening) dengan rasio proporsional persegi (1:1) atau landscape.
                                 </span>
@@ -165,7 +165,7 @@
                 <!-- Section: Promo Banner & Company Legal -->
                 <div class="space-y-4">
                     <div>
-                        <label for="promo_banner_text" class="block text-xs font-bold text-blue-700 uppercase tracking-wider mb-1.5">Teks Banner Promo Berjalan</label>
+                        <label for="promo_banner_text" class="block text-xs font-bold text-red-700 uppercase tracking-wider mb-1.5">Teks Banner Promo Berjalan</label>
                         <textarea name="promo_banner_text" id="promo_banner_text" rows="2" placeholder="Tuliskan pengumuman diskon spesial yang tampil di bagian atas web..." class="w-full px-4 py-3 rounded-xl glass-input text-sm">{{ old('promo_banner_text', $settings['promo_banner_text']) }}</textarea>
                     </div>
 
@@ -185,7 +185,7 @@
 
                 <!-- Submit Button -->
                 <div class="pt-4 flex items-center justify-end gap-3 border-t border-slate-200">
-                    <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/25 transition text-center">
+                    <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs tracking-wider shadow-md shadow-red-500/25 transition text-center">
                         SIMPAN SEMUA PENGATURAN
                     </button>
                 </div>

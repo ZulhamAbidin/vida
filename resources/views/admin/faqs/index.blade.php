@@ -11,7 +11,7 @@
         <div class="lg:col-span-1">
             <div class="glass-card rounded-2xl border border-slate-200/90 p-5 sm:p-6 space-y-4 shadow-sm lg:sticky lg:top-24">
                 <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
-                    <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
+                    <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center font-bold text-sm">
                         +
                     </div>
                     <div>
@@ -48,12 +48,12 @@
 
                     <div class="pt-1">
                         <label class="flex items-center gap-2.5 cursor-pointer">
-                            <input type="checkbox" name="is_active" value="1" checked class="rounded bg-white border-slate-300 text-blue-600 focus:ring-0">
+                            <input type="checkbox" name="is_active" value="1" checked class="rounded bg-white border-slate-300 text-red-600 focus:ring-0">
                             <span class="text-xs font-bold text-emerald-700">Tampilkan FAQ di Website</span>
                         </label>
                     </div>
 
-                    <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-500/20 transition flex items-center justify-center gap-1.5">
+                    <button type="submit" class="w-full py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md shadow-red-500/20 transition flex items-center justify-center gap-1.5">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                         SIMPAN PERTANYAAN
                     </button>
@@ -72,7 +72,7 @@
 
             <div class="space-y-3">
                 @forelse($faqs as $faq)
-                    <div class="glass-card rounded-2xl border border-slate-200/90 p-4 sm:p-5 space-y-3 shadow-sm hover:border-blue-200 transition">
+                    <div class="glass-card rounded-2xl border border-slate-200/90 p-4 sm:p-5 space-y-3 shadow-sm hover:border-red-200 transition">
                         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                             <div class="space-y-1">
                                 <div class="flex items-center gap-2">
@@ -81,7 +81,7 @@
                                     </span>
                                     <h4 class="text-sm font-bold text-slate-900">{{ $faq->question }}</h4>
                                     @if($faq->badge)
-                                        <span class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200">
+                                        <span class="px-2 py-0.5 rounded-md bg-red-50 text-red-700 text-[10px] font-bold border border-red-200">
                                             {{ $faq->badge }}
                                         </span>
                                     @endif
@@ -102,7 +102,7 @@
                                 <!-- Icon-Only Edit Button -->
                                 <button type="button" 
                                         onclick="openEditFaqModal({{ json_encode($faq) }})"
-                                        class="p-2 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200 transition shadow-sm inline-flex items-center justify-center"
+                                        class="p-2 rounded-xl bg-red-50 text-red-700 hover:bg-red-600 hover:text-white border border-red-200 transition shadow-sm inline-flex items-center justify-center"
                                         title="Edit FAQ">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                                 </button>
@@ -133,11 +133,11 @@
 
     <!-- POPUP MODAL EDIT FAQ -->
     <div id="edit-faq-modal" class="fixed inset-0 bg-slate-900/50 z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl border border-blue-200 w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl">
+        <div class="bg-white rounded-2xl border border-red-200 w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl">
             <div class="flex items-center justify-between px-6 pt-5 pb-3 border-b border-slate-100 shrink-0">
 
                 <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
+                    <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center font-bold text-sm">
                         ✎
                     </div>
                     <div>
@@ -176,7 +176,7 @@
 
                 <div class="pt-1">
                     <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="checkbox" name="is_active" id="edit-is-active" value="1" class="rounded bg-white border-slate-300 text-blue-600 focus:ring-0">
+                        <input type="checkbox" name="is_active" id="edit-is-active" value="1" class="rounded bg-white border-slate-300 text-red-600 focus:ring-0">
                         <span class="text-xs font-bold text-emerald-700">Tampilkan FAQ di Website</span>
                     </label>
                 </div>
@@ -185,7 +185,7 @@
                     <button type="button" onclick="closeEditFaqModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition">
                         Batal
                     </button>
-                    <button type="submit" class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-sm">
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition shadow-sm">
                         Simpan Perubahan
                     </button>
                 </div>

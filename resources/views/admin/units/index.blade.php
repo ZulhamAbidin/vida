@@ -9,17 +9,17 @@
         <!-- Filter Lokasi -->
         <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             <span class="text-xs text-slate-500 font-semibold">Filter:</span>
-            <a href="{{ route('admin.units.index') }}" class="px-3 py-1.5 rounded-xl text-xs {{ !request('location_id') ? 'bg-blue-600 text-white font-bold shadow-sm' : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200' }}">
+            <a href="{{ route('admin.units.index') }}" class="px-3 py-1.5 rounded-xl text-xs {{ !request('location_id') ? 'bg-red-600 text-white font-bold shadow-sm' : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200' }}">
                 Semua
             </a>
             @foreach($locations as $loc)
-                <a href="{{ route('admin.units.index', ['location_id' => $loc->id]) }}" class="px-3 py-1.5 rounded-xl text-xs {{ request('location_id') == $loc->id ? 'bg-blue-600 text-white font-bold shadow-sm' : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200' }}">
+                <a href="{{ route('admin.units.index', ['location_id' => $loc->id]) }}" class="px-3 py-1.5 rounded-xl text-xs {{ request('location_id') == $loc->id ? 'bg-red-600 text-white font-bold shadow-sm' : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200' }}">
                     {{ $loc->name }}
                 </a>
             @endforeach
         </div>
 
-        <a href="{{ route('admin.units.create') }}" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-500/20 transition flex items-center justify-center gap-1.5 shrink-0">
+        <a href="{{ route('admin.units.create') }}" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md shadow-red-500/20 transition flex items-center justify-center gap-1.5 shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             Tambah Unit & Upload Foto
         </a>
@@ -28,14 +28,14 @@
     <!-- RESPONSIVE CARD GRID (Mobile 1 Kolom, Tablet 2 Kolom, Desktop 3 Kolom) -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 mb-8">
         @forelse($units as $unit)
-            <div class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-sm space-y-3.5 transition hover:border-blue-300 hover:shadow-md flex flex-col justify-between">
+            <div class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-sm space-y-3.5 transition hover:border-red-300 hover:shadow-md flex flex-col justify-between">
                 <!-- Top Section: Foto & Identitas Unit -->
                 <div class="space-y-3">
                     <div class="flex items-start gap-3.5">
                         <img src="{{ $unit->image_url }}" alt="{{ $unit->name }}" class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border border-slate-200 shrink-0 bg-slate-100 shadow-xs">
                         <div class="min-w-0 flex-1">
                             <div class="flex items-center justify-between gap-1">
-                                <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider truncate">{{ $unit->location->name ?? '-' }}</span>
+                                <span class="text-[10px] sm:text-xs font-bold text-red-600 uppercase tracking-wider truncate">{{ $unit->location->name ?? '-' }}</span>
                                 @if($unit->is_promo_active)
                                     <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] sm:text-xs font-bold shrink-0">Promo Aktif</span>
                                 @else
@@ -55,14 +55,14 @@
                         <div>
                             <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Tarif Sewa</span>
                             <div class="flex items-baseline gap-1.5 mt-0.5">
-                                <span class="text-blue-700 font-extrabold text-sm sm:text-base">{{ $unit->formatted_promo_price }}</span>
+                                <span class="text-red-700 font-extrabold text-sm sm:text-base">{{ $unit->formatted_promo_price }}</span>
                                 @if($unit->is_promo_active && $unit->normal_price > $unit->promo_price)
                                     <span class="text-[11px] sm:text-xs text-rose-500 line-through">{{ $unit->formatted_normal_price }}</span>
                                 @endif
                             </div>
                         </div>
                         @if($unit->promo_badge)
-                            <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-bold border border-blue-200 shrink-0">
+                            <span class="px-2.5 py-1 rounded-lg bg-red-50 text-red-700 text-[10px] sm:text-xs font-bold border border-red-200 shrink-0">
                                 {{ $unit->promo_badge }}
                             </span>
                         @endif
@@ -82,7 +82,7 @@
                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Fasilitas Kamar:</span>
                             <div class="flex flex-wrap gap-1.5">
                                 @foreach($unit->facilities_list as $facility)
-                                    <span class="px-2 py-0.5 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">
+                                    <span class="px-2 py-0.5 rounded-lg bg-red-50/80 border border-red-100 text-[10px] sm:text-[11px] text-red-700 font-medium">
                                         {{ $facility }}
                                     </span>
                                 @endforeach
@@ -95,7 +95,7 @@
                         <div class="flex items-center gap-1.5 text-xs text-red-600 bg-red-50/80 px-2.5 py-1.5 rounded-xl border border-red-100 font-bold">
                             <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                             <span class="truncate">Video Room Tour Ditautkan</span>
-                            <a href="{{ $unit->youtube_video_url }}" target="_blank" class="ml-auto text-blue-600 hover:underline text-[10px]">Buka ↗</a>
+                            <a href="{{ $unit->youtube_video_url }}" target="_blank" class="ml-auto text-red-600 hover:underline text-[10px]">Buka ↗</a>
                         </div>
                     @endif
                 </div>
@@ -117,7 +117,7 @@
                     <div class="flex items-center gap-1.5">
                         <button type="button" 
                                 onclick="openEditModal('{{ route('admin.units.edit', $unit->id) }}', '{{ addslashes($unit->name) }}')"
-                                class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-200 transition text-xs font-bold"
+                                class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-50 text-red-700 hover:bg-red-600 hover:text-white border border-red-200 transition text-xs font-bold"
                                 title="Edit Unit Kamar">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                             <span>Edit</span>
@@ -150,9 +150,9 @@
 
     <!-- POPUP MODAL KONFIRMASI EDIT -->
     <div id="edit-modal" class="fixed inset-0 bg-slate-900/50 z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl border border-blue-200 p-6 max-w-sm w-full space-y-4 shadow-2xl">
+        <div class="bg-white rounded-2xl border border-red-200 p-6 max-w-sm w-full space-y-4 shadow-2xl">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-200">
+                <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center shrink-0 border border-red-200">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                 </div>
                 <div>
@@ -169,7 +169,7 @@
                 <button type="button" onclick="closeEditModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition">
                     Batal
                 </button>
-                <a id="edit-confirm-btn" href="#" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-sm">
+                <a id="edit-confirm-btn" href="#" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition shadow-sm">
                     Lanjutkan Edit
                 </a>
             </div>

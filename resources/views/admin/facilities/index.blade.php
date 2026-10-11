@@ -38,7 +38,7 @@
                     </div>
 
                     <!-- Input Upload Foto Fasilitas (Opsional Sesuai Permintaan User) -->
-                    <div class="p-3.5 rounded-xl bg-blue-50/60 border border-blue-200/70 space-y-2">
+                    <div class="p-3.5 rounded-xl bg-red-50/50 border border-red-200/70 space-y-2">
                         <label class="block text-xs font-bold text-slate-800 uppercase tracking-wider">
                             Upload Foto Fasilitas (Opsional)
                         </label>
@@ -49,7 +49,7 @@
                                id="fac-image" 
                                accept=".jpg,.jpeg,.png,.heic,.heif,.webp" 
                                onchange="previewFacilityImage(event)" 
-                               class="block w-full text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-1.5">
+                               class="block w-full text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-red-600 file:text-white hover:file:bg-red-700 file:cursor-pointer cursor-pointer border border-slate-300 rounded-xl bg-white p-1.5">
                         
                         <!-- Preview Box -->
                         <div id="fac-preview-box" class="h-24 w-full rounded-lg border border-slate-300 bg-white overflow-hidden hidden">
@@ -57,7 +57,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/20 transition">
+                    <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs tracking-wider shadow-md shadow-red-500/20 transition">
                         SIMPAN FASILITAS
                     </button>
                 </form>
@@ -71,9 +71,9 @@
                     <div class="p-4 sm:p-5 border-b border-slate-200/80 flex items-center justify-between">
                         <div>
                             <h3 class="text-base font-bold text-slate-900">{{ $loc->name }}</h3>
-                            <span class="text-xs text-blue-600">{{ $loc->tagline }}</span>
+                            <span class="text-xs text-red-600">{{ $loc->tagline }}</span>
                         </div>
-                        <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
+                        <span class="px-2.5 py-1 rounded-lg bg-red-50 text-red-700 text-xs font-bold border border-red-200">
                             {{ $loc->facilities->count() }} Fasilitas
                         </span>
                     </div>

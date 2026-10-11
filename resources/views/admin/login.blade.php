@@ -12,19 +12,18 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col p-4 sm:p-6 overflow-y-auto relative selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col p-4 sm:p-6 overflow-y-auto relative selection:bg-red-200 selection:text-slate-900">
 
     <!-- Ambient Glowing Orbs Background -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-400/15 rounded-full blur-[140px]"></div>
-        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-sky-300/15 rounded-full blur-[140px]"></div>
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-rose-500/15 rounded-full blur-[140px]"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-red-400/15 rounded-full blur-[140px]"></div>
     </div>
 
     <div class="relative z-10 w-full max-w-md m-auto py-6 sm:py-8">
         
         <!-- White Glassmorphic Login Card -->
         <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/80 shadow-xl space-y-5 sm:space-y-6 bg-white/95">
-
 
             
             <!-- Header Brand -->
@@ -34,7 +33,10 @@
                          alt="VIDALIDAY Logo" 
                          class="w-full h-full object-cover rounded-full">
                 </div>
-                <h1 class="text-2xl font-black text-slate-900 tracking-tight">VIDALIDAY</h1>
+                <h1 class="text-2xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-1">
+                    VIDALIDAY
+                    <span class="text-red-600 text-3xl leading-none">.</span>
+                </h1>
                 <p class="text-xs text-slate-500">Apartment By Us • Panel Pengelola Unit & Promo Resmi</p>
             </div>
 
@@ -79,18 +81,18 @@
 
                 <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
                     <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" name="remember" class="rounded bg-white border-slate-300 text-blue-600 focus:ring-0">
+                        <input type="checkbox" name="remember" class="rounded bg-white border-slate-300 text-red-600 focus:ring-0">
                         <span>Ingat saya di perangkat ini</span>
                     </label>
                 </div>
 
-                <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm tracking-wide shadow-md shadow-blue-500/25 transition-all">
+                <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-sm tracking-wide shadow-md shadow-red-500/25 transition-all">
                     MASUK KE PANEL PENGELOLA
                 </button>
             </form>
 
             <div class="text-center pt-2">
-                <a href="{{ route('home') }}" class="text-xs text-slate-500 hover:text-blue-600 transition flex items-center justify-center gap-1.5">
+                <a href="{{ route('home') }}" class="text-xs text-slate-500 hover:text-red-600 transition flex items-center justify-center gap-1.5">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                     Kembali ke Halaman Depan
                 </a>
