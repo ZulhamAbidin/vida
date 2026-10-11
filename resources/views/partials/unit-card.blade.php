@@ -55,7 +55,7 @@
                     @endif
 
                     @if($unit->is_promo_active && !empty($unit->promo_badge))
-                        <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-blue-600 text-white text-[10px] sm:text-[11px] font-extrabold tracking-wide shadow-md shadow-blue-500/30">
+                        <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-red-600 text-white text-[10px] sm:text-[11px] font-extrabold tracking-wide shadow-md shadow-red-500/30">
                             {{ $unit->promo_badge }}
                         </span>
                     @elseif($unit->is_promo_active)
@@ -69,7 +69,7 @@
             <!-- Bottom Left Info on Image -->
             <div class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 flex items-center gap-1.5 sm:gap-2 text-xs text-white z-20 pointer-events-none">
                 <span class="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-md bg-slate-900/75 backdrop-blur-md text-[10px] sm:text-[11px] font-medium">
-                    <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    <svg class="w-3.5 h-3.5 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                     Maks. {{ $unit->max_guests }} Tamu
                 </span>
                 <span class="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-md bg-slate-900/75 backdrop-blur-md text-[10px] sm:text-[11px] font-medium">
@@ -107,8 +107,8 @@
         <div class="p-4 sm:p-5 space-y-3.5">
             <!-- Header Unit & Lokasi -->
             <div>
-                <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider block">{{ $locationName }}</span>
-                <h3 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mt-0.5">
+                <span class="text-[10px] sm:text-xs font-bold text-red-600 uppercase tracking-wider block">{{ $locationName }}</span>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-red-600 transition-colors leading-snug mt-0.5">
                     {{ $unit->name }}
                 </h3>
                 <div class="text-[11px] sm:text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
@@ -124,7 +124,7 @@
                     
                     <!-- Harga Promo (Utama) -->
                     <div class="flex items-baseline gap-1 mt-0.5">
-                        <span class="text-blue-700 font-black text-lg sm:text-xl">
+                        <span class="text-red-700 font-black text-lg sm:text-xl">
                             {{ $unit->is_promo_active ? $unit->formatted_promo_price : $unit->formatted_normal_price }}
                         </span>
                         <span class="text-[11px] text-slate-500 font-semibold">/ {{ $unit->rental_period }}</span>
@@ -148,7 +148,7 @@
                     </div>
                 @elseif($unit->is_promo_active && !empty($unit->promo_badge))
                     <div class="text-right shrink-0">
-                        <span class="inline-block px-2.5 sm:px-3 py-1 rounded-xl bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-black border border-blue-200">
+                        <span class="inline-block px-2.5 sm:px-3 py-1 rounded-xl bg-red-50 text-red-700 text-[11px] sm:text-xs font-black border border-red-200">
                             {{ $unit->promo_badge }}
                         </span>
                     </div>
@@ -169,7 +169,7 @@
                     <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">FASILITAS KAMAR:</span>
                     <div class="flex flex-wrap gap-1.5">
                         @foreach($unit->facilities_list as $facility)
-                            <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">
+                            <span class="px-2.5 py-1 rounded-lg bg-red-50/80 border border-red-100 text-[10px] sm:text-[11px] text-red-700 font-medium">
                                 {{ $facility }}
                             </span>
                         @endforeach

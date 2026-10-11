@@ -46,24 +46,24 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative selection:bg-blue-500 selection:text-white overflow-x-hidden">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative selection:bg-red-600 selection:text-white overflow-x-hidden">
 
-    <!-- Ambient Glowing Orbs Background (White Glassmorphism with Subtle Blue Tones) -->
+    <!-- Ambient Glowing Orbs Background (White Glassmorphism with Subtle Red & Rose Tones) -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div class="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-blue-400/10 rounded-full blur-[130px]"></div>
-        <div class="absolute top-1/3 -right-40 w-[36rem] h-[36rem] bg-sky-300/15 rounded-full blur-[140px]"></div>
-        <div class="absolute top-2/3 left-1/4 w-[30rem] h-[30rem] bg-indigo-300/10 rounded-full blur-[130px]"></div>
-        <div class="absolute -bottom-40 right-10 w-[28rem] h-[28rem] bg-blue-500/10 rounded-full blur-[120px]"></div>
+        <div class="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-rose-500/10 rounded-full blur-[130px]"></div>
+        <div class="absolute top-1/3 -right-40 w-[36rem] h-[36rem] bg-red-400/15 rounded-full blur-[140px]"></div>
+        <div class="absolute top-2/3 left-1/4 w-[30rem] h-[30rem] bg-rose-400/10 rounded-full blur-[130px]"></div>
+        <div class="absolute -bottom-40 right-10 w-[28rem] h-[28rem] bg-red-500/10 rounded-full blur-[120px]"></div>
     </div>
 
     <div class="relative z-10 flex flex-col min-h-screen">
         
         <!-- Top Info & Trust Bar -->
-        <aside aria-label="Informasi Legalitas & Promo" class="bg-white/90 border-b border-blue-100/80 text-xs py-2 px-4 backdrop-blur-md">
+        <aside aria-label="Informasi Legalitas & Promo" class="bg-white/90 border-b border-red-100/80 text-xs py-2 px-4 backdrop-blur-md">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
                 <div class="flex items-center gap-2 text-slate-600">
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                        <svg class="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-50 text-red-700 border border-red-200">
+                        <svg class="w-3 h-3 text-red-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                         Resmi & Terverifikasi
                     </span>
                     <span class="hidden md:inline text-slate-500">Dikelola resmi oleh</span>
@@ -71,8 +71,8 @@
                 </div>
 
                 <div class="flex items-center gap-4 text-slate-500 text-[11px]">
-                    <span class="text-blue-700 font-semibold hidden lg:inline">★ Sewa Harian • Mingguan • Bulanan Makassar</span>
-                    <a href="{{ route('admin.login') }}" class="text-slate-500 hover:text-blue-600 transition flex items-center gap-1 font-medium">
+                    <span class="text-red-700 font-semibold hidden lg:inline">★ Sewa Harian • Mingguan • Bulanan Makassar</span>
+                    <a href="{{ route('admin.login') }}" class="text-slate-500 hover:text-red-600 transition flex items-center gap-1 font-medium">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
                         Portal Admin
                     </a>
@@ -94,7 +94,7 @@
                     <div>
                         <div class="text-2xl font-black tracking-tight text-slate-900 flex items-center gap-1">
                             VIDALIDAY
-                            <span class="text-blue-600 text-3xl leading-none">.</span>
+                            <span class="text-red-600 text-3xl leading-none">.</span>
                         </div>
                         <p class="text-[10px] tracking-widest uppercase text-slate-500 -mt-1 font-bold">Apartment By Us</p>
                     </div>
@@ -102,12 +102,12 @@
 
                 <!-- Desktop Nav -->
                 <nav class="hidden md:flex items-center gap-6 lg:gap-7 text-sm font-semibold text-slate-600">
-                    <a href="{{ route('home') }}#lokasi" class="hover:text-blue-600 transition-colors">Pilihan Apartemen</a>
-                    <a href="{{ route('home') }}#katalog-kamar" class="hover:text-blue-600 transition-colors">Kamar & Promo</a>
-                    <a href="{{ route('home') }}#fasilitas" class="hover:text-blue-600 transition-colors">Fasilitas</a>
-                    <a href="{{ route('home') }}#jarak" class="hover:text-blue-600 transition-colors">Lokasi</a>
-                    <a href="{{ route('home') }}#faq" class="hover:text-blue-600 transition-colors">FAQ</a>
-                    <a href="{{ route('about') }}" class="hover:text-blue-600 transition-colors {{ request()->routeIs('about') ? 'text-blue-600 font-bold' : '' }}">Tentang Kami</a>
+                    <a href="{{ route('home') }}#lokasi" class="hover:text-red-600 transition-colors">Pilihan Apartemen</a>
+                    <a href="{{ route('home') }}#katalog-kamar" class="hover:text-red-600 transition-colors">Kamar & Promo</a>
+                    <a href="{{ route('home') }}#fasilitas" class="hover:text-red-600 transition-colors">Fasilitas</a>
+                    <a href="{{ route('home') }}#jarak" class="hover:text-red-600 transition-colors">Lokasi</a>
+                    <a href="{{ route('home') }}#faq" class="hover:text-red-600 transition-colors">FAQ</a>
+                    <a href="{{ route('about') }}" class="hover:text-red-600 transition-colors {{ request()->routeIs('about') ? 'text-red-600 font-bold' : '' }}">Tentang Kami</a>
                 </nav>
 
                 <!-- WhatsApp CTA & Mobile Menu Toggle -->
@@ -129,12 +129,12 @@
 
             <!-- Mobile Navigation Drawer -->
             <div id="mobile-nav" class="hidden md:hidden px-4 pt-2 pb-6 border-t border-slate-200/80 bg-white/95 backdrop-blur-xl space-y-3">
-                <a href="{{ route('home') }}#lokasi" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Pilihan Apartemen</a>
-                <a href="{{ route('home') }}#katalog-kamar" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Daftar Kamar & Promo</a>
-                <a href="{{ route('home') }}#fasilitas" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Fasilitas Gedung</a>
-                <a href="{{ route('home') }}#jarak" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Lokasi & Landmark Sekitar</a>
-                <a href="{{ route('home') }}#faq" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Tanya Jawab (FAQ)</a>
-                <a href="{{ route('about') }}" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-blue-600 hover:text-blue-700">Tentang Kami (About Us)</a>
+                <a href="{{ route('home') }}#lokasi" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-red-600">Pilihan Apartemen</a>
+                <a href="{{ route('home') }}#katalog-kamar" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-red-600">Daftar Kamar & Promo</a>
+                <a href="{{ route('home') }}#fasilitas" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-red-600">Fasilitas Gedung</a>
+                <a href="{{ route('home') }}#jarak" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-red-600">Lokasi & Landmark Sekitar</a>
+                <a href="{{ route('home') }}#faq" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-red-600">Tanya Jawab (FAQ)</a>
+                <a href="{{ route('about') }}" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-red-600 hover:text-red-700">Tentang Kami (About Us)</a>
             </div>
         </header>
 
@@ -158,7 +158,7 @@
                             </div>
                             <div>
                                 <span class="text-2xl font-black text-slate-900 tracking-tight">VIDALIDAY</span>
-                                <span class="text-blue-600 text-2xl font-black">.</span>
+                                <span class="text-red-600 text-2xl font-black">.</span>
                                 <p class="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Apartment By Us</p>
                             </div>
                         </div>
@@ -168,14 +168,14 @@
                         </p>
 
                         <!-- Legal Badge Card -->
-                        <div class="p-4 rounded-xl glass-card border border-blue-200/60 max-w-md">
+                        <div class="p-4 rounded-xl glass-card border border-red-200/60 max-w-md">
                             <div class="flex items-start gap-3">
-                                <div class="p-2 rounded-lg bg-blue-50 text-blue-600 shrink-0">
+                                <div class="p-2 rounded-lg bg-red-50 text-red-600 shrink-0">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                                 </div>
                                 <div>
                                     <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Badan Hukum Resmi</h4>
-                                    <p class="text-sm font-bold text-blue-700">{{ $settings['company_legal_name'] ?? 'PT PERDANA MEGA TRANS' }}</p>
+                                    <p class="text-sm font-bold text-red-700">{{ $settings['company_legal_name'] ?? 'PT PERDANA MEGA TRANS' }}</p>
                                     <p class="text-xs text-slate-500 mt-0.5">Jaminan transaksi aman langsung terkonfirmasi ke WhatsApp admin resmi.</p>
                                 </div>
                             </div>
@@ -184,23 +184,23 @@
 
                     <!-- Column 2: Lokasi Apartemen -->
                     <div>
-                        <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-4 border-l-2 border-blue-600 pl-3">Pilihan Lokasi</h4>
+                        <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-4 border-l-2 border-red-600 pl-3">Pilihan Lokasi</h4>
                         <ul class="space-y-2.5 text-sm text-slate-600">
                             <li>
-                                <a href="#katalog-kamar" onclick="switchLocation('delft-cpi')" class="hover:text-blue-600 transition flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                <a href="#katalog-kamar" onclick="switchLocation('delft-cpi')" class="hover:text-red-600 transition flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
                                     Apartemen Delft CPI (Pantai)
                                 </a>
                             </li>
                             <li>
-                                <a href="#katalog-kamar" onclick="switchLocation('vida-view')" class="hover:text-blue-600 transition flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                <a href="#katalog-kamar" onclick="switchLocation('vida-view')" class="hover:text-red-600 transition flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
                                     Apartemen Vida View (Panakkukang)
                                 </a>
                             </li>
-                            <li><a href="{{ route('home') }}#fasilitas" class="hover:text-blue-600 transition">Fasilitas Gedung</a></li>
-                            <li><a href="{{ route('home') }}#jarak" class="hover:text-blue-600 transition">Akses Lokasi & Landmark</a></li>
-                            <li><a href="{{ route('about') }}" class="hover:text-blue-600 transition font-semibold text-blue-700">Tentang VIDALIDAY</a></li>
+                            <li><a href="{{ route('home') }}#fasilitas" class="hover:text-red-600 transition">Fasilitas Gedung</a></li>
+                            <li><a href="{{ route('home') }}#jarak" class="hover:text-red-600 transition">Akses Lokasi & Landmark</a></li>
+                            <li><a href="{{ route('about') }}" class="hover:text-red-600 transition font-semibold text-red-700">Tentang VIDALIDAY</a></li>
                         </ul>
                     </div>
 
@@ -330,11 +330,11 @@
                 const badge = btn.querySelector('.tab-badge');
 
                 if (isTarget) {
-                    btn.className = 'loc-tab-btn py-3 sm:py-3.5 px-3.5 sm:px-6 rounded-xl text-left transition-all duration-300 relative group flex items-center justify-between gap-2.5 sm:gap-3 bg-blue-600 text-white font-black shadow-lg shadow-blue-500/30 ring-2 ring-blue-600';
+                    btn.className = 'loc-tab-btn py-3 sm:py-3.5 px-3.5 sm:px-6 rounded-xl text-left transition-all duration-300 relative group flex items-center justify-between gap-2.5 sm:gap-3 bg-red-600 text-white font-black shadow-lg shadow-red-500/30 ring-2 ring-red-600';
                     if (icon) icon.className = 'tab-icon w-8 h-8 rounded-lg bg-white/20 text-white flex items-center justify-center text-sm shrink-0 font-bold';
                     if (title) title.className = 'tab-title block text-xs sm:text-base font-black leading-tight text-white truncate';
-                    if (desc) desc.className = 'tab-desc text-[10px] sm:text-[11px] block font-medium opacity-90 text-blue-100 truncate';
-                    if (badge) badge.className = 'tab-badge px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wider shrink-0 bg-white text-blue-700 shadow-sm';
+                    if (desc) desc.className = 'tab-desc text-[10px] sm:text-[11px] block font-medium opacity-90 text-red-100 truncate';
+                    if (badge) badge.className = 'tab-badge px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wider shrink-0 bg-white text-red-700 shadow-sm';
                 } else {
                     btn.className = 'loc-tab-btn py-3 sm:py-3.5 px-3.5 sm:px-6 rounded-xl text-left transition-all duration-300 relative group flex items-center justify-between gap-2.5 sm:gap-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold border border-slate-200/90';
                     if (icon) icon.className = 'tab-icon w-8 h-8 rounded-lg bg-slate-200/80 text-slate-700 flex items-center justify-center text-sm shrink-0 font-bold';

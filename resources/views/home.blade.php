@@ -103,8 +103,8 @@
                         @else
                             <!-- Tampilan Rapi Ketika Belum Ada Unit Favorit Dipilih Admin -->
                             <div class="mb-4 p-3 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-2 text-[10px] sm:text-xs font-bold text-slate-600">
-                                <span class="flex items-center gap-1.5 text-blue-700">
-                                    <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                                <span class="flex items-center gap-1.5 text-red-700">
+                                    <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
                                     Pilihan Durasi Sewa:
                                 </span>
                                 <div class="flex items-center gap-1.5 font-extrabold uppercase tracking-wider">
@@ -143,7 +143,7 @@
                 <!-- Right Column: Card Favorit Putih Elegan / White Glassmorphic Card (Tidak Berwarna Hitam) -->
                 <div class="lg:col-span-5 relative">
                     <!-- Subtle Glow Behind -->
-                    <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-300/30 via-sky-300/30 to-amber-300/30 rounded-[2.5rem] blur-2xl opacity-75"></div>
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-red-300/30 via-rose-300/30 to-amber-300/30 rounded-[2.5rem] blur-2xl opacity-75"></div>
                     
                     <!-- Card Favorit Berwarna Putih Elegan dengan Golden Border Halus -->
                     <div class="relative rounded-[2rem] p-4 sm:p-5 bg-white/90 backdrop-blur-xl border border-white/80 shadow-2xl shadow-slate-300/60 space-y-4">
@@ -173,7 +173,7 @@
                         <!-- Micro Info -->
                         <div class="grid grid-cols-2 gap-3 text-xs">
                             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                                <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                                 </div>
                                 <div>
@@ -200,11 +200,11 @@
                             $featuredMsg = "Halo Admin VIDALIDAY, saya tertarik memesan unit Pilihan Favorit Tamu:\n- Unit: " . ($featuredUnit->name ?? '') . " (" . ($featuredUnit->room_type ?? '') . ")\n- Lokasi: " . $featuredLocName . "\n- Harga: " . $featuredPrice . " / " . ($featuredUnit->rental_period ?? 'Malam') . "\n\nMohon info ketersediaan kamar. Terima kasih!";
                             $featuredWaUrl = "https://wa.me/{$waClean}?text=" . urlencode($featuredMsg);
                         @endphp
-                        <div class="p-3 sm:p-3.5 rounded-xl bg-blue-50/80 border border-blue-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                        <div class="p-3 sm:p-3.5 rounded-xl bg-red-50/80 border border-red-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                             <div>
                                 <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Tarif Sewa</span>
                                 <div class="flex items-baseline gap-2">
-                                    <span class="text-base sm:text-lg font-black text-blue-700">
+                                    <span class="text-base sm:text-lg font-black text-red-700">
                                         {{ $featuredUnit->is_promo_active ? $featuredUnit->formatted_promo_price : $featuredUnit->formatted_normal_price }}
                                     </span>
                                     @if($featuredUnit->is_promo_active && $featuredUnit->normal_price > $featuredUnit->promo_price)
@@ -222,7 +222,7 @@
                         @else
                         <!-- Fallback Ketika Belum Ada Unit / Unit Rujukan Dihapus Admin -->
                         <div class="h-64 sm:h-72 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50/70 flex flex-col items-center justify-center p-6 text-center space-y-3">
-                            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                             </div>
                             <div>
@@ -231,7 +231,7 @@
                                     Admin belum menambahkan unit kamar pilihan favorit atau data sedang diperbarui.
                                 </p>
                             </div>
-                            <a href="#units-section" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-sm">
+                            <a href="#units-section" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition shadow-sm">
                                 Lihat Semua Unit
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </a>
@@ -247,16 +247,16 @@
     <!-- 2. PROMO BANNER STRIP -->
     @if(!empty($settings['promo_banner_text']))
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-10">
-        <div class="p-4 rounded-2xl bg-white/80 border border-blue-200/80 backdrop-blur-md shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div class="p-4 rounded-2xl bg-white/80 border border-red-200/80 backdrop-blur-md shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
             <div class="flex items-center gap-3">
-                <span class="p-1.5 px-2.5 rounded-lg bg-blue-600 text-white font-black text-xs shrink-0 uppercase tracking-wider shadow-sm">
+                <span class="p-1.5 px-2.5 rounded-lg bg-red-600 text-white font-black text-xs shrink-0 uppercase tracking-wider shadow-sm">
                     PROMO
                 </span>
                 <p class="text-sm font-semibold text-slate-800">
                     {{ $settings['promo_banner_text'] }}
                 </p>
             </div>
-            <a href="#katalog-kamar" class="shrink-0 px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold border border-blue-200 transition">
+            <a href="#katalog-kamar" class="shrink-0 px-4 py-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold border border-red-200 transition">
                 Lihat Promo
             </a>
         </div>
@@ -269,7 +269,7 @@
             
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-blue-700 text-xs font-bold uppercase tracking-wider">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-red-700 text-xs font-bold uppercase tracking-wider">
                     Katalog Kamar & Promo
                 </span>
                 <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
@@ -287,22 +287,22 @@
                 </div>
                 
                 <div class="w-full max-w-2xl px-1">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 p-1.5 sm:p-2 rounded-2xl glass-card border border-blue-200/90 shadow-lg shadow-blue-500/10 w-full bg-white/95 gap-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 p-1.5 sm:p-2 rounded-2xl glass-card border border-red-200/90 shadow-lg shadow-red-500/10 w-full bg-white/95 gap-2">
                         <!-- Tab Apartemen Delft CPI -->
                         <button type="button" 
                                 data-target="delft-cpi" 
                                 onclick="switchLocation('delft-cpi')" 
-                                class="loc-tab-btn py-3 sm:py-3.5 px-3.5 sm:px-6 rounded-xl text-left transition-all duration-300 relative group flex items-center justify-between gap-2.5 sm:gap-3 bg-blue-600 text-white font-black shadow-lg shadow-blue-500/30 ring-2 ring-blue-600">
+                                class="loc-tab-btn py-3 sm:py-3.5 px-3.5 sm:px-6 rounded-xl text-left transition-all duration-300 relative group flex items-center justify-between gap-2.5 sm:gap-3 bg-red-600 text-white font-black shadow-lg shadow-red-500/30 ring-2 ring-red-600">
                             <div class="flex items-center gap-2.5 min-w-0">
                                 <span class="tab-icon w-8 h-8 rounded-lg bg-white/20 text-white flex items-center justify-center text-sm shrink-0 font-bold">
                                     🌊
                                 </span>
                                 <div class="text-left min-w-0">
                                     <span class="tab-title block text-xs sm:text-base font-black leading-tight text-white truncate">Apartemen Delft CPI</span>
-                                    <span class="tab-desc text-[10px] sm:text-[11px] block font-medium opacity-90 text-blue-100 truncate">Pantai Losari & Center Point</span>
+                                    <span class="tab-desc text-[10px] sm:text-[11px] block font-medium opacity-90 text-red-100 truncate">Pantai Losari & Center Point</span>
                                 </div>
                             </div>
-                            <span class="tab-badge px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wider shrink-0 bg-white text-blue-700 shadow-sm">
+                            <span class="tab-badge px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wider shrink-0 bg-white text-red-700 shadow-sm">
                                 {{ $delft->units->count() ?? 0 }} Unit
                             </span>
                         </button>
@@ -332,7 +332,7 @@
             <!-- Filter Bar: Sortir & Kontrol Tampilan Unit -->
             <div class="mb-8 p-4 rounded-2xl glass-card border border-slate-200/90 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-2.5 text-xs text-slate-600">
-                    <span class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                    <span class="w-8 h-8 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
                     </span>
                     <div>
@@ -345,7 +345,7 @@
                 <div class="flex items-center gap-2 w-full sm:w-auto">
                     <label for="unit-sort-filter" class="text-xs font-bold text-slate-500 uppercase tracking-wider shrink-0 hidden sm:inline">Urutkan:</label>
                     <div class="relative w-full sm:w-56">
-                        <select id="unit-sort-filter" onchange="applyUnitSorting(this.value)" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 cursor-pointer">
+                        <select id="unit-sort-filter" onchange="applyUnitSorting(this.value)" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 cursor-pointer">
                             <option value="featured">Paling Populer & Rekomendasi</option>
                             <option value="terbaru">Terbaru (Baru Ditambahkan)</option>
                             <option value="termurah">Termurah (Harga Terendah)</option>
@@ -358,17 +358,17 @@
             <!-- GROUP 1: UNITS APARTEMEN DELFT CPI -->
             <div id="units-delft-cpi" class="space-y-8">
                 <!-- Location Info Card -->
-                <div class="p-4 sm:p-6 rounded-2xl glass-card border border-blue-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
+                <div class="p-4 sm:p-6 rounded-2xl glass-card border border-red-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
                     <div>
                         <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                            <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-bold border border-blue-200 shrink-0">Center Point of Indonesia</span>
+                            <span class="px-2.5 py-0.5 rounded-full bg-red-50 text-red-700 text-[10px] sm:text-xs font-bold border border-red-200 shrink-0">Center Point of Indonesia</span>
                             <span class="text-[10px] sm:text-xs text-slate-500 whitespace-nowrap">• Waterfront & Sunset View</span>
                         </div>
                         <h3 class="text-lg sm:text-2xl font-black text-slate-900 mt-1 leading-snug">{{ $delft->name ?? 'Apartemen Delft CPI' }}</h3>
                         <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mt-1 leading-relaxed">{{ $delft->description ?? '' }}</p>
                     </div>
                     <div class="text-[11px] sm:text-xs text-slate-500 flex items-center gap-1.5 shrink-0 mt-1 md:mt-0">
-                        <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                        <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                         <span>Jl. Metro Tanjung Bunga, Makassar</span>
                     </div>
                 </div>
@@ -390,7 +390,7 @@
                         <button type="button" 
                                 id="btn-toggle-delft-cpi" 
                                 onclick="toggleShowMoreUnits('grid-delft-cpi', 'btn-toggle-delft-cpi', {{ $delft->units->count() }})" 
-                                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-blue-600 hover:text-blue-700 font-extrabold text-xs sm:text-sm border border-blue-200 shadow-sm hover:shadow transition transform hover:-translate-y-0.5">
+                                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-red-600 hover:text-red-700 font-extrabold text-xs sm:text-sm border border-red-200 shadow-sm hover:shadow transition transform hover:-translate-y-0.5">
                             <span>Tampilkan Lebih Banyak ({{ $delft->units->count() - 3 }} Kamar Lainnya)</span>
                             <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -401,17 +401,17 @@
             <!-- GROUP 2: UNITS APARTEMEN VIDA VIEW -->
             <div id="units-vida-view" class="space-y-8 hidden">
                 <!-- Location Info Card -->
-                <div class="p-4 sm:p-6 rounded-2xl glass-card border border-blue-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
+                <div class="p-4 sm:p-6 rounded-2xl glass-card border border-red-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
                     <div>
                         <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                            <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-bold border border-blue-200 shrink-0">Panakkukang District</span>
+                            <span class="px-2.5 py-0.5 rounded-full bg-red-50 text-red-700 text-[10px] sm:text-xs font-bold border border-red-200 shrink-0">Panakkukang District</span>
                             <span class="text-[10px] sm:text-xs text-slate-500 whitespace-nowrap">• City Skyline & Sebelah Mall</span>
                         </div>
                         <h3 class="text-lg sm:text-2xl font-black text-slate-900 mt-1 leading-snug">{{ $vida->name ?? 'Apartemen Vida View' }}</h3>
                         <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mt-1 leading-relaxed">{{ $vida->description ?? '' }}</p>
                     </div>
                     <div class="text-[11px] sm:text-xs text-slate-500 flex items-center gap-1.5 shrink-0 mt-1 md:mt-0">
-                        <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                        <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                         <span>Jl. Topaz Raya, Panakkukang, Makassar</span>
                     </div>
                 </div>
@@ -433,7 +433,7 @@
                         <button type="button" 
                                 id="btn-toggle-vida-view" 
                                 onclick="toggleShowMoreUnits('grid-vida-view', 'btn-toggle-vida-view', {{ $vida->units->count() }})" 
-                                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-blue-600 hover:text-blue-700 font-extrabold text-xs sm:text-sm border border-blue-200 shadow-sm hover:shadow transition transform hover:-translate-y-0.5">
+                                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-red-600 hover:text-red-700 font-extrabold text-xs sm:text-sm border border-red-200 shadow-sm hover:shadow transition transform hover:-translate-y-0.5">
                             <span>Tampilkan Lebih Banyak ({{ $vida->units->count() - 3 }} Kamar Lainnya)</span>
                             <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -448,7 +448,7 @@
     <section id="fasilitas" class="py-12 sm:py-16 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-blue-700 text-xs font-bold uppercase tracking-wider">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-red-700 text-xs font-bold uppercase tracking-wider">
                     Fasilitas Gedung
                 </span>
                 <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900">
@@ -468,9 +468,9 @@
                             <img src="{{ $fac->image_url }}" alt="{{ $fac->name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-black/30 pointer-events-none"></div>
                         @else
-                            <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-950"></div>
-                            <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full bg-blue-500/10 blur-2xl pointer-events-none"></div>
-                            <div class="absolute left-6 -top-6 w-36 h-36 rounded-full bg-indigo-500/15 blur-xl pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-red-950 via-rose-950 to-slate-950"></div>
+                            <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full bg-red-500/10 blur-2xl pointer-events-none"></div>
+                            <div class="absolute left-6 -top-6 w-36 h-36 rounded-full bg-rose-500/15 blur-xl pointer-events-none"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none"></div>
                         @endif
 
@@ -486,15 +486,15 @@
 
                         <!-- Bottom Content: Tipografi Mewah & Deskripsi -->
                         <div class="relative z-10 p-5 sm:p-6 space-y-2 pointer-events-none">
-                            <h4 class="text-lg sm:text-xl font-black text-white leading-snug group-hover:text-blue-300 transition-colors drop-shadow-sm">
+                            <h4 class="text-lg sm:text-xl font-black text-white leading-snug group-hover:text-rose-300 transition-colors drop-shadow-sm">
                                 {{ $fac->name }}
                             </h4>
                             @if(!empty($fac->description))
                                 <p class="text-xs sm:text-[13px] text-slate-200 line-clamp-2 leading-relaxed opacity-90 drop-shadow-xs">
-                                    {{ $fac->description }}
+                                     {{ $fac->description }}
                                 </p>
                             @endif
-                            <div class="pt-2.5 flex items-center gap-2 text-[11px] text-blue-200 font-semibold border-t border-white/15">
+                            <div class="pt-2.5 flex items-center gap-2 text-[11px] text-rose-200 font-semibold border-t border-white/15">
                                 <span class="flex items-center gap-1.5 text-emerald-400">
                                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                                     Fasilitas Gedung
@@ -520,9 +520,9 @@
                             <img src="{{ $fac->image_url }}" alt="{{ $fac->name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-black/30 pointer-events-none"></div>
                         @else
-                            <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-950"></div>
-                            <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full bg-blue-500/10 blur-2xl pointer-events-none"></div>
-                            <div class="absolute left-6 -top-6 w-36 h-36 rounded-full bg-indigo-500/15 blur-xl pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-red-950 via-rose-950 to-slate-950"></div>
+                            <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full bg-red-500/10 blur-2xl pointer-events-none"></div>
+                            <div class="absolute left-6 -top-6 w-36 h-36 rounded-full bg-rose-500/15 blur-xl pointer-events-none"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none"></div>
                         @endif
 
@@ -538,7 +538,7 @@
 
                         <!-- Bottom Content: Tipografi Mewah & Deskripsi -->
                         <div class="relative z-10 p-5 sm:p-6 space-y-2 pointer-events-none">
-                            <h4 class="text-lg sm:text-xl font-black text-white leading-snug group-hover:text-blue-300 transition-colors drop-shadow-sm">
+                            <h4 class="text-lg sm:text-xl font-black text-white leading-snug group-hover:text-rose-300 transition-colors drop-shadow-sm">
                                 {{ $fac->name }}
                             </h4>
                             @if(!empty($fac->description))
@@ -546,7 +546,7 @@
                                     {{ $fac->description }}
                                 </p>
                             @endif
-                            <div class="pt-2.5 flex items-center gap-2 text-[11px] text-blue-200 font-semibold border-t border-white/15">
+                            <div class="pt-2.5 flex items-center gap-2 text-[11px] text-rose-200 font-semibold border-t border-white/15">
                                 <span class="flex items-center gap-1.5 text-emerald-400">
                                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                                     Fasilitas Gedung
@@ -569,7 +569,7 @@
     <section id="jarak" class="py-12 sm:py-16 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-blue-700 text-xs font-bold uppercase tracking-wider">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-red-700 text-xs font-bold uppercase tracking-wider">
                     Akses Strategis
                 </span>
                 <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900">
@@ -587,17 +587,17 @@
                         $locTitle = preg_replace('/^apartemen\s+/i', '', trim($loc->name));
                         $isDelft = str_contains(strtolower($loc->slug ?? ''), 'delft');
                         $gradientHeader = $isDelft 
-                            ? 'from-blue-900 via-indigo-900 to-slate-900' 
-                            : 'from-blue-900 via-indigo-900 to-slate-900';
-                        $accentColor = $isDelft ? 'text-blue-300' : 'text-blue-300';
+                            ? 'from-red-950 via-rose-950 to-slate-950' 
+                            : 'from-red-950 via-rose-950 to-slate-950';
+                        $accentColor = $isDelft ? 'text-rose-300' : 'text-rose-300';
                     @endphp
                     <div class="bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
                         <div>
                             <!-- Header Lokasi dengan Mini Banner Berkelas Sesuai Preview Card Opsi 1 -->
-                            <div class="p-4 sm:p-6 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #0f172a 100%);">
+                            <div class="p-4 sm:p-6 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #991b1b 0%, #881337 50%, #0f172a 100%);">
                                 <div class="relative z-10 flex items-start justify-between gap-2.5 sm:gap-3">
                                     <div class="min-w-0 flex-1">
-                                        <div class="flex items-center gap-1.5 text-blue-300 text-xs font-bold uppercase tracking-wider mb-1">
+                                        <div class="flex items-center gap-1.5 text-rose-300 text-xs font-bold uppercase tracking-wider mb-1">
                                             <svg class="w-4 h-4 text-rose-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
                                             <span class="truncate">{{ $isDelft ? 'Lokasi Strategis' : 'Pusat Kota & Bisnis' }}</span>
                                         </div>
@@ -619,124 +619,124 @@
                                         
                                         // Deteksi Kategori Ikon & Warna Berdasarkan Nama Landmark
                                         if (str_contains($nameLower, 'bandara') || str_contains($nameLower, 'airport')) {
-                                            $iconBg = 'bg-rose-100 text-rose-700';
-                                            $chipBg = 'bg-rose-100/90 text-rose-700 border-rose-200';
-                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
-                                        } elseif (str_contains($nameLower, 'mall') || str_contains($nameLower, 'transmart') || str_contains($nameLower, 'tsm') || str_contains($nameLower, 'pipo')) {
-                                            $iconBg = 'bg-purple-100 text-purple-700';
-                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
-                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>';
-                                        } elseif (str_contains($nameLower, 'kuliner') || str_contains($nameLower, 'cafe') || str_contains($nameLower, 'topaz') || str_contains($nameLower, 'pisang epe') || str_contains($nameLower, 'seafood')) {
-                                            $iconBg = 'bg-amber-100 text-amber-700';
-                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
-                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>';
-                                        } elseif (str_contains($nameLower, 'pantai') || str_contains($nameLower, 'losari') || str_contains($nameLower, 'masjid') || str_contains($nameLower, 'benteng') || str_contains($nameLower, 'rotterdam') || str_contains($nameLower, 'kubah')) {
-                                            $iconBg = 'bg-blue-100 text-blue-700';
-                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
-                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>';
-                                        } elseif (str_contains($nameLower, 'sakit') || str_contains($nameLower, 'hospital') || str_contains($nameLower, 'siloam') || str_contains($nameLower, 'primaya') || str_contains($nameLower, 'hermina')) {
-                                            $iconBg = 'bg-emerald-100 text-emerald-700';
-                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
-                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>';
-                                        } elseif (str_contains($nameLower, 'tol') || str_contains($nameLower, 'jalan')) {
-                                            $iconBg = 'bg-teal-100 text-teal-700';
-                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
-                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>';
-                                        } else {
-                                            $iconBg = 'bg-slate-100 text-slate-700';
-                                            $chipBg = 'bg-blue-100/80 text-blue-700 border-blue-200/80';
-                                            $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>';
-                                        }
-                                    @endphp
-                                    <div class="p-3 sm:p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50/70 border border-slate-100/90 hover:border-blue-200 transition-all duration-200 flex items-center justify-between gap-3 group/item">
-                                        <!-- Ikon & Nama Destinasi -->
-                                        <div class="flex items-center gap-3 min-w-0">
-                                            <span class="w-8 h-8 rounded-xl {{ $iconBg }} flex items-center justify-center shrink-0 shadow-2xs group-hover/item:scale-105 transition-transform">
-                                                {!! $iconSvg !!}
-                                            </span>
-                                            <div class="min-w-0 flex-1">
-                                                <h4 class="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-blue-600 transition-colors truncate">
-                                                    {{ $landmark->name }}
-                                                </h4>
-                                                @if(!empty($landmark->notes))
-                                                    <p class="text-[11px] text-slate-500 truncate mt-0.5">
-                                                        {{ $landmark->notes }}
-                                                    </p>
-                                                @endif
-                                            </div>
-                                        </div>
+                                             $iconBg = 'bg-rose-100 text-rose-700';
+                                             $chipBg = 'bg-rose-100/90 text-rose-700 border-rose-200';
+                                             $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
+                                         } elseif (str_contains($nameLower, 'mall') || str_contains($nameLower, 'transmart') || str_contains($nameLower, 'tsm') || str_contains($nameLower, 'pipo')) {
+                                             $iconBg = 'bg-purple-100 text-purple-700';
+                                             $chipBg = 'bg-red-50 text-red-700 border-red-200/80';
+                                             $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>';
+                                         } elseif (str_contains($nameLower, 'kuliner') || str_contains($nameLower, 'cafe') || str_contains($nameLower, 'topaz') || str_contains($nameLower, 'pisang epe') || str_contains($nameLower, 'seafood')) {
+                                             $iconBg = 'bg-amber-100 text-amber-700';
+                                             $chipBg = 'bg-red-50 text-red-700 border-red-200/80';
+                                             $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>';
+                                         } elseif (str_contains($nameLower, 'pantai') || str_contains($nameLower, 'losari') || str_contains($nameLower, 'masjid') || str_contains($nameLower, 'benteng') || str_contains($nameLower, 'rotterdam') || str_contains($nameLower, 'kubah')) {
+                                             $iconBg = 'bg-rose-100 text-rose-700';
+                                             $chipBg = 'bg-red-50 text-red-700 border-red-200/80';
+                                             $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>';
+                                         } elseif (str_contains($nameLower, 'sakit') || str_contains($nameLower, 'hospital') || str_contains($nameLower, 'siloam') || str_contains($nameLower, 'primaya') || str_contains($nameLower, 'hermina')) {
+                                             $iconBg = 'bg-emerald-100 text-emerald-700';
+                                             $chipBg = 'bg-red-50 text-red-700 border-red-200/80';
+                                             $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>';
+                                         } elseif (str_contains($nameLower, 'tol') || str_contains($nameLower, 'jalan')) {
+                                             $iconBg = 'bg-teal-100 text-teal-700';
+                                             $chipBg = 'bg-red-50 text-red-700 border-red-200/80';
+                                             $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>';
+                                         } else {
+                                             $iconBg = 'bg-slate-100 text-slate-700';
+                                             $chipBg = 'bg-red-50 text-red-700 border-red-200/80';
+                                             $iconSvg = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>';
+                                         }
+                                     @endphp
+                                     <div class="p-3 sm:p-3.5 rounded-2xl bg-slate-50 hover:bg-red-50/70 border border-slate-100/90 hover:border-red-200 transition-all duration-200 flex items-center justify-between gap-3 group/item">
+                                         <!-- Ikon & Nama Destinasi -->
+                                         <div class="flex items-center gap-3 min-w-0">
+                                             <span class="w-8 h-8 rounded-xl {{ $iconBg }} flex items-center justify-center shrink-0 shadow-2xs group-hover/item:scale-105 transition-transform">
+                                                 {!! $iconSvg !!}
+                                             </span>
+                                             <div class="min-w-0 flex-1">
+                                                 <h4 class="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-red-600 transition-colors truncate">
+                                                     {{ $landmark->name }}
+                                                 </h4>
+                                                 @if(!empty($landmark->notes))
+                                                     <p class="text-[11px] text-slate-500 truncate mt-0.5">
+                                                         {{ $landmark->notes }}
+                                                     </p>
+                                                 @endif
+                                             </div>
+                                         </div>
 
-                                        <!-- Chip Waktu Tempuh -->
-                                        <span class="px-2.5 py-1 rounded-xl text-xs font-black shrink-0 font-mono border shadow-2xs {{ $chipBg }}">
-                                            {{ $landmark->distance_time }}
-                                        </span>
-                                    </div>
-                                @empty
-                                    <div class="text-slate-400 text-xs italic py-4 text-center">
-                                        Informasi akses landmark untuk lokasi ini sedang diperbarui.
-                                    </div>
-                                @endforelse
-                            </div>
-                        </div>
+                                         <!-- Chip Waktu Tempuh -->
+                                         <span class="px-2.5 py-1 rounded-xl text-xs font-black shrink-0 font-mono border shadow-2xs {{ $chipBg }}">
+                                             {{ $landmark->distance_time }}
+                                         </span>
+                                     </div>
+                                 @empty
+                                     <div class="text-slate-400 text-xs italic py-4 text-center">
+                                         Informasi akses landmark untuk lokasi ini sedang diperbarui.
+                                     </div>
+                                 @endforelse
+                             </div>
+                         </div>
 
-                        <!-- Footer Akses Cepat -->
-                        <div class="p-3.5 sm:p-4 px-4 sm:px-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-2 text-[11px] sm:text-xs text-slate-500">
-                            <span class="flex items-center gap-1.5 shrink-0">
-                                <svg class="w-3.5 h-3.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                <span>Akses Transportasi Mudah</span>
-                            </span>
-                            <span class="font-bold text-blue-600 truncate text-right">
-                                {{ $isDelft ? 'Grab & Gojek Siaga 24 Jam' : 'Jalan Kaki Langsung ke Mall' }}
-                            </span>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+                         <!-- Footer Akses Cepat -->
+                         <div class="p-3.5 sm:p-4 px-4 sm:px-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-2 text-[11px] sm:text-xs text-slate-500">
+                             <span class="flex items-center gap-1.5 shrink-0">
+                                 <svg class="w-3.5 h-3.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                 <span>Akses Transportasi Mudah</span>
+                             </span>
+                             <span class="font-bold text-red-600 truncate text-right">
+                                 {{ $isDelft ? 'Grab & Gojek Siaga 24 Jam' : 'Jalan Kaki Langsung ke Mall' }}
+                             </span>
+                         </div>
+                     </div>
+                 @endforeach
+             </div>
 
-            <!-- EMBED GOOGLE MAPS: APARTEMEN VIDA VIEW BY VIDALIDAY -->
-            <div class="mt-16 sm:mt-24 p-4 sm:p-6 rounded-3xl glass-card border border-slate-200/90 shadow-md">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
-                            <h3 class="text-sm sm:text-lg font-extrabold text-slate-900">
-                                Peta Lokasi: APARTEMEN VIDA VIEW BY VIDALIDAY
-                            </h3>
-                        </div>
-                        <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5">
-                            Jl. Topaz Raya, Masale, Kec. Panakkukang, Kota Makassar, Sulawesi Selatan 90231
-                        </p>
-                    </div>
+             <!-- EMBED GOOGLE MAPS: APARTEMEN VIDA VIEW BY VIDALIDAY -->
+             <div class="mt-16 sm:mt-24 p-4 sm:p-6 rounded-3xl glass-card border border-slate-200/90 shadow-md">
+                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4">
+                     <div>
+                         <div class="flex items-center gap-2">
+                             <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+                             <h3 class="text-sm sm:text-lg font-extrabold text-slate-900">
+                                 Peta Lokasi: APARTEMEN VIDA VIEW BY VIDALIDAY
+                             </h3>
+                         </div>
+                         <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                             Jl. Topaz Raya, Masale, Kec. Panakkukang, Kota Makassar, Sulawesi Selatan 90231
+                         </p>
+                     </div>
 
-                    <a href="https://maps.app.goo.gl/fkvUg2jpHedbgXXC9?g_st=ic" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 transition transform hover:-translate-y-0.5 shrink-0 w-full sm:w-auto justify-center">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
-                        <span>Buka di Google Maps</span>
-                    </a>
-                </div>
+                     <a href="https://maps.app.goo.gl/fkvUg2jpHedbgXXC9?g_st=ic" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-md shadow-red-500/20 transition transform hover:-translate-y-0.5 shrink-0 w-full sm:w-auto justify-center">
+                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+                         <span>Buka di Google Maps</span>
+                     </a>
+                 </div>
 
-                <!-- Google Maps Interactive Iframe -->
-                <div class="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
-                    <iframe 
-                        src="https://maps.google.com/maps?q=APARTEMEN+VIDA+VIEW+BY+VIDALIDAY,+Jl.+Topaz+Raya,+Masale,+Kec.+Panakkukang,+Kota+Makassar,+Sulawesi+Selatan+90231&t=&z=16&ie=UTF8&iwloc=&output=embed" 
-                        class="w-full h-full border-0" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Peta Lokasi APARTEMEN VIDA VIEW BY VIDALIDAY">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+                 <!-- Google Maps Interactive Iframe -->
+                 <div class="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
+                     <iframe 
+                         src="https://maps.google.com/maps?q=APARTEMEN+VIDA+VIEW+BY+VIDALIDAY,+Jl.+Topaz+Raya,+Masale,+Kec.+Panakkukang,+Kota+Makassar,+Sulawesi+Selatan+90231&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                         class="w-full h-full border-0" 
+                         allowfullscreen="" 
+                         loading="lazy" 
+                         referrerpolicy="no-referrer-when-downgrade"
+                         title="Peta Lokasi APARTEMEN VIDA VIEW BY VIDALIDAY">
+                     </iframe>
+                 </div>
+             </div>
+         </div>
+     </section>
 
     <!-- 7. FAQ & ATURAN MENGINAP -->
     <section id="faq" class="py-12 sm:py-16 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 sm:mb-10 space-y-2">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-blue-700 text-xs font-bold uppercase tracking-wider">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-red-700 text-xs font-bold uppercase tracking-wider">
                     FAQ
                 </span>
                 <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900">
@@ -749,11 +749,11 @@
 
             <div class="space-y-3 sm:space-y-3.5" id="faq-list">
                 @forelse($faqs as $faq)
-                    <div class="p-4 sm:p-5 rounded-2xl glass-card border border-slate-200/80 space-y-1.5 shadow-sm hover:border-blue-200 transition {{ $loop->index >= 3 ? 'faq-extra hidden' : '' }}">
+                    <div class="p-4 sm:p-5 rounded-2xl glass-card border border-slate-200/80 space-y-1.5 shadow-sm hover:border-red-200 transition {{ $loop->index >= 3 ? 'faq-extra hidden' : '' }}">
                         <h3 class="text-xs sm:text-base font-bold text-slate-900 flex items-start sm:items-center justify-between gap-2.5">
                             <span>{{ $faq->question }}</span>
                             @if($faq->badge)
-                                <span class="text-blue-600 text-[11px] sm:text-sm font-semibold shrink-0">{{ $faq->badge }}</span>
+                                <span class="text-red-600 text-[11px] sm:text-sm font-semibold shrink-0">{{ $faq->badge }}</span>
                             @endif
                         </h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -772,7 +772,7 @@
                     <button type="button" 
                             id="btn-toggle-faq" 
                             onclick="toggleFaqList()" 
-                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-blue-600 hover:text-blue-700 font-extrabold text-xs sm:text-sm border border-blue-200 shadow-sm hover:shadow transition transform hover:-translate-y-0.5 cursor-pointer">
+                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-red-600 hover:text-red-700 font-extrabold text-xs sm:text-sm border border-red-200 shadow-sm hover:shadow transition transform hover:-translate-y-0.5 cursor-pointer">
                         <span id="faq-toggle-text">Lihat Semua FAQ ({{ count($faqs) - 3 }} Pertanyaan Lainnya)</span>
                         <svg id="faq-toggle-icon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
@@ -796,11 +796,11 @@
             <div class="flex items-start gap-3 sm:gap-4 pr-7 sm:pr-8">
                 <img id="modal-unit-img" src="" alt="Unit" class="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl object-cover border border-slate-200 shrink-0 bg-slate-100 shadow-sm">
                 <div>
-                    <span id="modal-unit-location" class="text-[10px] sm:text-[11px] font-bold text-blue-600 uppercase tracking-wider block"></span>
+                    <span id="modal-unit-location" class="text-[10px] sm:text-[11px] font-bold text-red-600 uppercase tracking-wider block"></span>
                     <h3 id="modal-unit-name" class="text-sm sm:text-lg font-black text-slate-900 leading-tight"></h3>
                     <div class="flex items-center gap-2 mt-1">
-                        <span id="modal-unit-room-type" class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] sm:text-[11px] font-semibold"></span>
-                        <span id="modal-unit-price" class="text-xs sm:text-sm font-extrabold text-blue-700"></span>
+                        <span id="modal-unit-room-type" class="px-2 py-0.5 rounded-md bg-red-50 text-red-700 text-[10px] sm:text-[11px] font-semibold"></span>
+                        <span id="modal-unit-price" class="text-xs sm:text-sm font-extrabold text-red-700"></span>
                         <span id="modal-unit-period" class="text-[10px] sm:text-[11px] text-slate-400"></span>
                     </div>
                 </div>
@@ -831,7 +831,7 @@
                                id="book-checkin" 
                                required 
                                onchange="calculateDuration()"
-                               class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 shadow-sm">
+                               class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 shadow-sm">
                     </div>
 
                     <div>
@@ -843,7 +843,7 @@
                                id="book-checkout" 
                                required 
                                onchange="calculateDuration()"
-                               class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 shadow-sm">
+                               class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 shadow-sm">
                     </div>
                 </div>
 
@@ -853,9 +853,9 @@
                             <label for="book-guests" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                                 Jumlah Tamu
                             </label>
-                            <span id="modal-unit-capacity-hint" class="text-[10px] text-blue-600 font-semibold"></span>
+                            <span id="modal-unit-capacity-hint" class="text-[10px] text-red-600 font-semibold"></span>
                         </div>
-                        <select id="book-guests" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 shadow-sm">
+                        <select id="book-guests" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 shadow-sm">
                             <option value="1 Orang Tamu">1 Orang Tamu</option>
                             <option value="2 Orang Tamu">2 Orang Tamu</option>
                             <option value="3 Orang Tamu">3 Orang Tamu</option>
@@ -874,7 +874,7 @@
                                id="book-duration-info" 
                                readonly 
                                value="Pilih tanggal di atas" 
-                               class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-blue-700 font-bold focus:outline-none shadow-sm cursor-default">
+                               class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-red-700 font-bold focus:outline-none shadow-sm cursor-default">
                     </div>
                 </div>
 
@@ -882,7 +882,7 @@
                     <label for="book-note" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                         Catatan Khusus (Opsional)
                     </label>
-                    <textarea id="book-note" rows="2" placeholder="e.g. Ingin lantai tinggi, butuh parkir mobil, atau ada permintaan khusus..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 shadow-sm"></textarea>
+                    <textarea id="book-note" rows="2" placeholder="e.g. Ingin lantai tinggi, butuh parkir mobil, atau ada permintaan khusus..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 shadow-sm"></textarea>
                 </div>
 
                 <!-- Action CTA -->
