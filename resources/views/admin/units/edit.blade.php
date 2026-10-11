@@ -273,7 +273,7 @@
                     </div>
                 </div>
 
-                <!-- Fasilitas & Deskripsi -->
+                <!-- Fasilitas, Video YouTube & Deskripsi -->
                 <div class="space-y-4">
                     @php
                         $facilitiesString = is_array($unit->facilities_list) ? implode(', ', $unit->facilities_list) : '';
@@ -281,6 +281,15 @@
                     <div>
                         <label for="facilities_input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Fasilitas Kamar (Pisahkan dengan koma)</label>
                         <input type="text" name="facilities_input" id="facilities_input" value="{{ old('facilities_input', $facilitiesString) }}" class="w-full px-4 py-3 rounded-xl glass-input text-sm">
+                    </div>
+
+                    <div>
+                        <label for="youtube_video_url" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-red-600 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            <span>Link Video YouTube (Room Tour Kamar)</span>
+                        </label>
+                        <input type="url" name="youtube_video_url" id="youtube_video_url" value="{{ old('youtube_video_url', $unit->youtube_video_url) }}" placeholder="e.g. https://www.youtube.com/watch?v=xxxx atau https://youtu.be/xxxx" class="w-full px-4 py-3 rounded-xl glass-input text-sm">
+                        <span class="text-[10px] text-slate-400 mt-1 block">Opsional. Jika diisi, tombol Video Tur akan muncul di card unit halaman depan.</span>
                     </div>
 
                     <div>

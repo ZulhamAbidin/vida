@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Desain Card Unit VIDALIDAY</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(16px);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+        .slide-track {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased p-4 sm:p-8 min-h-screen">
+
+    <!-- Container Header -->
+    <div class="max-w-7xl mx-auto mb-8 sm:mb-12">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-extrabold uppercase tracking-wider mb-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
+                    Pratinjau Desain Card
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Katalog Unit Apartemen VIDALIDAY</h1>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">Halaman contoh statis untuk meninjau 2 opsi gaya card (Gaya A: Card Horizontal Kompak & Gaya B: Card Gambar Slider Vertikal)</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="/" class="px-4 py-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 transition inline-flex items-center gap-2 shadow-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    <span>Kembali ke Halaman Utama</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto space-y-16">
+
+        <!-- ========================================================================= -->
+        <!-- REKOMENDASI UTAMA: SESUAI REQUEST USER (GAMBAR LEBAR PENUH & HARGA CORET DI BAWAH) -->
+        <!-- ========================================================================= -->
+        <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-5 rounded-2xl shadow-lg shadow-blue-500/20">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-black uppercase tracking-wider text-amber-300 border border-white/20">
+                        ⭐ DESAIN SESUAI REQUEST ANDA
+                    </span>
+                    <h2 class="text-xl sm:text-2xl font-black mt-2 text-white">Card Full-Width Banner Image + Tarif Coret di Bawah</h2>
+                    <p class="text-xs sm:text-sm text-blue-100 mt-1 max-w-3xl leading-relaxed">
+                        Foto tampil <strong>lebar penuh (full width)</strong> di bagian atas kartu, identitas unit & badge tersusun rapi, box tarif sewa dengan <strong>harga coret diletakkan di bawah</strong> harga promo, dilengkapi deskripsi kamar serta chip fasilitas kamar.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 self-start sm:self-auto shrink-0">
+                    <span class="text-xs font-bold bg-white text-blue-800 px-3.5 py-2 rounded-xl shadow-sm">
+                        Siap Diterapkan ke Halaman Utama
+                    </span>
+                </div>
+            </div>
+
+            <!-- Grid Card Sesuai Request -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+                
+                <!-- CARD 1: DELFT CPI STUDIO A -->
+                <div class="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- 1. Gambar Lebar Penuh (Full Width Image) -->
+                        <div class="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-900 group/img">
+                            <img src="/images/hero_delft_cpi.jpg" alt="Delft Sunset Studio A" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-black/20"></div>
+
+                            <!-- Floating Badges on Full-width Image -->
+                            <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10">
+                                <span class="px-2.5 py-1 rounded-lg bg-white/95 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-slate-800 uppercase tracking-wider shadow-sm border border-white/60">
+                                    Studio Eksekutif
+                                </span>
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white text-[10px] sm:text-[11px] font-black tracking-wide shadow-md shadow-emerald-500/30">
+                                    Promo Aktif
+                                </span>
+                            </div>
+
+                            <!-- Bottom Left Guest Capacity -->
+                            <div class="absolute bottom-3 left-3 flex items-center gap-2 text-xs text-white z-10">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-900/75 backdrop-blur-md text-[10px] font-medium">
+                                    <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    Maks. 2 Tamu
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 2. Content Body (Identitas, Tarif Box, Deskripsi, Fasilitas) -->
+                        <div class="p-4 sm:p-5 space-y-3.5">
+                            
+                            <!-- Header Identitas Unit -->
+                            <div>
+                                <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider block">Apartemen Delft CPI</span>
+                                <h3 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mt-0.5">
+                                    Delft Sunset Studio A
+                                </h3>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                                    <span>Studio 1 Bedroom • Harian</span>
+                                    <span>• Maks. 2 Tamu</span>
+                                </div>
+                            </div>
+
+                            <!-- BOX TARIF SEWA: Harga Normal Coret Berada DI BAWAH Harga Promo -->
+                            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100/90 flex items-center justify-between gap-3">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">TARIF SEWA</span>
+                                    
+                                    <!-- Harga Promo (Utama) -->
+                                    <div class="flex items-baseline gap-1 mt-0.5">
+                                        <span class="text-blue-700 font-black text-lg sm:text-xl">Rp 450.000</span>
+                                        <span class="text-[11px] text-slate-500 font-semibold">/ Malam</span>
+                                    </div>
+
+                                    <!-- Harga Coretan (Tepat di Bawah Harga Promo Sesuai Request) -->
+                                    <div class="flex items-center gap-1 text-[11px] text-rose-500 mt-0.5">
+                                        <span class="text-slate-400 text-[10px]">Normal:</span>
+                                        <span class="line-through font-semibold">Rp 600.000</span>
+                                    </div>
+                                </div>
+
+                                <!-- Promo Badge di Kanan Box -->
+                                <div class="text-right shrink-0">
+                                    <span class="inline-block px-3 py-1 rounded-xl bg-blue-50 text-blue-700 text-xs font-black border border-blue-200">
+                                        Flash Sale 25%
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Box Deskripsi Kamar -->
+                            <div class="text-xs text-slate-600 bg-slate-50/70 p-3 rounded-xl border border-slate-100 line-clamp-2 leading-relaxed">
+                                <span class="font-bold text-slate-800 text-[11px] block mb-0.5">Deskripsi:</span>
+                                Unit studio modern waterfront dengan pemandangan langsung ke Pantai Losari, interior bersih, kasur king size, dan balkon pribadi.
+                            </div>
+
+                            <!-- Fasilitas Kamar Chips -->
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">FASILITAS KAMAR:</span>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">AC Dingin</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Smart TV 43 Netflix</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Free WiFi</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Water Heater</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Balkon</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Kitchen Set</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Queen Bed</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 3. Footer Tombol Booking WhatsApp -->
+                    <div class="p-4 sm:p-5 pt-0 border-t border-slate-100 mt-2">
+                        <a href="https://wa.me/6285711696970?text=Halo%20Admin%20VIDALIDAY%2C%20saya%20tertarik%20dengan%20unit%20Delft%20Sunset%20Studio%20A" target="_blank" class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all active:scale-98">
+                            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            <span>PESAN VIA WHATSAPP</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 2: VIDA VIEW ASHTON B -->
+                <div class="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- 1. Gambar Lebar Penuh (Full Width Image) -->
+                        <div class="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-900 group/img">
+                            <img src="/images/hero_vida_view.jpg" alt="Vida View 2-Bedroom Suite" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-black/20"></div>
+
+                            <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10">
+                                <span class="px-2.5 py-1 rounded-lg bg-white/95 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-slate-800 uppercase tracking-wider shadow-sm border border-white/60">
+                                    2 Bedroom Family
+                                </span>
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white text-[10px] sm:text-[11px] font-black tracking-wide shadow-md shadow-emerald-500/30">
+                                    Promo Aktif
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-3 left-3 flex items-center gap-2 text-xs text-white z-10">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-900/75 backdrop-blur-md text-[10px] font-medium">
+                                    <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    Maks. 4 Tamu
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 2. Content Body -->
+                        <div class="p-4 sm:p-5 space-y-3.5">
+                            
+                            <div>
+                                <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider block">Apartemen Vida View</span>
+                                <h3 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mt-0.5">
+                                    Vida View Ashton Premier B
+                                </h3>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                                    <span>2 Bedroom • Mingguan</span>
+                                    <span>• Maks. 4 Tamu</span>
+                                </div>
+                            </div>
+
+                            <!-- BOX TARIF SEWA: Harga Coret DI BAWAH Harga Promo -->
+                            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100/90 flex items-center justify-between gap-3">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">TARIF SEWA</span>
+                                    
+                                    <div class="flex items-baseline gap-1 mt-0.5">
+                                        <span class="text-blue-700 font-black text-lg sm:text-xl">Rp 2.800.000</span>
+                                        <span class="text-[11px] text-slate-500 font-semibold">/ Minggu</span>
+                                    </div>
+
+                                    <!-- Harga Coret di Bawah -->
+                                    <div class="flex items-center gap-1 text-[11px] text-rose-500 mt-0.5">
+                                        <span class="text-slate-400 text-[10px]">Normal:</span>
+                                        <span class="line-through font-semibold">Rp 3.200.000</span>
+                                    </div>
+                                </div>
+
+                                <div class="text-right shrink-0">
+                                    <span class="inline-block px-3 py-1 rounded-xl bg-blue-50 text-blue-700 text-xs font-black border border-blue-200">
+                                        Promo Spesial
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Box Deskripsi Kamar -->
+                            <div class="text-xs text-slate-600 bg-slate-50/70 p-3 rounded-xl border border-slate-100 line-clamp-2 leading-relaxed">
+                                <span class="font-bold text-slate-800 text-[11px] block mb-0.5">Deskripsi:</span>
+                                Unit 2 kamar tidur luas di Tower Ashton, bersebelahan dengan Mall Panakkukang, sofa santai empuk, meja makan, dan akses kolam renang.
+                            </div>
+
+                            <!-- Fasilitas Kamar Chips -->
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">FASILITAS KAMAR:</span>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">AC Dingin Tiap Kamar</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Smart TV Netflix</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Free WiFi</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Water Heater</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Kitchen Set Lengkap</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Kulkas & Dispenser</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 3. Footer Tombol Booking WhatsApp -->
+                    <div class="p-4 sm:p-5 pt-0 border-t border-slate-100 mt-2">
+                        <a href="https://wa.me/6285711696970?text=Halo%20Admin%20VIDALIDAY%2C%20saya%20tertarik%20dengan%20unit%20Vida%20View%20Ashton%20Premier%20B" target="_blank" class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all active:scale-98">
+                            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            <span>PESAN VIA WHATSAPP</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 3: DELFT PENTHOUSE DELUXE C -->
+                <div class="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- 1. Gambar Lebar Penuh (Full Width Image) -->
+                        <div class="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-900 group/img">
+                            <img src="/images/building_delft_cpi.jpg" alt="Delft Grand Suite C" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-black/20"></div>
+
+                            <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10">
+                                <span class="px-2.5 py-1 rounded-lg bg-white/95 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-slate-800 uppercase tracking-wider shadow-sm border border-white/60">
+                                    Penthouse Suite
+                                </span>
+                                <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-white text-[10px] sm:text-[11px] font-black tracking-wide shadow-md">
+                                    Reguler
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-3 left-3 flex items-center gap-2 text-xs text-white z-10">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-900/75 backdrop-blur-md text-[10px] font-medium">
+                                    <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    Maks. 6 Tamu
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 2. Content Body -->
+                        <div class="p-4 sm:p-5 space-y-3.5">
+                            
+                            <div>
+                                <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider block">Apartemen Delft CPI</span>
+                                <h3 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mt-0.5">
+                                    Delft Grand Penthouse C
+                                </h3>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                                    <span>Penthouse 3 Kamar • Bulanan</span>
+                                    <span>• Maks. 6 Tamu</span>
+                                </div>
+                            </div>
+
+                            <!-- BOX TARIF SEWA: Tarif Normal (Tanpa Coretan) -->
+                            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100/90 flex items-center justify-between gap-3">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">TARIF SEWA</span>
+                                    
+                                    <div class="flex items-baseline gap-1 mt-0.5">
+                                        <span class="text-blue-700 font-black text-lg sm:text-xl">Rp 9.500.000</span>
+                                        <span class="text-[11px] text-slate-500 font-semibold">/ Bulan</span>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5 font-medium">Tarif Bersih Termasuk Service Charge</span>
+                                </div>
+
+                                <div class="text-right shrink-0">
+                                    <span class="inline-block px-3 py-1 rounded-xl bg-blue-50 text-blue-700 text-xs font-black border border-blue-200">
+                                        Best Value
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Box Deskripsi Kamar -->
+                            <div class="text-xs text-slate-600 bg-slate-50/70 p-3 rounded-xl border border-slate-100 line-clamp-2 leading-relaxed">
+                                <span class="font-bold text-slate-800 text-[11px] block mb-0.5">Deskripsi:</span>
+                                Tipe Penthouse termewah di CPI dengan pemandangan 270 derajat laut dan kota, ruang keluarga luas, dan kamar mandi bathtub.
+                            </div>
+
+                            <!-- Fasilitas Kamar Chips -->
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">FASILITAS KAMAR:</span>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">3 Kamar Tidur</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Bathtub</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Smart TV 55 Inch</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Dapur Marmer</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">Balkon Sunset Panorama</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 3. Footer Tombol Booking WhatsApp -->
+                    <div class="p-4 sm:p-5 pt-0 border-t border-slate-100 mt-2">
+                        <a href="https://wa.me/6285711696970?text=Halo%20Admin%20VIDALIDAY%2C%20saya%20tertarik%20dengan%20unit%20Delft%20Grand%20Penthouse%20C" target="_blank" class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all active:scale-98">
+                            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            <span>PESAN VIA WHATSAPP</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- OPSI LAINNYA UNTUK REFERENSI PEMBANDING -->
+        <!-- ========================================== -->
+        <div class="pt-8 border-t border-slate-300">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6 text-center">--- Pilihan Desain Pembanding Lainnya ---</h3>
+        </div>
+
+        <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-slate-100 p-4 rounded-2xl border border-slate-200">
+                <div>
+                    <span class="px-2.5 py-0.5 rounded-lg bg-slate-700 text-white text-[11px] font-black uppercase tracking-wider">Pembanding A</span>
+                    <h2 class="text-base sm:text-lg font-black text-slate-900 mt-1">Gaya Card Kompak (Thumbnail di Kiri)</h2>
+                </div>
+            </div>
+
+            <!-- Grid Card Gaya 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                
+                <!-- CARD 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-sm space-y-3.5 transition hover:border-blue-400 hover:shadow-lg flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <!-- Top: Foto & Identitas -->
+                        <div class="flex items-start gap-3.5">
+                            <img src="/images/hero_delft_cpi.jpg" alt="Delft Sunset Studio A" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-slate-200 shrink-0 bg-slate-100 shadow-xs group-hover:scale-102 transition duration-300">
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center justify-between gap-1">
+                                    <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider truncate">Apartemen Delft CPI</span>
+                                    <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold shrink-0">Promo Aktif</span>
+                                </div>
+                                <h3 class="font-extrabold text-slate-900 text-sm sm:text-base truncate leading-snug mt-0.5">Delft Sunset Studio A</h3>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                                    <span>Studio Eksekutif • Harian</span>
+                                    <span>• Maks. 2 Tamu</span>
+                                </div>
+                                <div class="mt-2 flex items-center gap-1.5 text-[10px] text-emerald-600 font-bold">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Unit Bersih & Waterfront View</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Middle: Tarif Sewa Box -->
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Tarif Sewa</span>
+                                <div class="flex items-baseline gap-1.5 mt-0.5">
+                                    <span class="text-blue-700 font-black text-base sm:text-lg">Rp 450.000</span>
+                                    <span class="text-[11px] text-rose-500 line-through">Rp 600.000</span>
+                                    <span class="text-[10px] text-slate-500 font-semibold">/ Malam</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-extrabold border border-blue-200 shrink-0">
+                                Flash Sale 25%
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Bottom: Aksi Pesan WhatsApp -->
+                    <div class="pt-3 border-t border-slate-100">
+                        <a href="https://wa.me/6285711696970?text=Halo%20Admin%20VIDALIDAY%2C%20saya%20tertarik%20dengan%20unit%20Delft%20Sunset%20Studio%20A" target="_blank" class="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all active:scale-98">
+                            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            <span>Pesan via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-sm space-y-3.5 transition hover:border-blue-400 hover:shadow-lg flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3.5">
+                            <img src="/images/hero_delft_cpi_entrance.jpg" alt="Delft Two-Bedroom View B" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-slate-200 shrink-0 bg-slate-100 shadow-xs group-hover:scale-102 transition duration-300">
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center justify-between gap-1">
+                                    <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider truncate">Apartemen Delft CPI</span>
+                                    <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold shrink-0">Promo Aktif</span>
+                                </div>
+                                <h3 class="font-extrabold text-slate-900 text-sm sm:text-base truncate leading-snug mt-0.5">Delft Two-Bedroom View B</h3>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                                    <span>2 Bedroom Family • Mingguan</span>
+                                    <span>• Maks. 4 Tamu</span>
+                                </div>
+                                <div class="mt-2 flex items-center gap-1.5 text-[10px] text-emerald-600 font-bold">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Dapur Lengkap & Smart TV</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Tarif Sewa</span>
+                                <div class="flex items-baseline gap-1.5 mt-0.5">
+                                    <span class="text-blue-700 font-black text-base sm:text-lg">Rp 2.800.000</span>
+                                    <span class="text-[11px] text-rose-500 line-through">Rp 3.200.000</span>
+                                    <span class="text-[10px] text-slate-500 font-semibold">/ Minggu</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-extrabold border border-blue-200 shrink-0">
+                                Promo Spesial
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100">
+                        <a href="https://wa.me/6285711696970?text=Halo%20Admin%20VIDALIDAY%2C%20saya%20tertarik%20dengan%20unit%20Delft%20Two-Bedroom%20View%20B" target="_blank" class="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all active:scale-98">
+                            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            <span>Pesan via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-sm space-y-3.5 transition hover:border-blue-400 hover:shadow-lg flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3.5">
+                            <img src="/images/hero_vida_view.jpg" alt="Vida View Brentsville Suite C" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-slate-200 shrink-0 bg-slate-100 shadow-xs group-hover:scale-102 transition duration-300">
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center justify-between gap-1">
+                                    <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider truncate">Apartemen Vida View</span>
+                                    <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold shrink-0">Reguler</span>
+                                </div>
+                                <h3 class="font-extrabold text-slate-900 text-sm sm:text-base truncate leading-snug mt-0.5">Vida View Brentsville Suite C</h3>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                                    <span>Penthouse Deluxe • Bulanan</span>
+                                    <span>• Maks. 6 Tamu</span>
+                                </div>
+                                <div class="mt-2 flex items-center gap-1.5 text-[10px] text-emerald-600 font-bold">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Balkon Luas & Kolam Renang Olympic</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Tarif Sewa</span>
+                                <div class="flex items-baseline gap-1.5 mt-0.5">
+                                    <span class="text-blue-700 font-black text-base sm:text-lg">Rp 9.500.000</span>
+                                    <span class="text-[10px] text-slate-500 font-semibold">/ Bulan</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-extrabold border border-blue-200 shrink-0">
+                                Best Value
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100">
+                        <a href="https://wa.me/6285711696970?text=Halo%20Admin%20VIDALIDAY%2C%20saya%20tertarik%20dengan%20unit%20Vida%20View%20Brentsville%20Suite%20C" target="_blank" class="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all active:scale-98">
+                            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            <span>Pesan via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- OPSI 3: GAYA HYBRID (SLIDER MULTI-GAMBAR + TAUTAN VIDEO YOUTUBE POPUP) -->
+        <!-- ========================================== -->
+        <section class="space-y-6 pt-6 border-t border-slate-200">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-gradient-to-r from-red-50 via-rose-50 to-amber-50 p-4 rounded-2xl border border-red-200/80">
+                <div>
+                    <span class="px-2.5 py-0.5 rounded-lg bg-red-600 text-white text-[11px] font-black uppercase tracking-wider flex items-center gap-1.5 w-fit">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        Opsi 3 — Multimedia Pintar
+                    </span>
+                    <h2 class="text-lg sm:text-xl font-black text-slate-900 mt-1">Gaya Card dengan Slider Gambar & Tombol Video YouTube (Room Tour)</h2>
+                    <p class="text-xs text-slate-600">Admin dapat mentautkan link video YouTube kamar/gedung. Calon tamu dapat menggeser foto dan menonton room tour via popup tanpa meninggalkan halaman.</p>
+                </div>
+                <span class="text-xs font-bold text-red-700 bg-white px-3 py-1.5 rounded-xl border border-red-200 self-start sm:self-auto shrink-0">Interaktif: Multi-Foto & Play Video</span>
+            </div>
+
+            <!-- Grid Card Gaya 3 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                
+                <!-- CARD 3A: Delft Executive Studio with YT Video & Slider -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- Slider Gambar Multi-Foto Interaktif -->
+                        <div class="relative h-60 overflow-hidden bg-slate-900 select-none group/slider" id="slider-demo-1">
+                            <!-- Track Slider -->
+                            <div class="slide-track flex h-full" id="track-demo-1" style="transform: translateX(0%); width: 300%;">
+                                <div class="w-1/3 h-full flex-shrink-0 relative">
+                                    <img src="/images/hero_delft_cpi.jpg" alt="Delft Sunset Room 1" class="w-full h-full object-cover">
+                                </div>
+                                <div class="w-1/3 h-full flex-shrink-0 relative">
+                                    <img src="/images/hero_delft_cpi_entrance.jpg" alt="Delft Sunset Room 2" class="w-full h-full object-cover">
+                                </div>
+                                <div class="w-1/3 h-full flex-shrink-0 relative">
+                                    <img src="/images/building_delft_cpi.jpg" alt="Delft Sunset Room 3" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+
+                            <!-- Gradient -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-black/30 pointer-events-none"></div>
+
+                            <!-- Badges Atas -->
+                            <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
+                                <span class="px-2.5 py-1 rounded-lg bg-white/95 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-slate-800 uppercase tracking-wider shadow-sm">
+                                    Studio Sunset
+                                </span>
+                                
+                                <div class="flex items-center gap-1.5">
+                                    <!-- Counter Foto -->
+                                    <span id="counter-demo-1" class="px-2 py-0.5 rounded-md bg-slate-900/80 backdrop-blur-md text-[10px] font-bold text-white tracking-wider border border-white/20">
+                                        1/3 Foto
+                                    </span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-600 text-white text-[10px] font-black tracking-wide shadow-md shadow-blue-500/30">
+                                        Flash Sale 25%
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Slider Controls (Left / Right Buttons) -->
+                            <button type="button" 
+                                    onclick="slideDemo('demo-1', -1, 3)" 
+                                    aria-label="Foto Sebelumnya"
+                                    class="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center backdrop-blur-md shadow-md transition hover:scale-110">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                            </button>
+                            <button type="button" 
+                                    onclick="slideDemo('demo-1', 1, 3)" 
+                                    aria-label="Foto Berikutnya"
+                                    class="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center backdrop-blur-md shadow-md transition hover:scale-110">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+
+                            <!-- Bawah: Info Kapasitas & View -->
+                            <div class="absolute bottom-3 left-3 flex items-center gap-2 text-xs text-white z-10 pointer-events-none">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-900/75 backdrop-blur-md text-[10px] font-medium">
+                                    <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    Maks. 2 Tamu
+                                </span>
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-900/75 backdrop-blur-md text-[10px] font-medium">
+                                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Sunset View
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-4 sm:p-5 space-y-3.5">
+                            <div>
+                                <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider block">Apartemen Delft CPI</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mt-0.5">
+                                    Delft Sunset Studio A
+                                </h3>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                                    <span>Studio 1 Bedroom • Harian</span>
+                                    <span>• Maks. 2 Tamu</span>
+                                </div>
+                            </div>
+
+                            <!-- Box Tarif Sewa: Harga Coret di Bawah -->
+                            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-3">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">TARIF SEWA</span>
+                                    <div class="flex items-baseline gap-1 mt-0.5">
+                                        <span class="text-blue-700 font-black text-lg sm:text-xl">Rp 450.000</span>
+                                        <span class="text-[11px] text-slate-500 font-semibold">/ Malam</span>
+                                    </div>
+                                    <div class="flex items-center gap-1 text-[11px] text-rose-500 mt-0.5">
+                                        <span class="text-slate-400 text-[10px]">Normal:</span>
+                                        <span class="line-through font-semibold">Rp 600.000</span>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-xl bg-blue-50 text-blue-700 text-xs font-black border border-blue-200">
+                                    Flash Sale 25%
+                                </span>
+                            </div>
+
+                            <!-- Deskripsi -->
+                            <div class="text-xs text-slate-600 bg-slate-50/70 p-3 rounded-xl border border-slate-100 line-clamp-2 leading-relaxed">
+                                <span class="font-bold text-slate-800 text-[11px] block mb-0.5">Deskripsi:</span>
+                                Dilengkapi kitchen set mini, balcony menghadap laut Pantai Losari, kasur king-size premium, dan water heater.
+                            </div>
+
+                            <!-- Fitur & Fasilitas -->
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">FASILITAS KAMAR:</span>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] text-blue-700 font-medium">AC Dingin</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] text-blue-700 font-medium">Smart TV Netflix</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] text-blue-700 font-medium">Water Heater</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] text-blue-700 font-medium">Kolam Renang</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Tarif & WhatsApp Button -->
+                    <div class="p-4 sm:p-5 pt-0 border-t border-slate-100 mt-2">
+                        <!-- 2 Tombol Aksi: Nonton Video & Pesan WA -->
+                        <div class="grid grid-cols-2 gap-2 pt-1">
+                            <button type="button" 
+                                    onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Room Tour Delft Sunset Studio A')" 
+                                    class="py-2.5 px-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs flex items-center justify-center gap-1.5 border border-red-200 transition active:scale-95">
+                                <svg class="w-4 h-4 fill-current text-red-600" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                <span>Video Tur</span>
+                            </button>
+
+                            <a href="https://wa.me/6285711696970?text=Halo%20Admin%20VIDALIDAY%2C%20saya%20tertarik%20dengan%20unit%20Delft%20Sunset%20Studio%20A" target="_blank" class="py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-emerald-500/20 transition active:scale-95">
+                                <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                                <span>Pesan WA</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3B: Vida View Brentsville with Slider & YT Video -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- Slider Gambar Multi-Foto Interaktif -->
+                        <div class="relative h-60 overflow-hidden bg-slate-900 select-none group/slider" id="slider-demo-2">
+                            <!-- Track Slider -->
+                            <div class="slide-track flex h-full" id="track-demo-2" style="transform: translateX(0%); width: 200%;">
+                                <div class="w-1/2 h-full flex-shrink-0 relative">
+                                    <img src="/images/hero_vida_view.jpg" alt="Vida View Suite 1" class="w-full h-full object-cover">
+                                </div>
+                                <div class="w-1/2 h-full flex-shrink-0 relative">
+                                    <img src="/images/hero_aerial_vida_view.jpg" alt="Vida View Suite 2" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+
+                            <!-- Gradient -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-black/30 pointer-events-none"></div>
+
+                            <!-- Badges Atas -->
+                            <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
+                                <span class="px-2.5 py-1 rounded-lg bg-white/95 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-slate-800 uppercase tracking-wider shadow-sm">
+                                    2 Bedroom Family
+                                </span>
+                                
+                                <div class="flex items-center gap-1.5">
+                                    <span id="counter-demo-2" class="px-2 py-0.5 rounded-md bg-slate-900/80 backdrop-blur-md text-[10px] font-bold text-white tracking-wider border border-white/20">
+                                        1/2 Foto
+                                    </span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-[10px] font-black tracking-wide shadow-md shadow-emerald-500/30">
+                                        Populer
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Slider Controls (Left / Right Buttons) -->
+                            <button type="button" 
+                                    onclick="slideDemo('demo-2', -1, 2)" 
+                                    aria-label="Foto Sebelumnya"
+                                    class="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center backdrop-blur-md shadow-md transition hover:scale-110">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                            </button>
+                            <button type="button" 
+                                    onclick="slideDemo('demo-2', 1, 2)" 
+                                    aria-label="Foto Berikutnya"
+                                    class="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center backdrop-blur-md shadow-md transition hover:scale-110">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+
+                            <!-- Bawah: Info Kapasitas & View -->
+                            <div class="absolute bottom-3 left-3 flex items-center gap-2 text-xs text-white z-10 pointer-events-none">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-900/75 backdrop-blur-md text-[10px] font-medium">
+                                    <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    Maks. 4 Tamu
+                                </span>
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-900/75 backdrop-blur-md text-[10px] font-medium">
+                                    <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    City Skyline View
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-4 sm:p-5 space-y-3.5">
+                            <div>
+                                <span class="text-[10px] sm:text-xs font-bold text-blue-600 uppercase tracking-wider block">Apartemen Vida View</span>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mt-0.5">
+                                    Vida View Ashton Premier B
+                                </h3>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+                                    <span>2 Bedroom • Mingguan</span>
+                                    <span>• Maks. 4 Tamu</span>
+                                </div>
+                            </div>
+
+                            <!-- Box Tarif Sewa: Harga Coret di Bawah -->
+                            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-3">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">TARIF SEWA</span>
+                                    <div class="flex items-baseline gap-1 mt-0.5">
+                                        <span class="text-blue-700 font-black text-lg sm:text-xl">Rp 2.800.000</span>
+                                        <span class="text-[11px] text-slate-500 font-semibold">/ Minggu</span>
+                                    </div>
+                                    <div class="flex items-center gap-1 text-[11px] text-rose-500 mt-0.5">
+                                        <span class="text-slate-400 text-[10px]">Normal:</span>
+                                        <span class="line-through font-semibold">Rp 3.200.000</span>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-xl bg-blue-50 text-blue-700 text-xs font-black border border-blue-200">
+                                    Promo Spesial
+                                </span>
+                            </div>
+
+                            <!-- Deskripsi -->
+                            <div class="text-xs text-slate-600 bg-slate-50/70 p-3 rounded-xl border border-slate-100 line-clamp-2 leading-relaxed">
+                                <span class="font-bold text-slate-800 text-[11px] block mb-0.5">Deskripsi:</span>
+                                Tipe 2 kamar nyaman sebelah Mall Panakkukang dengan ruang tamu sofa empuk, kulkas, dispenser, dan pemandangan kota.
+                            </div>
+
+                            <!-- Fitur & Fasilitas -->
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">FASILITAS KAMAR:</span>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] text-blue-700 font-medium">2 Kamar Tidur</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] text-blue-700 font-medium">Kitchen Lengkap</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] text-blue-700 font-medium">Kolam Renang</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] text-blue-700 font-medium">Gym Access</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Tarif & WhatsApp Button -->
+                    <div class="p-4 sm:p-5 pt-0 border-t border-slate-100 mt-2">
+                        <!-- 2 Tombol Aksi: Nonton Video & Pesan WA -->
+                        <div class="grid grid-cols-2 gap-2 pt-1">
+                            <button type="button" 
+                                    onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Room Tour Vida View Ashton Premier B')" 
+                                    class="py-2.5 px-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs flex items-center justify-center gap-1.5 border border-red-200 transition active:scale-95">
+                                <svg class="w-4 h-4 fill-current text-red-600" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                <span>Video Tur</span>
+                            </button>
+
+                            <a href="https://wa.me/6285711696970?text=Halo%20Admin%20VIDALIDAY%2C%20saya%20tertarik%20dengan%20unit%20Vida%20View%20Ashton%20Premier%20B" target="_blank" class="py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-emerald-500/20 transition active:scale-95">
+                                <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                                <span>Pesan WA</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- POPUP MODAL YOUTUBE VIDEO PLAYER -->
+    <div id="video-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 hidden">
+        <div class="relative w-full max-w-4xl bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-4 sm:p-5 border-b border-slate-800 bg-slate-900/90">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-600 animate-pulse"></span>
+                    <h3 id="video-modal-title" class="text-white font-extrabold text-sm sm:text-base">Video Room Tour</h3>
+                </div>
+                <button type="button" onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <!-- Video Container 16:9 Responsive -->
+            <div class="relative aspect-video w-full bg-black">
+                <iframe id="video-iframe" class="w-full h-full" src="" title="Video Room Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-3.5 bg-slate-900 border-t border-slate-800 text-right">
+                <button type="button" onclick="closeVideoModal()" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition">
+                    Tutup Video
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Slider & Video Modal -->
+    <script>
+        const sliderStates = {
+            'demo-1': 0,
+            'demo-2': 0
+        };
+
+        function slideDemo(demoKey, direction, total) {
+            let current = sliderStates[demoKey] || 0;
+            current = (current + direction + total) % total;
+            sliderStates[demoKey] = current;
+
+            const track = document.getElementById('track-' + demoKey);
+            const counter = document.getElementById('counter-' + demoKey);
+
+            if (track) {
+                const percent = (100 / total) * current;
+                track.style.transform = `translateX(-${percent}%)`;
+            }
+            if (counter) {
+                counter.innerText = `${current + 1}/${total} Foto`;
+            }
+        }
+
+        function openVideoModal(url, title) {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('video-iframe');
+            const titleEl = document.getElementById('video-modal-title');
+            
+            if (titleEl && title) titleEl.innerText = title;
+            if (iframe) iframe.src = url;
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('video-iframe');
+            
+            if (iframe) iframe.src = '';
+            if (modal) modal.classList.add('hidden');
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeVideoModal();
+        });
+    </script>
+
+    <!-- Footer Simple -->
+    <footer class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 text-center text-xs text-slate-500">
+        &copy; 2026 VIDALIDAY APARTMENT. Halaman Preview Komponen Card Terpisah.
+    </footer>
+
+</body>
+</html>

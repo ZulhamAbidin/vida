@@ -806,6 +806,34 @@
         </div>
     </div>
 
+    <!-- POPUP MODAL YOUTUBE VIDEO PLAYER (ROOM TOUR) -->
+    <div id="video-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 hidden">
+        <div class="relative w-full max-w-4xl bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-4 sm:p-5 border-b border-slate-800 bg-slate-900/90">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-600 animate-pulse"></span>
+                    <h3 id="video-modal-title" class="text-white font-extrabold text-sm sm:text-base">Video Room Tour</h3>
+                </div>
+                <button type="button" onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <!-- Video Container 16:9 Responsive -->
+            <div class="relative aspect-video w-full bg-black">
+                <iframe id="video-iframe" class="w-full h-full" src="" title="Video Room Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-3.5 bg-slate-900 border-t border-slate-800 text-right">
+                <button type="button" onclick="closeVideoModal()" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition cursor-pointer">
+                    Tutup Video
+                </button>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @push('scripts')
@@ -1136,6 +1164,36 @@
             toggleIcon.classList.remove('rotate-180');
         }
     }
+
+    // -------------------------------------------------------------
+    // FITUR: MODAL VIDEO YOUTUBE (ROOM TOUR)
+    // -------------------------------------------------------------
+    function openVideoModal(url, title) {
+        const modal = document.getElementById('video-modal');
+        const iframe = document.getElementById('video-iframe');
+        const titleEl = document.getElementById('video-modal-title');
+        
+        if (titleEl && title) titleEl.innerText = title;
+        if (iframe) iframe.src = url;
+        if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeVideoModal() {
+        const modal = document.getElementById('video-modal');
+        const iframe = document.getElementById('video-iframe');
+        
+        if (iframe) iframe.src = '';
+        if (modal) modal.classList.add('hidden');
+    }
+
+    // Close video modal on Escape key or backdrop click
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeVideoModal();
+    });
+
+    document.getElementById('video-modal')?.addEventListener('click', function(e) {
+        if (e.target === this) closeVideoModal();
+    });
 
     // Inisialisasi awal saat load dokumen
     document.addEventListener('DOMContentLoaded', function() {

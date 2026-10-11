@@ -34,6 +34,7 @@ class Unit extends Model
         'rental_period',
         'description',
         'facilities_list',
+        'youtube_video_url',
         'main_image',
         'gallery_images',
         'is_featured',
@@ -108,6 +109,37 @@ class Unit extends Model
         }
 
         return array_values(array_unique($images));
+    }
+
+    public function getYoutubeEmbedUrlAttribute(): ?string
+    {
+        if (empty($this->youtube_video_url)) {
+            return null;
+        }
+
+        $url = trim($this->youtube_video_url);
+
+        // Pattern 1: https://youtu.be/ID
+        if (preg_match('/youtu\.be\/([a-zA-Z0-9_\-]+)/', $url, $matches)) {
+            return 'https://www.youtube.com/embed/' . $matches[1] . '?autoplay=1';
+        }
+
+        // Pattern 2: https://www.youtube.com/watch?v=ID
+        if (preg_match('/[?&]v=([a-zA-Z0-9_\-]+)/', $url, $matches)) {
+            return 'https://www.youtube.com/embed/' . $matches[1] . '?autoplay=1';
+        }
+
+        // Pattern 3: https://www.youtube.com/embed/ID
+        if (preg_match('/youtube\.com\/embed\/([a-zA-Z0-9_\-]+)/', $url, $matches)) {
+            return 'https://www.youtube.com/embed/' . $matches[1] . '?autoplay=1';
+        }
+
+        // Pattern 4: https://www.youtube.com/shorts/ID
+        if (preg_match('/youtube\.com\/shorts\/([a-zA-Z0-9_\-]+)/', $url, $matches)) {
+            return 'https://www.youtube.com/embed/' . $matches[1] . '?autoplay=1';
+        }
+
+        return $url;
     }
 }
 
