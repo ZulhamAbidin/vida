@@ -611,41 +611,38 @@
                             </div>
 
                             <!-- Vertical Roadmap Timeline -->
-                            <div class="space-y-4">
+                            <div class="relative pl-8 space-y-6">
+                                <!-- Garis Alur Vertikal Kontinu yang Pasti Muncul -->
+                                <div class="absolute left-2.5 top-2.5 bottom-6 w-0.5 {{ $isDelft ? 'bg-blue-200' : 'bg-emerald-200' }}"></div>
+
                                 @forelse($loc->landmarks as $index => $landmark)
                                     @php
                                         $isLast = $loop->last;
-                                        $dotBg = $isLast ? 'bg-rose-500 ring-rose-200' : ($isDelft ? 'bg-blue-600 ring-blue-200' : 'bg-emerald-600 ring-emerald-200');
-                                        $lineBg = $isDelft ? 'bg-blue-200' : 'bg-emerald-200';
+                                        $dotBg = $isLast ? 'bg-rose-500' : ($isDelft ? 'bg-blue-600' : 'bg-emerald-600');
                                         $textColor = $isLast ? 'text-rose-600' : ($isDelft ? 'text-blue-600' : 'text-emerald-600');
                                     @endphp
-                                    <div class="flex items-start gap-3.5 group/item relative">
-                                        <!-- Kolom Titik & Garis Alur Vertikal -->
-                                        <div class="flex flex-col items-center shrink-0 self-stretch relative w-5">
-                                            <!-- Titik Pin Milestone Bulat -->
-                                            <div class="w-3.5 h-3.5 rounded-full {{ $dotBg }} ring-4 shadow-xs mt-1 z-10 transition-transform group-hover/item:scale-125"></div>
-                                            <!-- Garis Alur Penghubung Antar Destinasi -->
-                                            @if(!$isLast)
-                                                <div class="w-0.5 flex-1 {{ $lineBg }} my-1"></div>
+                                    <div class="relative group/item flex items-start justify-between gap-3">
+                                        <!-- Titik Pin Milestone (Absolut tepat di atas garis) -->
+                                        <div class="absolute -left-8 top-1 flex items-center justify-center w-5 h-5">
+                                            <span class="w-3.5 h-3.5 rounded-full {{ $dotBg }} border-2 border-white shadow-sm transition-transform group-hover/item:scale-125 z-10"></span>
+                                        </div>
+
+                                        <!-- Detail Landmark -->
+                                        <div class="min-w-0 flex-1">
+                                            <h4 class="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-blue-600 transition-colors leading-snug">
+                                                {{ $landmark->name }}
+                                            </h4>
+                                            @if(!empty($landmark->notes))
+                                                <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
+                                                    {{ $landmark->notes }}
+                                                </p>
                                             @endif
                                         </div>
 
-                                        <!-- Konten Destinasi & Jarak -->
-                                        <div class="min-w-0 flex-1 flex items-start justify-between gap-3 pb-2">
-                                            <div class="min-w-0 flex-1">
-                                                <h4 class="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-blue-600 transition-colors leading-snug">
-                                                    {{ $landmark->name }}
-                                                </h4>
-                                                @if(!empty($landmark->notes))
-                                                    <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
-                                                        {{ $landmark->notes }}
-                                                    </p>
-                                                @endif
-                                            </div>
-                                            <span class="text-xs font-black {{ $textColor }} shrink-0 font-mono bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
-                                                {{ $landmark->distance_time }}
-                                            </span>
-                                        </div>
+                                        <!-- Badge Waktu -->
+                                        <span class="text-xs font-black {{ $textColor }} shrink-0 font-mono bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+                                            {{ $landmark->distance_time }}
+                                        </span>
                                     </div>
                                 @empty
                                     <div class="text-slate-400 text-xs italic py-4 text-center">
