@@ -44,9 +44,18 @@
         .text-shadow-white {
             text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9), 0 0 10px rgba(255, 255, 255, 0.7);
         }
+        /* Selection Highlight (Dark readable text, never white when highlighted/blocked) */
+        ::selection {
+            background-color: #fecaca;
+            color: #0f172a;
+        }
+        ::-moz-selection {
+            background-color: #fecaca;
+            color: #0f172a;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative selection:bg-red-600 selection:text-white overflow-x-hidden">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative selection:bg-red-200 selection:text-slate-900 overflow-x-hidden">
 
     <!-- Ambient Glowing Orbs Background (White Glassmorphism with Subtle Red & Rose Tones) -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">

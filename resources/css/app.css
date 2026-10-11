@@ -9,6 +9,16 @@ html, body {
   max-width: 100%;
 }
 
+/* Global Selection Highlight (Dark readable text, never white) */
+::selection {
+  background-color: #fecaca;
+  color: #0f172a;
+}
+::-moz-selection {
+  background-color: #fecaca;
+  color: #0f172a;
+}
+
 @layer utilities {
   /* Admin Cards — Solid Clean (no backdrop-filter for performance & scroll compatibility) */
   .glass-card {
