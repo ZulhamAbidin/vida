@@ -67,6 +67,28 @@
                             </span>
                         @endif
                     </div>
+
+                    <!-- Deskripsi Kamar -->
+                    @if(!empty($unit->description))
+                        <div class="text-xs text-slate-600 bg-slate-50/70 p-2.5 rounded-xl border border-slate-100 line-clamp-2 leading-relaxed" title="{{ $unit->description }}">
+                            <span class="font-bold text-slate-700 text-[11px] block mb-0.5">Deskripsi:</span>
+                            {{ $unit->description }}
+                        </div>
+                    @endif
+
+                    <!-- Fasilitas Kamar Chips -->
+                    @if(!empty($unit->facilities_list))
+                        <div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Fasilitas Kamar:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                @foreach($unit->facilities_list as $facility)
+                                    <span class="px-2 py-0.5 rounded-lg bg-blue-50/80 border border-blue-100 text-[10px] sm:text-[11px] text-blue-700 font-medium">
+                                        {{ $facility }}
+                                    </span>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Bottom Section: Action Buttons (Hero Favorit, Edit, Hapus) -->

@@ -107,18 +107,23 @@
                 </h3>
             </div>
 
-            <p class="text-xs text-slate-600 leading-relaxed line-clamp-2">
-                {{ $unit->description }}
-            </p>
+            @if(!empty($unit->description))
+                <p class="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                    {{ $unit->description }}
+                </p>
+            @endif
 
             <!-- Amenities Chips -->
             @if(!empty($unit->facilities_list))
-                <div class="pt-1 flex flex-wrap gap-1.5">
-                    @foreach($unit->facilities_list as $facility)
-                        <span class="px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200/80 text-[10px] sm:text-[11px] text-slate-700 font-medium">
-                            {{ $facility }}
-                        </span>
-                    @endforeach
+                <div class="pt-1">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Fasilitas Kamar:</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        @foreach($unit->facilities_list as $facility)
+                            <span class="px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200/80 text-[10px] sm:text-[11px] text-slate-700 font-medium">
+                                {{ $facility }}
+                            </span>
+                        @endforeach
+                    </div>
                 </div>
             @endif
         </div>
