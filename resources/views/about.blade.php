@@ -5,14 +5,14 @@
 
 @section('content')
 
-    <!-- HERO ABOUT US SECTION (WHITE GLASSMORPHISM) -->
+    <!-- HERO ABOUT US SECTION (WHITE GLASSMORPHISM WITH RED LUXURY ACCENTS) -->
     <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             
             <!-- Breadcrumb & Top Tagline -->
             <div class="text-center space-y-3">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-blue-200/80 text-blue-700 text-xs sm:text-sm font-bold shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-red-200/80 text-red-700 text-xs sm:text-sm font-bold shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
                     <span>TENTANG VIDALIDAY</span>
                 </div>
 
@@ -21,55 +21,54 @@
                 </h1>
 
                 @if(!empty($about['tagline']))
-                    <p class="text-base sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 tracking-wide">
+                    <p class="text-base sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-600 to-red-700 tracking-wide">
                         {{ $about['tagline'] }}
                     </p>
                 @endif
             </div>
 
-            <!-- Main Story / Narrative Cards -->
+            <!-- Main Story / Narrative Card -->
             <div class="glass-card rounded-3xl border border-white/80 p-5 sm:p-10 shadow-xl shadow-slate-200/50 space-y-6 text-slate-700 text-sm sm:text-base leading-relaxed bg-white/80">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border border-slate-200/80 shadow-md shrink-0 bg-white">
-                        <img src="{{ !empty($siteLogo) ? asset('storage/' . $siteLogo) : asset('images/logo_vidaliday.png') }}" 
-                             alt="VIDALIDAY Logo" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="space-y-4">
-                        <p class="font-medium text-slate-800">
-                            {{ $about['intro_p1'] ?? '' }}
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border border-slate-200/80 shadow-md shrink-0 bg-white">
+                    <img src="{{ !empty($siteLogo) ? asset('storage/' . $siteLogo) : asset('images/logo_vidaliday.png') }}" 
+                         alt="VIDALIDAY Logo" 
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-4">
+                    <p class="font-medium text-slate-800">
+                        {{ $about['intro_p1'] ?? '' }}
+                    </p>
+                    @if(!empty($about['intro_p2']))
+                        <p>
+                            {{ $about['intro_p2'] }}
                         </p>
-                        @if(!empty($about['intro_p2']))
-                            <p>
-                                {{ $about['intro_p2'] }}
-                            </p>
-                        @endif
-                        @if(!empty($about['intro_p3']))
-                            <p>
-                                {{ $about['intro_p3'] }}
-                            </p>
-                        @endif
-                    </div>
+                    @endif
+                    @if(!empty($about['intro_p3']))
+                        <p>
+                            {{ $about['intro_p3'] }}
+                        </p>
+                    @endif
                 </div>
 
                 <!-- Locations Highlight Bar -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
-                    <div class="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-md shadow-blue-500/20">
+                    <div class="p-4 rounded-2xl bg-red-50/60 border border-red-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-md shadow-red-500/20">
                             📍
                         </div>
                         <div>
-                            <span class="text-[10px] sm:text-[11px] font-bold text-blue-700 uppercase tracking-wider block">Apartemen 1</span>
+                            <span class="text-[10px] sm:text-[11px] font-bold text-red-700 uppercase tracking-wider block">Apartemen 1</span>
                             <h4 class="text-sm sm:text-base font-bold text-slate-900">Delft CPI Makassar</h4>
                             <p class="text-xs text-slate-500">Tepi Laut CPI & Sunset Losari</p>
                         </div>
                     </div>
 
-                    <div class="p-4 rounded-2xl bg-sky-50/50 border border-sky-100 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-md shadow-sky-500/20">
+                    <div class="p-4 rounded-2xl bg-rose-50/60 border border-rose-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-md shadow-rose-500/20">
                             📍
                         </div>
                         <div>
-                            <span class="text-[10px] sm:text-[11px] font-bold text-sky-700 uppercase tracking-wider block">Apartemen 2</span>
+                            <span class="text-[10px] sm:text-[11px] font-bold text-rose-700 uppercase tracking-wider block">Apartemen 2</span>
                             <h4 class="text-sm sm:text-base font-bold text-slate-900">Vida View Makassar</h4>
                             <p class="text-xs text-slate-500">Jantung Komersial Panakkukang</p>
                         </div>
@@ -80,7 +79,7 @@
             <!-- SECTION: MENGAPA MEMILIH VIDALIDAY? -->
             <div class="space-y-8">
                 <div class="text-center space-y-2">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-blue-700 text-xs font-bold uppercase tracking-wider">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-red-700 text-xs font-bold uppercase tracking-wider">
                         Keunggulan Kami
                     </span>
                     <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900">
@@ -93,8 +92,8 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     @forelse($about['reasons'] as $reason)
-                        <div class="glass-card rounded-2xl border border-slate-200/80 p-5 sm:p-6 space-y-3 shadow-sm hover:border-blue-300 hover:shadow-md transition group">
-                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition duration-300 shadow-sm">
+                        <div class="glass-card rounded-2xl border border-slate-200/80 p-5 sm:p-6 space-y-3 shadow-sm hover:border-red-300 hover:shadow-md transition group">
+                            <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition duration-300 shadow-sm">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             </div>
                             <h3 class="text-sm sm:text-base font-bold text-slate-900 leading-snug">{{ $reason['title'] }}</h3>
@@ -109,9 +108,9 @@
             </div>
 
             <!-- SECTION: KOMITMEN KAMI & QUOTE -->
-            <div class="relative overflow-hidden glass-card rounded-3xl border border-blue-200/80 p-6 sm:p-12 shadow-xl bg-gradient-to-br from-white via-blue-50/30 to-sky-50/40 text-center space-y-6">
+            <div class="relative overflow-hidden glass-card rounded-3xl border border-red-200/80 p-6 sm:p-12 shadow-xl bg-gradient-to-br from-white via-red-50/30 to-rose-50/40 text-center space-y-6">
                 <div class="max-w-2xl mx-auto space-y-3">
-                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-100/70 text-blue-800 text-xs font-bold uppercase tracking-wider">
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-red-100/80 text-red-800 text-xs font-bold uppercase tracking-wider">
                         {{ $about['commit_title'] ?? 'KOMITMEN KAMI' }}
                     </span>
                     <p class="text-xs sm:text-base text-slate-700 leading-relaxed font-medium">
@@ -120,7 +119,7 @@
                 </div>
 
                 @if(!empty($about['closing_quote']))
-                    <div class="py-3 sm:py-4 border-t border-b border-blue-200/60 max-w-xl mx-auto">
+                    <div class="py-3 sm:py-4 border-t border-b border-red-200/60 max-w-xl mx-auto">
                         <blockquote class="text-sm sm:text-lg font-black text-slate-900 tracking-tight">
                             "{{ $about['closing_quote'] }}"
                         </blockquote>
@@ -135,7 +134,7 @@
 
                 <!-- Call to Action Buttons -->
                 <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="{{ route('home') }}#katalog-kamar" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs tracking-wider shadow-lg shadow-blue-500/25 transition">
+                    <a href="{{ route('home') }}#katalog-kamar" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs tracking-wider shadow-lg shadow-red-500/25 transition">
                         LIHAT UNIT KAMAR KAMI
                     </a>
                     @php
@@ -143,7 +142,7 @@
                         $waAboutUrl = "https://wa.me/{$waClean}?text=" . urlencode("Halo Admin VIDALIDAY, saya ingin konsultasi sewa apartemen di Makassar.");
                     @endphp
                     <a href="{{ $waAboutUrl }}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 rounded-xl glass-card hover:border-red-500 text-slate-800 hover:text-red-700 font-bold text-xs flex items-center justify-center gap-2 transition">
-                        <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>
                         Hubungi via WhatsApp
                     </a>
                 </div>
