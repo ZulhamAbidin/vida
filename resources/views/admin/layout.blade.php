@@ -20,16 +20,13 @@
         <div class="absolute top-1/2 -right-40 w-96 h-96 bg-sky-300/10 rounded-full blur-[130px]"></div>
     </div>
 
-    <!-- Mobile Sidebar Backdrop Overlay -->
-    <div id="sidebar-backdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-40 hidden md:hidden transition-opacity"></div>
-
-    <div class="relative z-10 flex min-h-screen">
+    <div class="relative flex min-h-screen">
         
-        <!-- Modern Collapsible Sidebar -->
-        <aside id="main-sidebar" class="fixed md:sticky top-0 h-screen w-72 max-w-[85vw] md:w-64 glass-card border-r border-slate-200/90 flex flex-col justify-between shrink-0 z-50 transition-all duration-300 -translate-x-full md:translate-x-0 shadow-2xl md:shadow-none bg-white/95 backdrop-blur-md overflow-y-auto">
+        <!-- Modern Collapsible Sidebar (Solid White, No Blur, No Glass Effect) -->
+        <aside id="main-sidebar" class="fixed md:sticky top-0 h-screen w-72 max-w-[85vw] md:w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 z-50 transition-transform duration-300 -translate-x-full md:translate-x-0 shadow-2xl md:shadow-none overflow-y-auto">
             <div>
                 <!-- Brand Header -->
-                <div class="p-4 sm:p-5 border-b border-slate-200/80 flex items-center justify-between">
+                <div class="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between bg-white">
                     <div class="flex items-center gap-3 sidebar-brand-text min-w-0">
                         <div class="w-10 h-10 rounded-full overflow-hidden border border-slate-200/80 p-0.5 shadow-sm shrink-0 bg-white">
                             <img src="{{ !empty($siteLogo) ? asset('storage/' . $siteLogo) : asset('images/logo_vidaliday.png') }}" 
@@ -44,7 +41,7 @@
                     </div>
 
                     <!-- Close button on mobile -->
-                    <button type="button" onclick="toggleSidebar()" class="md:hidden p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Tutup Sidebar">
+                    <button type="button" onclick="closeSidebarMobile()" class="md:hidden p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Tutup Sidebar">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
@@ -108,10 +105,10 @@
         <!-- Main Admin Content Area -->
         <div class="flex-1 flex flex-col min-w-0">
             <!-- Topbar Header -->
-            <header class="h-16 md:h-20 glass-nav border-b border-slate-200/90 px-3.5 sm:px-6 flex items-center justify-between shrink-0 bg-white/90 sticky top-0 z-30">
+            <header class="h-16 md:h-20 bg-white border-b border-slate-200 px-3.5 sm:px-6 flex items-center justify-between shrink-0 sticky top-0 z-30 shadow-xs">
                 <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
                     <!-- Toggle Sidebar Button (Desktop & Mobile) -->
-                    <button type="button" onclick="toggleSidebar()" class="w-10 h-10 rounded-xl text-slate-700 hover:bg-slate-100 border border-slate-200 transition flex items-center justify-center shrink-0 shadow-xs" title="Buka/Tutup Sidebar">
+                    <button type="button" id="sidebar-toggle-btn" onclick="toggleSidebar()" class="w-10 h-10 rounded-xl text-slate-700 hover:bg-slate-100 border border-slate-200 transition flex items-center justify-center shrink-0 shadow-xs" title="Buka/Tutup Sidebar">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
                     </button>
 
@@ -167,18 +164,15 @@
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('main-sidebar');
-            const backdrop = document.getElementById('sidebar-backdrop');
             
             // Check if mobile (screen width < 768px)
             if (window.innerWidth < 768) {
                 if (sidebar.classList.contains('-translate-x-full')) {
                     sidebar.classList.remove('-translate-x-full');
                     sidebar.classList.add('translate-x-0');
-                    backdrop.classList.remove('hidden');
                 } else {
                     sidebar.classList.add('-translate-x-full');
                     sidebar.classList.remove('translate-x-0');
-                    backdrop.classList.add('hidden');
                 }
             } else {
                 // Desktop toggle collapse: toggle width between w-64 and w-20
@@ -193,6 +187,33 @@
                 }
             }
         }
+
+        function closeSidebarMobile() {
+            const sidebar = document.getElementById('main-sidebar');
+            if (window.innerWidth < 768 && sidebar) {
+                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+            }
+        }
+
+        // Close sidebar on mobile when tapping outside (without blocking dashboard scrolling)
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('main-sidebar');
+            const toggleBtn = document.getElementById('sidebar-toggle-btn');
+            
+            if (window.innerWidth < 768 && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                if (!sidebar.contains(event.target) && (!toggleBtn || !toggleBtn.contains(event.target))) {
+                    closeSidebarMobile();
+                }
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeSidebarMobile();
+            }
+        });
     </script>
     @stack('scripts')
 </body>
