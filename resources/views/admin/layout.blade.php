@@ -12,7 +12,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
     <!-- Ambient Glow Orbs -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -129,7 +129,7 @@
             </header>
 
             <!-- Page Body -->
-            <main class="p-3.5 sm:p-6 md:p-8 flex-1 w-full max-w-full overflow-x-hidden">
+            <main class="p-4 sm:p-6 md:p-8 pb-24 sm:pb-20 md:pb-28 flex-1 w-full max-w-full">
                 <!-- Flash Messages -->
                 @if(session('success'))
                     <div class="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center justify-between shadow-sm">
@@ -155,6 +155,12 @@
                 @endif
 
                 @yield('content')
+
+                <!-- Admin Footer Spacing & Info -->
+                <footer class="mt-12 pt-6 border-t border-slate-200 text-center sm:text-left text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-2">
+                    <p>&copy; {{ date('Y') }} VIDALIDAY. Apartment By Us. Seluruh hak cipta dilindungi.</p>
+                    <p class="text-[11px] text-slate-400">Panel Pengelola Resmi PT PERDANA MEGA TRANS</p>
+                </footer>
             </main>
         </div>
 
