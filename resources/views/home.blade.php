@@ -611,18 +611,27 @@
                             </div>
 
                             <!-- Vertical Roadmap Timeline -->
-                            <div class="relative pl-6 space-y-5 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 {{ $lineColor }}">
+                            <div class="space-y-4">
                                 @forelse($loc->landmarks as $index => $landmark)
                                     @php
                                         $isLast = $loop->last;
-                                        $dotColor = $isLast ? 'bg-rose-500' : $pinColor;
+                                        $dotBg = $isLast ? 'bg-rose-500 ring-rose-200' : ($isDelft ? 'bg-blue-600 ring-blue-200' : 'bg-emerald-600 ring-emerald-200');
+                                        $lineBg = $isDelft ? 'bg-blue-200' : 'bg-emerald-200';
                                         $textColor = $isLast ? 'text-rose-600' : ($isDelft ? 'text-blue-600' : 'text-emerald-600');
                                     @endphp
-                                    <div class="relative group/item">
-                                        <!-- Pin Milestone Dot -->
-                                        <span class="absolute -left-6 top-1.5 w-4 h-4 rounded-full {{ $dotColor }} border-4 border-white shadow-sm transition-transform group-hover/item:scale-125"></span>
-                                        
-                                        <div class="flex items-start justify-between gap-3">
+                                    <div class="flex items-start gap-3.5 group/item relative">
+                                        <!-- Kolom Titik & Garis Alur Vertikal -->
+                                        <div class="flex flex-col items-center shrink-0 self-stretch relative w-5">
+                                            <!-- Titik Pin Milestone Bulat -->
+                                            <div class="w-3.5 h-3.5 rounded-full {{ $dotBg }} ring-4 shadow-xs mt-1 z-10 transition-transform group-hover/item:scale-125"></div>
+                                            <!-- Garis Alur Penghubung Antar Destinasi -->
+                                            @if(!$isLast)
+                                                <div class="w-0.5 flex-1 {{ $lineBg }} my-1"></div>
+                                            @endif
+                                        </div>
+
+                                        <!-- Konten Destinasi & Jarak -->
+                                        <div class="min-w-0 flex-1 flex items-start justify-between gap-3 pb-2">
                                             <div class="min-w-0 flex-1">
                                                 <h4 class="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-blue-600 transition-colors leading-snug">
                                                     {{ $landmark->name }}
