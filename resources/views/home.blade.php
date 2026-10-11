@@ -460,43 +460,107 @@
             </div>
 
             <!-- Facilities for Delft CPI -->
-            <div id="facilities-delft-cpi" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                @foreach($delft->facilities ?? [] as $fac)
-                    <div class="p-4 sm:p-5 rounded-2xl glass-card glass-card-hover border border-slate-200/80 space-y-2.5">
+            <div id="facilities-delft-cpi" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+                @forelse($delft->facilities ?? [] as $fac)
+                    <div class="relative h-80 sm:h-84 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group border border-slate-200/90 flex flex-col justify-between">
+                        <!-- Background Image or Gradient Background -->
                         @if($fac->image_url)
-                            <div class="h-32 w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 mb-2">
-                                <img src="{{ $fac->image_url }}" alt="{{ $fac->name }}" class="w-full h-full object-cover">
-                            </div>
+                            <img src="{{ $fac->image_url }}" alt="{{ $fac->name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-black/30 pointer-events-none"></div>
                         @else
-                            <div class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center font-bold">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-950"></div>
+                            <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full bg-blue-500/10 blur-2xl pointer-events-none"></div>
+                            <div class="absolute left-6 -top-6 w-36 h-36 rounded-full bg-indigo-500/15 blur-xl pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none"></div>
                         @endif
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900">{{ $fac->name }}</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">{{ $fac->description }}</p>
-                        <span class="text-[10px] sm:text-[11px] text-blue-600 font-semibold block pt-0.5">Gedung Delft CPI</span>
+
+                        <!-- Top Header: Badge Gedung & Icon Kaca -->
+                        <div class="relative z-10 p-4 sm:p-5 flex items-center justify-between gap-2 pointer-events-none">
+                            <span class="px-3 py-1 rounded-xl bg-white/20 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-white uppercase tracking-wider border border-white/30 shadow-sm">
+                                Gedung Delft CPI
+                            </span>
+                            <span class="w-9 h-9 rounded-2xl bg-white/20 backdrop-blur-md text-white flex items-center justify-center border border-white/30 shadow-sm shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                            </span>
+                        </div>
+
+                        <!-- Bottom Content: Tipografi Mewah & Deskripsi -->
+                        <div class="relative z-10 p-5 sm:p-6 space-y-2 pointer-events-none">
+                            <h4 class="text-lg sm:text-xl font-black text-white leading-snug group-hover:text-blue-300 transition-colors drop-shadow-sm">
+                                {{ $fac->name }}
+                            </h4>
+                            @if(!empty($fac->description))
+                                <p class="text-xs sm:text-[13px] text-slate-200 line-clamp-2 leading-relaxed opacity-90 drop-shadow-xs">
+                                    {{ $fac->description }}
+                                </p>
+                            @endif
+                            <div class="pt-2.5 flex items-center gap-2 text-[11px] text-blue-200 font-semibold border-t border-white/15">
+                                <span class="flex items-center gap-1.5 text-emerald-400">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    Fasilitas Gedung
+                                </span>
+                                <span class="text-white/40">•</span>
+                                <span class="text-white/80">Akses Penghuni & Tamu</span>
+                            </div>
+                        </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-span-3 text-center py-12 glass-card rounded-2xl border border-slate-200/80">
+                        <p class="text-slate-500 text-sm">Fasilitas di Gedung Delft CPI sedang diperbarui oleh admin.</p>
+                    </div>
+                @endforelse
             </div>
 
             <!-- Facilities for Vida View -->
-            <div id="facilities-vida-view" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 hidden">
-                @foreach($vida->facilities ?? [] as $fac)
-                    <div class="p-4 sm:p-5 rounded-2xl glass-card glass-card-hover border border-slate-200/80 space-y-2.5">
+            <div id="facilities-vida-view" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 hidden">
+                @forelse($vida->facilities ?? [] as $fac)
+                    <div class="relative h-80 sm:h-84 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group border border-slate-200/90 flex flex-col justify-between">
+                        <!-- Background Image or Gradient Background -->
                         @if($fac->image_url)
-                            <div class="h-32 w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 mb-2">
-                                <img src="{{ $fac->image_url }}" alt="{{ $fac->name }}" class="w-full h-full object-cover">
-                            </div>
+                            <img src="{{ $fac->image_url }}" alt="{{ $fac->name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-black/30 pointer-events-none"></div>
                         @else
-                            <div class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center font-bold">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-950"></div>
+                            <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full bg-blue-500/10 blur-2xl pointer-events-none"></div>
+                            <div class="absolute left-6 -top-6 w-36 h-36 rounded-full bg-indigo-500/15 blur-xl pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none"></div>
                         @endif
-                        <h4 class="text-sm sm:text-base font-bold text-slate-900">{{ $fac->name }}</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">{{ $fac->description }}</p>
-                        <span class="text-[10px] sm:text-[11px] text-blue-600 font-semibold block pt-0.5">Gedung Vida View Panakkukang</span>
+
+                        <!-- Top Header: Badge Gedung & Icon Kaca -->
+                        <div class="relative z-10 p-4 sm:p-5 flex items-center justify-between gap-2 pointer-events-none">
+                            <span class="px-3 py-1 rounded-xl bg-white/20 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-white uppercase tracking-wider border border-white/30 shadow-sm">
+                                Vida View Panakkukang
+                            </span>
+                            <span class="w-9 h-9 rounded-2xl bg-white/20 backdrop-blur-md text-white flex items-center justify-center border border-white/30 shadow-sm shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                            </span>
+                        </div>
+
+                        <!-- Bottom Content: Tipografi Mewah & Deskripsi -->
+                        <div class="relative z-10 p-5 sm:p-6 space-y-2 pointer-events-none">
+                            <h4 class="text-lg sm:text-xl font-black text-white leading-snug group-hover:text-blue-300 transition-colors drop-shadow-sm">
+                                {{ $fac->name }}
+                            </h4>
+                            @if(!empty($fac->description))
+                                <p class="text-xs sm:text-[13px] text-slate-200 line-clamp-2 leading-relaxed opacity-90 drop-shadow-xs">
+                                    {{ $fac->description }}
+                                </p>
+                            @endif
+                            <div class="pt-2.5 flex items-center gap-2 text-[11px] text-blue-200 font-semibold border-t border-white/15">
+                                <span class="flex items-center gap-1.5 text-emerald-400">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    Fasilitas Gedung
+                                </span>
+                                <span class="text-white/40">•</span>
+                                <span class="text-white/80">Akses Penghuni & Tamu</span>
+                            </div>
+                        </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-span-3 text-center py-12 glass-card rounded-2xl border border-slate-200/80">
+                        <p class="text-slate-500 text-sm">Fasilitas di Gedung Vida View Panakkukang sedang diperbarui oleh admin.</p>
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>
