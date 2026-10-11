@@ -25,12 +25,12 @@
                         <!-- Header Status Tag -->
                         <div class="flex items-center justify-between gap-1.5 border-b border-slate-100 pb-2.5 mb-3">
                             <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900 text-white text-[10px] sm:text-xs font-semibold">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                                <span class="text-amber-300 font-bold uppercase tracking-wider text-[9px] sm:text-[11px]">Sewa Apartemen</span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                                <span class="text-rose-300 font-bold uppercase tracking-wider text-[9px] sm:text-[11px]">Sewa Apartemen</span>
                                 <span class="text-slate-500">•</span>
                                 <span class="text-slate-200 text-[9px] sm:text-[11px]">Makassar</span>
                             </div>
-                            <span class="text-[9px] sm:text-[11px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/60 uppercase tracking-wider">
+                            <span class="text-[9px] sm:text-[11px] font-bold text-red-700 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200 uppercase tracking-wider shadow-2xs">
                                 Best Rate Guarantee
                             </span>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="space-y-1 mb-3.5">
                             <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
                                 Nikmati Hunian Mewah di
-                                <span class="block text-amber-600 font-black mt-0.5 text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+                                <span class="block text-red-600 font-black mt-0.5 text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                                     DELFT CPI & VIDA VIEW
                                 </span>
                             </h1>
@@ -59,15 +59,15 @@
                                 $rentalPeriod = strtolower($featuredUnit->rental_period ?? 'malam');
                                 $isPromo = $featuredUnit->is_promo_active && $featuredUnit->promo_price > 0;
                             @endphp
-                            <div class="mb-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-50 via-orange-50/80 to-amber-100/60 border-2 border-amber-400/90 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
+                            <div class="mb-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-red-50 via-rose-50/80 to-red-100/60 border-2 border-red-300 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
                                 <div class="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
-                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 text-white flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/30">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-red-600 to-rose-600 text-white flex items-center justify-center shrink-0 shadow-lg shadow-red-500/30">
                                         <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                     </div>
                                     <div>
                                         <div class="flex items-center gap-1.5">
                                             @if($isPromo)
-                                                <span class="px-1.5 sm:px-2 py-0.5 rounded-md bg-rose-600 text-white text-[9px] sm:text-[11px] font-black uppercase tracking-wider shadow-sm animate-pulse">
+                                                <span class="px-1.5 sm:px-2 py-0.5 rounded-md bg-red-600 text-white text-[9px] sm:text-[11px] font-black uppercase tracking-wider shadow-sm animate-pulse">
                                                     PROMO
                                                 </span>
                                             @endif
@@ -84,14 +84,14 @@
                                                     {{ $strikePrice }}
                                                 </span>
                                             @endif
-                                            <span class="text-[11px] sm:text-sm font-bold text-amber-600"> /{{ $rentalPeriod }}</span>
+                                            <span class="text-[11px] sm:text-sm font-bold text-red-700"> /{{ $rentalPeriod }}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Duration Tags & Guarantee -->
-                                <div class="flex items-center gap-2 text-[9px] sm:text-xs font-extrabold uppercase tracking-wider w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 border-amber-200/60 pt-2 sm:pt-0">
-                                    <div class="flex items-center gap-1 sm:gap-2 bg-white/80 px-2 sm:px-2.5 py-1 rounded-xl border border-amber-300/60 shadow-xs">
+                                <div class="flex items-center gap-2 text-[9px] sm:text-xs font-extrabold uppercase tracking-wider w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 border-red-200/60 pt-2 sm:pt-0">
+                                    <div class="flex items-center gap-1 sm:gap-2 bg-white/90 px-2 sm:px-2.5 py-1 rounded-xl border border-red-200 shadow-xs">
                                         <span class="text-emerald-600 font-black">HARIAN</span>
                                         <span class="text-slate-300">•</span>
                                         <span class="text-slate-700">MINGGUAN</span>
@@ -133,7 +133,7 @@
                             </a>
 
                             <!-- Button Lihat Katalog -->
-                            <a href="#katalog-kamar" class="w-full sm:w-auto py-2.5 sm:py-3.5 px-4 sm:px-5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs uppercase tracking-wider transition-all text-center">
+                            <a href="#katalog-kamar" class="w-full sm:w-auto py-2.5 sm:py-3.5 px-4 sm:px-5 rounded-2xl bg-red-50 hover:bg-red-100 text-red-700 font-bold text-xs uppercase tracking-wider transition-all border border-red-200 text-center">
                                 Lihat Unit
                             </a>
                         </div>
