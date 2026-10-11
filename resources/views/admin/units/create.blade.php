@@ -229,11 +229,11 @@
                 </div>
 
                 <!-- Submit Button -->
-                <div class="pt-4 flex items-center justify-end gap-3 border-t border-slate-200">
-                    <a href="{{ route('admin.units.index') }}" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
+                <div class="pt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 border-t border-slate-200">
+                    <a href="{{ route('admin.units.index') }}" class="w-full sm:w-auto text-center px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
                         Batal
                     </a>
-                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/25 transition">
+                    <button type="submit" class="w-full sm:w-auto text-center px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/25 transition">
                         SIMPAN UNIT & FOTO
                     </button>
                 </div>

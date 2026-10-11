@@ -5,12 +5,12 @@
 
 @section('content')
 
-    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-6">
         <!-- Filter Lokasi -->
-        <div class="flex flex-wrap items-center gap-2">
-            <span class="text-xs text-slate-500 font-semibold">Filter Lokasi:</span>
+        <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+            <span class="text-xs text-slate-500 font-semibold">Filter:</span>
             <a href="{{ route('admin.units.index') }}" class="px-3 py-1.5 rounded-xl text-xs {{ !request('location_id') ? 'bg-blue-600 text-white font-bold shadow-sm' : 'glass-card text-slate-600 hover:text-slate-900 border border-slate-200' }}">
-                Semua Lokasi
+                Semua
             </a>
             @foreach($locations as $loc)
                 <a href="{{ route('admin.units.index', ['location_id' => $loc->id]) }}" class="px-3 py-1.5 rounded-xl text-xs {{ request('location_id') == $loc->id ? 'bg-blue-600 text-white font-bold shadow-sm' : 'glass-card text-slate-600 hover:text-slate-900 border border-slate-200' }}">
@@ -19,7 +19,7 @@
             @endforeach
         </div>
 
-        <a href="{{ route('admin.units.create') }}" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-500/20 transition flex items-center gap-1.5">
+        <a href="{{ route('admin.units.create') }}" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-500/20 transition flex items-center justify-center gap-1.5 shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             Tambah Unit & Upload Foto
         </a>
@@ -27,8 +27,14 @@
 
     <!-- Units Table -->
     <div class="glass-card rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm">
+        <div class="sm:hidden px-3.5 py-2 bg-slate-50 border-b border-slate-200/70 text-[11px] text-slate-500 flex items-center justify-between">
+            <span class="flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                Geser tabel ke samping untuk melihat opsi & aksi
+            </span>
+        </div>
         <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-600">
+            <table class="w-full text-left text-xs text-slate-600 min-w-[650px]">
                 <thead class="bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-200/80">
                     <tr>
                         <th class="py-4 px-4">Foto & Unit</th>

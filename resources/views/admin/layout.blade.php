@@ -26,10 +26,10 @@
     <div class="relative z-10 flex min-h-screen">
         
         <!-- Modern Collapsible Sidebar -->
-        <aside id="main-sidebar" class="fixed md:sticky top-0 h-screen w-64 glass-card border-r border-slate-200/90 flex flex-col justify-between shrink-0 z-50 transition-all duration-300 -translate-x-full md:translate-x-0 shadow-xl md:shadow-none bg-white/90">
+        <aside id="main-sidebar" class="fixed md:sticky top-0 h-screen w-72 max-w-[85vw] md:w-64 glass-card border-r border-slate-200/90 flex flex-col justify-between shrink-0 z-50 transition-all duration-300 -translate-x-full md:translate-x-0 shadow-2xl md:shadow-none bg-white/95 backdrop-blur-md overflow-y-auto">
             <div>
                 <!-- Brand Header -->
-                <div class="p-5 border-b border-slate-200/80 flex items-center justify-between">
+                <div class="p-4 sm:p-5 border-b border-slate-200/80 flex items-center justify-between">
                     <div class="flex items-center gap-3 sidebar-brand-text min-w-0">
                         <div class="w-10 h-10 rounded-full overflow-hidden border border-slate-200/80 p-0.5 shadow-sm shrink-0 bg-white">
                             <img src="{{ !empty($siteLogo) ? asset('storage/' . $siteLogo) : asset('images/logo_vidaliday.png') }}" 
@@ -44,13 +44,13 @@
                     </div>
 
                     <!-- Close button on mobile -->
-                    <button type="button" onclick="toggleSidebar()" class="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition">
+                    <button type="button" onclick="toggleSidebar()" class="md:hidden p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Tutup Sidebar">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
 
                 <!-- Navigation Links -->
-                <nav class="p-3.5 space-y-1.5 text-xs sm:text-sm font-semibold">
+                <nav class="p-3 sm:p-3.5 space-y-1 sm:space-y-1.5 text-xs sm:text-sm font-semibold">
                     <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-3.5 py-3 rounded-xl transition {{ request()->routeIs('admin.dashboard') ? 'bg-blue-50 text-blue-700 font-bold border border-blue-200/80 shadow-sm' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' }}">
                         <svg class="w-5 h-5 shrink-0 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         <span class="sidebar-text">Dashboard & Promo</span>
@@ -108,31 +108,31 @@
         <!-- Main Admin Content Area -->
         <div class="flex-1 flex flex-col min-w-0">
             <!-- Topbar Header -->
-            <header class="h-16 md:h-20 glass-nav border-b border-slate-200/90 px-4 sm:px-6 flex items-center justify-between shrink-0 bg-white/80">
-                <div class="flex items-center gap-3">
+            <header class="h-16 md:h-20 glass-nav border-b border-slate-200/90 px-3.5 sm:px-6 flex items-center justify-between shrink-0 bg-white/90 sticky top-0 z-30">
+                <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
                     <!-- Toggle Sidebar Button (Desktop & Mobile) -->
-                    <button type="button" onclick="toggleSidebar()" class="p-2 rounded-xl text-slate-700 hover:bg-slate-100 border border-slate-200 transition" title="Buka/Tutup Sidebar">
+                    <button type="button" onclick="toggleSidebar()" class="w-10 h-10 rounded-xl text-slate-700 hover:bg-slate-100 border border-slate-200 transition flex items-center justify-center shrink-0 shadow-xs" title="Buka/Tutup Sidebar">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
                     </button>
 
-                    <h1 class="text-base sm:text-lg font-bold text-slate-900 truncate">@yield('page_title', 'Dashboard')</h1>
+                    <h1 class="text-sm sm:text-lg font-bold text-slate-900 truncate max-w-[170px] xs:max-w-[220px] sm:max-w-none">@yield('page_title', 'Dashboard')</h1>
                 </div>
 
-                <div class="flex items-center gap-3 sm:gap-4">
-                    <div class="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+                    <div class="flex items-center gap-1.5 sm:gap-2 text-xs text-slate-600 font-medium">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         <span class="hidden sm:inline">{{ auth()->user()->name ?? 'Admin' }}</span>
                     </div>
 
-                    <a href="{{ route('home') }}" target="_blank" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-semibold hover:bg-blue-100 transition border border-blue-200/60">
-                        <span>Web Depan</span>
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    <a href="{{ route('home') }}" target="_blank" class="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-semibold hover:bg-blue-100 transition border border-blue-200/60 shadow-xs" title="Lihat Website Publik">
+                        <span class="hidden sm:inline">Web Depan</span>
+                        <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
                 </div>
             </header>
 
             <!-- Page Body -->
-            <main class="p-4 sm:p-6 md:p-8 flex-1">
+            <main class="p-3.5 sm:p-6 md:p-8 flex-1 w-full max-w-full overflow-x-hidden">
                 <!-- Flash Messages -->
                 @if(session('success'))
                     <div class="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center justify-between shadow-sm">

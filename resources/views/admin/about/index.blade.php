@@ -8,7 +8,7 @@
     <div class="max-w-5xl mx-auto space-y-6">
         <div class="glass-card rounded-2xl border border-slate-200/90 p-5 sm:p-8 space-y-6 shadow-sm">
             
-            <div class="flex items-center justify-between border-b border-slate-200/80 pb-4">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200/80 pb-4">
                 <div>
                     <h3 class="text-base sm:text-lg font-bold text-slate-900">Konten Halaman Tentang VIDALIDAY</h3>
                     <p class="text-xs text-slate-500 mt-1">
@@ -16,7 +16,7 @@
                     </p>
                 </div>
 
-                <a href="{{ route('about') }}" target="_blank" class="px-4 py-2 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-bold transition flex items-center gap-1.5 border border-blue-200">
+                <a href="{{ route('about') }}" target="_blank" class="w-full sm:w-auto justify-center px-4 py-2 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-bold transition flex items-center gap-1.5 border border-blue-200 shrink-0">
                     <span>Lihat Halaman</span>
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                 </a>
@@ -134,7 +134,7 @@
 
                 <!-- Submit Button -->
                 <div class="pt-4 flex items-center justify-end gap-3 border-t border-slate-200">
-                    <button type="submit" class="px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/25 transition">
+                    <button type="submit" class="w-full sm:w-auto text-center px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/25 transition">
                         SIMPAN PERUBAHAN TENTANG KAMI
                     </button>
                 </div>

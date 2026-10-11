@@ -13,10 +13,10 @@
                 <p class="text-xs text-slate-500">Kelola daftar landmark dan estimasi waktu tempuh untuk setiap apartemen</p>
             </div>
 
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2">
                 @foreach($locations as $loc)
                     <a href="{{ route('admin.landmarks.index', ['location_id' => $loc->id]) }}" 
-                       class="px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 {{ $selectedLocationId == $loc->id ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25' : 'bg-slate-100 hover:bg-slate-200 text-slate-700' }}">
+                       class="px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 {{ $selectedLocationId == $loc->id ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25' : 'bg-slate-100 hover:bg-slate-200 text-slate-700' }}">
                         <span>📍</span>
                         <span>{{ $loc->name }}</span>
                     </a>
@@ -28,7 +28,7 @@
             
             <!-- Form Tambah Landmark Baru (Kiri) -->
             <div class="lg:col-span-1">
-                <div class="glass-card rounded-2xl border border-slate-200/90 p-5 sm:p-6 space-y-4 shadow-sm sticky top-24">
+                <div class="glass-card rounded-2xl border border-slate-200/90 p-5 sm:p-6 space-y-4 shadow-sm lg:sticky lg:top-24">
                     <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
                         <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
                             +
@@ -103,7 +103,7 @@
 
                 <div class="space-y-3">
                     @forelse($landmarks as $item)
-                        <div class="glass-card rounded-2xl border border-slate-200/90 p-4 sm:p-5 flex items-center justify-between gap-4 shadow-sm hover:border-blue-200 transition">
+                        <div class="glass-card rounded-2xl border border-slate-200/90 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-sm hover:border-blue-200 transition">
                             <div class="flex items-center gap-3 min-w-0">
                                 <span class="w-6 h-6 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center text-[11px] font-bold shrink-0">
                                     #{{ $item->sort_order }}

@@ -129,7 +129,7 @@
 
                 <!-- Submit Button -->
                 <div class="pt-4 flex items-center justify-end gap-3 border-t border-slate-200">
-                    <button type="submit" class="px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/25 transition">
+                    <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/25 transition text-center">
                         SIMPAN SEMUA PENGATURAN & LOGO
                     </button>
                 </div>

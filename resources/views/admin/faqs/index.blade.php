@@ -9,7 +9,7 @@
         
         <!-- Form Tambah FAQ Baru (Kiri) -->
         <div class="lg:col-span-1">
-            <div class="glass-card rounded-2xl border border-slate-200/90 p-5 sm:p-6 space-y-4 shadow-sm sticky top-24">
+            <div class="glass-card rounded-2xl border border-slate-200/90 p-5 sm:p-6 space-y-4 shadow-sm lg:sticky lg:top-24">
                 <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
                     <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
                         +
@@ -72,8 +72,8 @@
 
             <div class="space-y-3">
                 @forelse($faqs as $faq)
-                    <div class="glass-card rounded-2xl border border-slate-200/90 p-5 space-y-3 shadow-sm hover:border-blue-200 transition">
-                        <div class="flex items-start justify-between gap-3">
+                    <div class="glass-card rounded-2xl border border-slate-200/90 p-4 sm:p-5 space-y-3 shadow-sm hover:border-blue-200 transition">
+                        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                             <div class="space-y-1">
                                 <div class="flex items-center gap-2">
                                     <span class="w-5 h-5 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-bold">

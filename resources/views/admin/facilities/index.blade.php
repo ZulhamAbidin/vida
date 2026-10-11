@@ -9,7 +9,7 @@
         
         <!-- Form Tambah Fasilitas (Left) -->
         <div class="lg:col-span-4">
-            <div class="glass-card rounded-2xl border border-slate-200/90 p-5 sm:p-6 space-y-4 sticky top-24 shadow-sm bg-white">
+            <div class="glass-card rounded-2xl border border-slate-200/90 p-5 sm:p-6 space-y-4 lg:sticky lg:top-24 shadow-sm bg-white">
                 <div class="border-b border-slate-200/80 pb-3">
                     <h3 class="text-base font-bold text-slate-900">+ Tambah Fasilitas Baru</h3>
                     <p class="text-xs text-slate-500 mt-0.5">Lengkapi fasilitas gedung beserta foto opsional.</p>
