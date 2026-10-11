@@ -9,12 +9,42 @@
     <meta property="og:description" content="Sewa apartemen resmi, mewah, dan terpercaya di Makassar. Lokasi Delft CPI & Vida View. Langsung terhubung ke WhatsApp Admin.">
     <meta property="og:type" content="website">
 
-    <!-- Fonts -->
+    <!-- Fonts: Plus Jakarta Sans, Cinzel, Playfair Display, & Cursive Great Vibes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        .font-script {
+            font-family: 'Great Vibes', cursive;
+        }
+        .font-luxury-title {
+            font-family: 'Cinzel', 'Playfair Display', serif;
+        }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #fce99f 0%, #d4af37 50%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #fde48b 0%, #e5b946 50%, #b8860b 100%);
+        }
+        .bg-gold-glow {
+            box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.4);
+        }
+        /* Custom Text Shadows for Luxury Typography Over Backgrounds */
+        .text-shadow-luxury {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+        .text-shadow-subtle {
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .text-shadow-white {
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9), 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative selection:bg-blue-500 selection:text-white overflow-x-hidden">
 
@@ -54,23 +84,19 @@
         <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                 
-                <!-- Brand Logo -->
+                <!-- Brand Logo (Statis Logo Resmi VIDALIDAY) -->
                 <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                    @if(!empty($siteLogo))
-                        <div class="h-11 max-w-[160px] flex items-center shrink-0">
-                            <img src="{{ asset('storage/' . $siteLogo) }}" alt="VIDALIDAY Logo" class="h-full w-auto object-contain max-h-11 group-hover:scale-105 transition-transform">
-                        </div>
-                    @else
-                        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-600 to-sky-500 flex items-center justify-center font-black text-white text-xl tracking-tighter shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform shrink-0">
-                            V
-                        </div>
-                    @endif
+                    <div class="w-12 h-12 rounded-full overflow-hidden border border-slate-200/80 shadow-md group-hover:scale-105 transition-transform shrink-0 bg-white">
+                        <img src="{{ !empty($siteLogo) ? asset('storage/' . $siteLogo) : asset('images/logo_vidaliday.png') }}" 
+                             alt="VIDALIDAY Logo" 
+                             class="w-full h-full object-cover">
+                    </div>
                     <div>
                         <div class="text-2xl font-black tracking-tight text-slate-900 flex items-center gap-1">
                             VIDALIDAY
                             <span class="text-blue-600 text-3xl leading-none">.</span>
                         </div>
-                        <p class="text-[10px] tracking-widest uppercase text-slate-500 -mt-1 font-bold">Makassar Apartment Living</p>
+                        <p class="text-[10px] tracking-widest uppercase text-slate-500 -mt-1 font-bold">Apartment By Us</p>
                     </div>
                 </a>
 
@@ -91,9 +117,8 @@
                     $defaultWaUrl = 'https://wa.me/' . $waClean . '?text=' . urlencode("Halo Admin VIDALIDAY, saya ingin tanya ketersediaan sewa apartemen di Makassar.");
                 @endphp
                 <div class="flex items-center gap-3">
-                    <a href="{{ $defaultWaUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-500/20 transition-all hover:scale-105">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        <span>Chat WhatsApp</span>
+                    <a href="{{ $defaultWaUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white shadow-md shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95" aria-label="WhatsApp Admin" title="Hubungi WhatsApp">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     </a>
 
                     <!-- Mobile Menu Hamburger -->
@@ -128,19 +153,15 @@
                     <!-- Column 1: Brand & Legal Info -->
                     <div class="md:col-span-2 space-y-4">
                         <div class="flex items-center gap-3">
-                            @if(!empty($siteLogo))
-                                <div class="h-10 max-w-[150px] flex items-center shrink-0">
-                                    <img src="{{ asset('storage/' . $siteLogo) }}" alt="VIDALIDAY Logo" class="h-full w-auto object-contain max-h-10">
-                                </div>
-                            @else
-                                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-sky-500 flex items-center justify-center font-black text-white text-xl shadow-md shrink-0">
-                                    V
-                                </div>
-                            @endif
+                            <div class="w-11 h-11 rounded-full overflow-hidden border border-slate-200/80 shadow-md shrink-0 bg-white">
+                                <img src="{{ !empty($siteLogo) ? asset('storage/' . $siteLogo) : asset('images/logo_vidaliday.png') }}" 
+                                     alt="VIDALIDAY Logo" 
+                                     class="w-full h-full object-cover">
+                            </div>
                             <div>
                                 <span class="text-2xl font-black text-slate-900 tracking-tight">VIDALIDAY</span>
                                 <span class="text-blue-600 text-2xl font-black">.</span>
-                                <p class="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Official Apartment Rental</p>
+                                <p class="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Apartment By Us</p>
                             </div>
                         </div>
 
@@ -311,17 +332,17 @@
                 const badge = btn.querySelector('.tab-badge');
 
                 if (isTarget) {
-                    btn.className = 'loc-tab-btn flex-1 py-3.5 px-4 sm:px-6 rounded-xl text-left sm:text-center transition-all duration-300 relative group flex items-center justify-between sm:justify-center gap-3 bg-blue-600 text-white font-black shadow-lg shadow-blue-500/30 ring-2 ring-blue-600';
+                    btn.className = 'loc-tab-btn py-3 sm:py-3.5 px-3.5 sm:px-6 rounded-xl text-left transition-all duration-300 relative group flex items-center justify-between gap-2.5 sm:gap-3 bg-blue-600 text-white font-black shadow-lg shadow-blue-500/30 ring-2 ring-blue-600';
                     if (icon) icon.className = 'tab-icon w-8 h-8 rounded-lg bg-white/20 text-white flex items-center justify-center text-sm shrink-0 font-bold';
-                    if (title) title.className = 'tab-title block text-sm sm:text-base font-black leading-tight text-white';
-                    if (desc) desc.className = 'tab-desc text-[11px] block font-medium opacity-90 text-blue-100';
-                    if (badge) badge.className = 'tab-badge px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shrink-0 bg-white text-blue-700 shadow-sm';
+                    if (title) title.className = 'tab-title block text-xs sm:text-base font-black leading-tight text-white truncate';
+                    if (desc) desc.className = 'tab-desc text-[10px] sm:text-[11px] block font-medium opacity-90 text-blue-100 truncate';
+                    if (badge) badge.className = 'tab-badge px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wider shrink-0 bg-white text-blue-700 shadow-sm';
                 } else {
-                    btn.className = 'loc-tab-btn flex-1 py-3.5 px-4 sm:px-6 rounded-xl text-left sm:text-center transition-all duration-300 relative group flex items-center justify-between sm:justify-center gap-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold border border-slate-200/90';
+                    btn.className = 'loc-tab-btn py-3 sm:py-3.5 px-3.5 sm:px-6 rounded-xl text-left transition-all duration-300 relative group flex items-center justify-between gap-2.5 sm:gap-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold border border-slate-200/90';
                     if (icon) icon.className = 'tab-icon w-8 h-8 rounded-lg bg-slate-200/80 text-slate-700 flex items-center justify-center text-sm shrink-0 font-bold';
-                    if (title) title.className = 'tab-title block text-sm sm:text-base font-bold leading-tight text-slate-800';
-                    if (desc) desc.className = 'tab-desc text-[11px] block font-normal text-slate-500';
-                    if (badge) badge.className = 'tab-badge px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shrink-0 bg-slate-200 text-slate-600';
+                    if (title) title.className = 'tab-title block text-xs sm:text-base font-bold leading-tight text-slate-800 truncate';
+                    if (desc) desc.className = 'tab-desc text-[10px] sm:text-[11px] block font-normal text-slate-500 truncate';
+                    if (badge) badge.className = 'tab-badge px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wider shrink-0 bg-slate-200 text-slate-600';
                 }
             });
 

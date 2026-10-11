@@ -29,14 +29,12 @@
                         <div class="sm:col-span-4 flex flex-col items-center justify-center p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm text-center">
                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 block">Logo Aktif Saat Ini</span>
                             
-                            <div class="w-24 h-24 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden p-2 relative">
+                            <div class="w-24 h-24 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden p-1 relative shadow-sm">
                                 @if(!empty($settings['site_logo']))
-                                    <img id="logo-preview" src="{{ asset('storage/' . $settings['site_logo']) }}" alt="Logo VIDALIDAY" class="w-full h-full object-contain">
+                                    <img id="logo-preview" src="{{ asset('storage/' . $settings['site_logo']) }}" alt="Logo VIDALIDAY" class="w-full h-full object-cover rounded-full">
                                 @else
-                                    <img id="logo-preview" src="" alt="Preview Logo" class="w-full h-full object-contain hidden">
-                                    <div id="logo-default-placeholder" class="w-14 h-14 rounded-xl bg-gradient-to-tr from-blue-600 to-sky-500 text-white font-black text-2xl flex items-center justify-center shadow-md shadow-blue-500/20">
-                                        V
-                                    </div>
+                                    <img id="logo-preview" src="{{ asset('images/logo_vidaliday.png') }}" alt="Logo VIDALIDAY" class="w-full h-full object-cover rounded-full">
+                                    <div id="logo-default-placeholder" class="hidden"></div>
                                 @endif
                             </div>
 

@@ -31,19 +31,15 @@
                 <!-- Brand Header -->
                 <div class="p-5 border-b border-slate-200/80 flex items-center justify-between">
                     <div class="flex items-center gap-3 sidebar-brand-text min-w-0">
-                        @if(!empty($siteLogo))
-                            <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center shadow-sm shrink-0 overflow-hidden">
-                                <img src="{{ asset('storage/' . $siteLogo) }}" alt="Logo" class="w-full h-full object-contain">
-                            </div>
-                        @else
-                            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-sky-500 text-white font-black text-xl flex items-center justify-center shadow-md shadow-blue-500/20 shrink-0">
-                                V
-                            </div>
-                        @endif
+                        <div class="w-10 h-10 rounded-full overflow-hidden border border-slate-200/80 p-0.5 shadow-sm shrink-0 bg-white">
+                            <img src="{{ !empty($siteLogo) ? asset('storage/' . $siteLogo) : asset('images/logo_vidaliday.png') }}" 
+                                 alt="VIDALIDAY Logo" 
+                                 class="w-full h-full object-cover rounded-full">
+                        </div>
                         <div class="sidebar-text truncate">
                             <span class="font-black text-base text-slate-900 tracking-tight">VIDALIDAY</span>
                             <span class="text-blue-600 font-bold">.</span>
-                            <p class="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Panel Pengelola</p>
+                            <p class="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Apartment By Us</p>
                         </div>
                     </div>
 

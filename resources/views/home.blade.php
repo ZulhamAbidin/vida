@@ -5,108 +5,144 @@
 
 @section('content')
 
-    <!-- 1. HERO SECTION WHITE GLASSMORPHISM -->
+    <!-- 1. HERO SECTION WHITE GLASSMORPHISM WITH HIGH-RES BUILDING BACKGROUND -->
     <section class="relative pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden">
+        <!-- Background Foto Gedung Asli (Brentsville Tower) Tampak Jernih & Menyeluruh -->
+        <div class="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+            <img src="{{ asset('images/bg_brentsville_wide.jpg') }}" 
+                 alt="Brentsville Tower Vida View Makassar" 
+                 class="w-full h-full object-cover object-center opacity-90 transition-all duration-700">
+
+            <!-- Lapisan Shadow di Atas Background (Ditebalkan Sedikit agar Teks Jauh Lebih Tajam & Kontras) -->
+            <div class="absolute inset-0 bg-slate-950/55"></div>
+            <!-- Gradient Gradual Sisi Kiri Lebih Tebal di Area Teks -->
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-transparent"></div>
+            <!-- Shadow Atas & Bawah -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40"></div>
+        </div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 
-                <!-- Left Column: Copywriting & Trust Badges -->
-                <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
-                    
-                    <!-- Company Legal Pill -->
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border border-blue-200/80 text-blue-800 text-xs sm:text-sm font-semibold shadow-sm">
-                        <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-                        <span>Legalitas Resmi Terpercaya • <strong>{{ $settings['company_legal_name'] ?? 'PT PERDANA MEGA TRANS' }}</strong></span>
-                    </div>
-
-                    <!-- Main Headline -->
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.18]">
-                        Sewa Apartemen <br class="hidden sm:inline">
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600">
-                            Mewah & Resmi
-                        </span>
-                        di Makassar
-                    </h1>
-
-                    <p class="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                        Kenyamanan standar hotel berbintang dengan keleluasaan unit privat. Siap melayani sewa <strong>harian, mingguan, dan bulanan</strong> di dua lokasi terbaik: <strong>Apartemen Delft CPI</strong> dan <strong>Apartemen Vida View</strong>.
-                    </p>
-
-                    <!-- Quick Location Badges -->
-                    <div class="grid grid-cols-2 gap-3 pt-1 max-w-md mx-auto lg:mx-0">
-                        <div onclick="switchLocation('delft-cpi'); document.getElementById('katalog-kamar').scrollIntoView({behavior: 'smooth'});" class="p-3.5 rounded-2xl glass-card hover:border-blue-300 hover:shadow-md cursor-pointer transition text-left group">
-                            <span class="text-[11px] font-bold text-blue-600 uppercase tracking-wider block">Lokasi 1</span>
-                            <h2 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-blue-600 transition">Delft CPI</h2>
-                            <p class="text-xs text-slate-500">Waterfront & Sunset Losari</p>
+                <!-- Left Column: Solid White Search / Booking Widget Card (Gaya Traveloka / Booking.com) -->
+                <div class="lg:col-span-7">
+                    <!-- Elevate Solid White Card -->
+                    <div class="relative bg-white rounded-3xl p-4 sm:p-8 shadow-2xl shadow-slate-950/30 border border-slate-100 text-slate-800">
+                        
+                        <!-- Header Status Tag -->
+                        <div class="flex items-center justify-between gap-1.5 border-b border-slate-100 pb-2.5 mb-3">
+                            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900 text-white text-[10px] sm:text-xs font-semibold">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="text-amber-300 font-bold uppercase tracking-wider text-[9px] sm:text-[11px]">Sewa Apartemen</span>
+                                <span class="text-slate-500">•</span>
+                                <span class="text-slate-200 text-[9px] sm:text-[11px]">Makassar</span>
+                            </div>
+                            <span class="text-[9px] sm:text-[11px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/60 uppercase tracking-wider">
+                                Best Rate Guarantee
+                            </span>
                         </div>
-                        <div onclick="switchLocation('vida-view'); document.getElementById('katalog-kamar').scrollIntoView({behavior: 'smooth'});" class="p-3.5 rounded-2xl glass-card hover:border-blue-300 hover:shadow-md cursor-pointer transition text-left group">
-                            <span class="text-[11px] font-bold text-blue-600 uppercase tracking-wider block">Lokasi 2</span>
-                            <h2 class="text-sm sm:text-base font-bold text-slate-900 group-hover:text-blue-600 transition">Vida View</h2>
-                            <p class="text-xs text-slate-500">Pusat Kota Panakkukang</p>
-                        </div>
-                    </div>
 
-                    <!-- CTAs -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-3">
-                        <a href="#katalog-kamar" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm tracking-wide shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 text-center">
-                            LIHAT PILIHAN KAMAR & PROMO
-                        </a>
+                        <!-- Main Headline: Persis Permintaan User -->
+                        <div class="space-y-1 mb-3.5">
+                            <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
+                                Nikmati Hunian Mewah di
+                                <span class="block text-amber-600 font-black mt-0.5 text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+                                    DELFT CPI & VIDA VIEW
+                                </span>
+                            </h1>
+                            <p class="text-slate-600 text-xs sm:text-sm font-normal leading-relaxed pt-1">
+                                Pilihan tepat untuk kenyamanan menginap harian, mingguan, & bulanan dengan fasilitas lengkap, unit higienis, dan pemandangan terbaik kota Makassar.
+                            </p>
+                        </div>
+
+                        <!-- Booking Widget: Full-Width Prominent PROMO Box (Sesuai Permintaan User: Hapus Lokasi agar PROMO Penuh Ruang) -->
                         @php
-                            $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6285711696970');
-                            $heroWa = "https://wa.me/{$waClean}?text=" . urlencode("Halo Admin VIDALIDAY, saya ingin konsultasi ketersediaan sewa apartemen di Makassar.");
+                            // Ambil harga promo terendah yang aktif dari database, fallback ke unit favorit atau 280.000
+                            $lowestPromoPrice = \App\Models\Unit::where('is_available', true)->where('promo_price', '>', 0)->min('promo_price');
+                            $displayPromoPrice = $lowestPromoPrice ? number_format($lowestPromoPrice, 0, ',', '.') : '280.000';
+                            $displayPromoUnit = $featuredUnit ? $featuredUnit->name : 'Studio & 1 BR';
                         @endphp
-                        <a href="{{ $heroWa }}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 rounded-xl glass-card hover:border-emerald-500 text-slate-800 hover:text-emerald-700 font-bold text-sm flex items-center justify-center gap-2.5 transition-all text-center">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                            Konsultasi via WhatsApp
-                        </a>
-                    </div>
+                        <div class="mb-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-50 via-orange-50/80 to-amber-100/60 border-2 border-amber-400/90 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
+                            <div class="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 text-white flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/30">
+                                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="px-1.5 sm:px-2 py-0.5 rounded-md bg-rose-600 text-white text-[9px] sm:text-[11px] font-black uppercase tracking-wider shadow-sm animate-pulse">
+                                            PROMO
+                                        </span>
+                                        <span class="text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider">HARGA SPESIAL MULAI DARI</span>
+                                    </div>
+                                    <div class="text-lg sm:text-2xl lg:text-3xl font-black text-slate-950 tracking-tight leading-none mt-1">
+                                        Rp {{ $displayPromoPrice }}<span class="text-[11px] sm:text-sm font-bold text-amber-600"> /malam</span>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <!-- Mini Highlights -->
-                    <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs text-slate-500 font-medium">
-                        <div class="flex items-center gap-1.5">
-                            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Unit Terawat & Bersih
+                            <!-- Duration Tags & Guarantee -->
+                            <div class="flex items-center gap-2 text-[9px] sm:text-xs font-extrabold uppercase tracking-wider w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 border-amber-200/60 pt-2 sm:pt-0">
+                                <div class="flex items-center gap-1 sm:gap-2 bg-white/80 px-2 sm:px-2.5 py-1 rounded-xl border border-amber-300/60 shadow-xs">
+                                    <span class="text-emerald-600 font-black">HARIAN</span>
+                                    <span class="text-slate-300">•</span>
+                                    <span class="text-slate-700">MINGGUAN</span>
+                                    <span class="text-slate-300">•</span>
+                                    <span class="text-slate-700">BULANAN</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-center gap-1.5">
-                            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Check-in Mudah di Lobby
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            Jaminan Tanpa Penipuan
+
+                        <!-- CTA Action Area -->
+                        <div class="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3">
+                            @php
+                                $waClean = preg_replace('/[^0-9]/', '', $settings['whatsapp_number'] ?? '6285711696970');
+                                $heroWa = "https://wa.me/{$waClean}?text=" . urlencode("Halo Admin VIDALIDAY, saya ingin reservasi apartemen (Delft CPI / Vida View Makassar). Mohon info ketersediaan kamar. Terima kasih!");
+                            @endphp
+
+                            <!-- Button Reservasi WA (Sesuai Permintaan User) -->
+                            <a href="{{ $heroWa }}" target="_blank" rel="noopener noreferrer" class="w-full sm:flex-1 py-3 sm:py-3.5 px-4 sm:px-6 rounded-2xl bg-[#05c46b] hover:bg-[#04b060] text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-500/25 active:scale-95 text-center">
+                                <div class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                                    <svg class="w-3 h-3 fill-current text-white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                                </div>
+                                <span>Reservasi via WhatsApp</span>
+                            </a>
+
+                            <!-- Button Lihat Katalog -->
+                            <a href="#katalog-kamar" class="w-full sm:w-auto py-2.5 sm:py-3.5 px-4 sm:px-5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs uppercase tracking-wider transition-all text-center">
+                                Lihat Unit
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column: White Glassmorphic Showcase Card (Dinamis Berdasarkan Pilihan Admin) -->
+                <!-- Right Column: Card Favorit Putih Elegan / White Glassmorphic Card (Tidak Berwarna Hitam) -->
                 <div class="lg:col-span-5 relative">
                     <!-- Subtle Glow Behind -->
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-400/20 to-sky-400/20 rounded-3xl blur-2xl opacity-70"></div>
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-300/30 via-sky-300/30 to-amber-300/30 rounded-[2.5rem] blur-2xl opacity-75"></div>
                     
-                    <div class="relative glass-card rounded-3xl p-5 sm:p-6 border border-white/80 space-y-4 shadow-xl shadow-slate-200/50">
+                    <!-- Card Favorit Berwarna Putih Elegan dengan Golden Border Halus -->
+                    <div class="relative rounded-[2rem] p-4 sm:p-5 bg-white/90 backdrop-blur-xl border border-white/80 shadow-2xl shadow-slate-300/60 space-y-4">
+                        
                         @if($featuredUnit)
-                        <div class="relative h-60 sm:h-72 rounded-2xl overflow-hidden group bg-slate-100">
-                            <img src="{{ $featuredUnit->image_url ?? 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80' }}" alt="{{ $featuredUnit->name ?? 'Apartemen Makassar' }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/75 via-transparent to-transparent"></div>
+                        <!-- Top Badge on Building -->
+                        <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden group bg-slate-100 border border-slate-200/80 shadow-inner">
+                            <!-- Foto Gedung Brentsville Tower / Unit Featured -->
+                            <img src="{{ $featuredUnit->image_url ?? asset('images/bg_brentsville_wide.jpg') }}" 
+                                 alt="{{ $featuredUnit->name ?? 'Brentsville Tower Vida View Makassar' }}" 
+                                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
                             
-                            <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold text-slate-800 flex items-center gap-1.5 shadow-sm border border-white/50">
-                                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                                Pilihan Favorit Tamu
+                            <!-- Star Best Seller Badge -->
+                            <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-[11px] font-black text-amber-300 flex items-center gap-1.5 shadow-md border border-amber-400/40">
+                                <span>⭐</span>
+                                <span>Best Seller Panakkukang</span>
                             </div>
 
                             @if($featuredUnit && $featuredUnit->promo_badge)
-                                <div class="absolute top-3 right-3 px-3 py-1 rounded-full bg-blue-600 text-white text-[11px] font-black shadow-md shadow-blue-500/30">
+                                <div class="absolute top-3 right-3 px-3 py-1 rounded-full bg-rose-600 text-white text-[11px] font-black shadow-md">
                                     {{ $featuredUnit->promo_badge }}
                                 </div>
                             @endif
-
-                            <div class="absolute bottom-4 left-4 right-4 text-white">
-                                <span class="text-[11px] uppercase font-bold tracking-wider text-blue-300">{{ $featuredUnit->location->name ?? 'Makassar' }}</span>
-                                <h3 class="text-lg sm:text-xl font-bold">{{ $featuredUnit->name ?? 'Delft CPI & Vida View' }}</h3>
-                                <p class="text-xs text-slate-200 mt-0.5 line-clamp-1">
-                                    {{ $featuredUnit->description ? Str::limit($featuredUnit->description, 65) : 'Full Furnished • AC Dingin • WiFi Kencang' }}
-                                </p>
-                            </div>
                         </div>
 
                         <!-- Micro Info -->
@@ -139,11 +175,11 @@
                             $featuredMsg = "Halo Admin VIDALIDAY, saya tertarik memesan unit Pilihan Favorit Tamu:\n- Unit: " . ($featuredUnit->name ?? '') . " (" . ($featuredUnit->room_type ?? '') . ")\n- Lokasi: " . $featuredLocName . "\n- Harga: " . $featuredPrice . " / " . ($featuredUnit->rental_period ?? 'Malam') . "\n\nMohon info ketersediaan kamar. Terima kasih!";
                             $featuredWaUrl = "https://wa.me/{$waClean}?text=" . urlencode($featuredMsg);
                         @endphp
-                        <div class="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-between">
+                        <div class="p-3 sm:p-3.5 rounded-xl bg-blue-50/80 border border-blue-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                             <div>
                                 <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Tarif Sewa</span>
                                 <div class="flex items-baseline gap-2">
-                                    <span class="text-lg font-black text-blue-700">
+                                    <span class="text-base sm:text-lg font-black text-blue-700">
                                         {{ $featuredUnit->is_promo_active ? $featuredUnit->formatted_promo_price : $featuredUnit->formatted_normal_price }}
                                     </span>
                                     @if($featuredUnit->is_promo_active && $featuredUnit->normal_price > $featuredUnit->promo_price)
@@ -153,7 +189,7 @@
                             </div>
                             <button type="button" 
                                     onclick="openBookingModal('{{ addslashes($featuredUnit->name) }}', '{{ addslashes($featuredUnit->room_type) }}', '{{ addslashes($featuredLocName) }}', '{{ $featuredPrice }}', '{{ $featuredUnit->rental_period }}', '{{ $featuredUnit->image_url }}', {{ (int)$featuredUnit->max_guests }})" 
-                                    class="px-3.5 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition shadow-sm flex items-center gap-1.5 cursor-pointer">
+                                    class="w-full sm:w-auto px-3.5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
                                 <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                                 <span>Pesan Kamar Ini</span>
                             </button>
@@ -207,11 +243,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-10 space-y-2.5">
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2 sm:space-y-2.5">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-blue-700 text-xs font-bold uppercase tracking-wider">
                     Katalog Kamar & Promo
                 </span>
-                <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
                     Pilih Lokasi & Unit Kamar Sesuai Kebutuhan Anda
                 </h2>
                 <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto">
@@ -219,50 +255,52 @@
                 </p>
             </div>
 
-            <!-- Location Selector Switcher (Kategori Lokasi Apartemen Jelas & Menonjol) -->
-            <div id="lokasi" class="flex flex-col items-center justify-center mb-10">
-                <div class="text-center mb-3">
-                    <span class="text-[11px] font-black uppercase tracking-wider text-slate-500">PILIH KATEGORI LOKASI APARTEMEN:</span>
+            <!-- Location Selector Switcher (Responsive Mobile & Desktop) -->
+            <div id="lokasi" class="flex flex-col items-center justify-center mb-8 sm:mb-10 w-full">
+                <div class="text-center mb-2.5 sm:mb-3">
+                    <span class="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-slate-500">PILIH KATEGORI LOKASI APARTEMEN:</span>
                 </div>
                 
-                <div class="inline-flex p-2 rounded-2xl glass-card border border-blue-200/90 shadow-lg shadow-blue-500/10 max-w-2xl w-full bg-white/95 gap-2">
-                    <!-- Tab Apartemen Delft CPI -->
-                    <button type="button" 
-                            data-target="delft-cpi" 
-                            onclick="switchLocation('delft-cpi')" 
-                            class="loc-tab-btn flex-1 py-3.5 px-4 sm:px-6 rounded-xl text-left sm:text-center transition-all duration-300 relative group flex items-center justify-between sm:justify-center gap-3 bg-blue-600 text-white font-black shadow-lg shadow-blue-500/30 ring-2 ring-blue-600">
-                        <div class="flex items-center gap-2.5">
-                            <span class="tab-icon w-8 h-8 rounded-lg bg-white/20 text-white flex items-center justify-center text-sm shrink-0 font-bold">
-                                🌊
-                            </span>
-                            <div class="text-left">
-                                <span class="tab-title block text-sm sm:text-base font-black leading-tight text-white">Apartemen Delft CPI</span>
-                                <span class="tab-desc text-[11px] block font-medium opacity-90 text-blue-100">Pantai Losari & Center Point</span>
+                <div class="w-full max-w-2xl px-1">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 p-1.5 sm:p-2 rounded-2xl glass-card border border-blue-200/90 shadow-lg shadow-blue-500/10 w-full bg-white/95 gap-2">
+                        <!-- Tab Apartemen Delft CPI -->
+                        <button type="button" 
+                                data-target="delft-cpi" 
+                                onclick="switchLocation('delft-cpi')" 
+                                class="loc-tab-btn py-3 sm:py-3.5 px-3.5 sm:px-6 rounded-xl text-left transition-all duration-300 relative group flex items-center justify-between gap-2.5 sm:gap-3 bg-blue-600 text-white font-black shadow-lg shadow-blue-500/30 ring-2 ring-blue-600">
+                            <div class="flex items-center gap-2.5 min-w-0">
+                                <span class="tab-icon w-8 h-8 rounded-lg bg-white/20 text-white flex items-center justify-center text-sm shrink-0 font-bold">
+                                    🌊
+                                </span>
+                                <div class="text-left min-w-0">
+                                    <span class="tab-title block text-xs sm:text-base font-black leading-tight text-white truncate">Apartemen Delft CPI</span>
+                                    <span class="tab-desc text-[10px] sm:text-[11px] block font-medium opacity-90 text-blue-100 truncate">Pantai Losari & Center Point</span>
+                                </div>
                             </div>
-                        </div>
-                        <span class="tab-badge px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shrink-0 bg-white text-blue-700 shadow-sm">
-                            {{ $delft->units->count() ?? 0 }} Unit
-                        </span>
-                    </button>
+                            <span class="tab-badge px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wider shrink-0 bg-white text-blue-700 shadow-sm">
+                                {{ $delft->units->count() ?? 0 }} Unit
+                            </span>
+                        </button>
 
-                    <!-- Tab Apartemen Vida View -->
-                    <button type="button" 
-                            data-target="vida-view" 
-                            onclick="switchLocation('vida-view')" 
-                            class="loc-tab-btn flex-1 py-3.5 px-4 sm:px-6 rounded-xl text-left sm:text-center transition-all duration-300 relative group flex items-center justify-between sm:justify-center gap-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold border border-slate-200/90">
-                        <div class="flex items-center gap-2.5">
-                            <span class="tab-icon w-8 h-8 rounded-lg bg-slate-200/80 text-slate-700 flex items-center justify-center text-sm shrink-0 font-bold">
-                                🏙️
-                            </span>
-                            <div class="text-left">
-                                <span class="tab-title block text-sm sm:text-base font-bold leading-tight text-slate-800">Apartemen Vida View</span>
-                                <span class="tab-desc text-[11px] block font-normal text-slate-500">Pusat Kota Panakkukang</span>
+                        <!-- Tab Apartemen Vida View -->
+                        <button type="button" 
+                                data-target="vida-view" 
+                                onclick="switchLocation('vida-view')" 
+                                class="loc-tab-btn py-3 sm:py-3.5 px-3.5 sm:px-6 rounded-xl text-left transition-all duration-300 relative group flex items-center justify-between gap-2.5 sm:gap-3 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold border border-slate-200/90">
+                            <div class="flex items-center gap-2.5 min-w-0">
+                                <span class="tab-icon w-8 h-8 rounded-lg bg-slate-200/80 text-slate-700 flex items-center justify-center text-sm shrink-0 font-bold">
+                                    🏙️
+                                </span>
+                                <div class="text-left min-w-0">
+                                    <span class="tab-title block text-xs sm:text-base font-bold leading-tight text-slate-800 truncate">Apartemen Vida View</span>
+                                    <span class="tab-desc text-[10px] sm:text-[11px] block font-normal text-slate-500 truncate">Pusat Kota Panakkukang</span>
+                                </div>
                             </div>
-                        </div>
-                        <span class="tab-badge px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shrink-0 bg-slate-200 text-slate-600">
-                            {{ $vida->units->count() ?? 0 }} Unit
-                        </span>
-                    </button>
+                            <span class="tab-badge px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wider shrink-0 bg-slate-200 text-slate-600">
+                                {{ $vida->units->count() ?? 0 }} Unit
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -295,17 +333,17 @@
             <!-- GROUP 1: UNITS APARTEMEN DELFT CPI -->
             <div id="units-delft-cpi" class="space-y-8">
                 <!-- Location Info Card -->
-                <div class="p-5 sm:p-6 rounded-2xl glass-card border border-blue-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div class="p-4 sm:p-6 rounded-2xl glass-card border border-blue-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
                     <div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">Center Point of Indonesia</span>
-                            <span class="text-xs text-slate-500">• Waterfront & Sunset View</span>
+                        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-bold border border-blue-200 shrink-0">Center Point of Indonesia</span>
+                            <span class="text-[10px] sm:text-xs text-slate-500 whitespace-nowrap">• Waterfront & Sunset View</span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">{{ $delft->name ?? 'Apartemen Delft CPI' }}</h3>
+                        <h3 class="text-lg sm:text-2xl font-black text-slate-900 mt-1 leading-snug">{{ $delft->name ?? 'Apartemen Delft CPI' }}</h3>
                         <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mt-1 leading-relaxed">{{ $delft->description ?? '' }}</p>
                     </div>
-                    <div class="text-xs text-slate-500 flex items-center gap-1.5 shrink-0">
-                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                    <div class="text-[11px] sm:text-xs text-slate-500 flex items-center gap-1.5 shrink-0 mt-1 md:mt-0">
+                        <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                         <span>Jl. Metro Tanjung Bunga, Makassar</span>
                     </div>
                 </div>
@@ -338,17 +376,17 @@
             <!-- GROUP 2: UNITS APARTEMEN VIDA VIEW -->
             <div id="units-vida-view" class="space-y-8 hidden">
                 <!-- Location Info Card -->
-                <div class="p-5 sm:p-6 rounded-2xl glass-card border border-blue-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div class="p-4 sm:p-6 rounded-2xl glass-card border border-blue-200/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
                     <div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">Panakkukang District</span>
-                            <span class="text-xs text-slate-500">• City Skyline & Sebelah Mall</span>
+                        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-bold border border-blue-200 shrink-0">Panakkukang District</span>
+                            <span class="text-[10px] sm:text-xs text-slate-500 whitespace-nowrap">• City Skyline & Sebelah Mall</span>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">{{ $vida->name ?? 'Apartemen Vida View' }}</h3>
+                        <h3 class="text-lg sm:text-2xl font-black text-slate-900 mt-1 leading-snug">{{ $vida->name ?? 'Apartemen Vida View' }}</h3>
                         <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mt-1 leading-relaxed">{{ $vida->description ?? '' }}</p>
                     </div>
-                    <div class="text-xs text-slate-500 flex items-center gap-1.5 shrink-0">
-                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                    <div class="text-[11px] sm:text-xs text-slate-500 flex items-center gap-1.5 shrink-0 mt-1 md:mt-0">
+                        <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                         <span>Jl. Topaz Raya, Panakkukang, Makassar</span>
                     </div>
                 </div>
@@ -384,11 +422,11 @@
     <!-- 4. FASILITAS GEDUNG SHOWCASE -->
     <section id="fasilitas" class="py-12 sm:py-16 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+            <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-blue-700 text-xs font-bold uppercase tracking-wider">
                     Fasilitas Gedung
                 </span>
-                <h2 class="text-2xl sm:text-3xl font-black text-slate-900">
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900">
                     Fasilitas Lengkap untuk Kenyamanan Anda
                 </h2>
                 <p class="text-xs sm:text-sm text-slate-600">
@@ -399,7 +437,7 @@
             <!-- Facilities for Delft CPI -->
             <div id="facilities-delft-cpi" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 @foreach($delft->facilities ?? [] as $fac)
-                    <div class="p-5 rounded-2xl glass-card glass-card-hover border border-slate-200/80 space-y-2.5">
+                    <div class="p-4 sm:p-5 rounded-2xl glass-card glass-card-hover border border-slate-200/80 space-y-2.5">
                         @if($fac->image_url)
                             <div class="h-32 w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 mb-2">
                                 <img src="{{ $fac->image_url }}" alt="{{ $fac->name }}" class="w-full h-full object-cover">
@@ -409,9 +447,9 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                             </div>
                         @endif
-                        <h4 class="text-base font-bold text-slate-900">{{ $fac->name }}</h4>
+                        <h4 class="text-sm sm:text-base font-bold text-slate-900">{{ $fac->name }}</h4>
                         <p class="text-xs text-slate-600 leading-relaxed">{{ $fac->description }}</p>
-                        <span class="text-[11px] text-blue-600 font-semibold block pt-0.5">Gedung Delft CPI</span>
+                        <span class="text-[10px] sm:text-[11px] text-blue-600 font-semibold block pt-0.5">Gedung Delft CPI</span>
                     </div>
                 @endforeach
             </div>
@@ -419,7 +457,7 @@
             <!-- Facilities for Vida View -->
             <div id="facilities-vida-view" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 hidden">
                 @foreach($vida->facilities ?? [] as $fac)
-                    <div class="p-5 rounded-2xl glass-card glass-card-hover border border-slate-200/80 space-y-2.5">
+                    <div class="p-4 sm:p-5 rounded-2xl glass-card glass-card-hover border border-slate-200/80 space-y-2.5">
                         @if($fac->image_url)
                             <div class="h-32 w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 mb-2">
                                 <img src="{{ $fac->image_url }}" alt="{{ $fac->name }}" class="w-full h-full object-cover">
@@ -429,9 +467,9 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                             </div>
                         @endif
-                        <h4 class="text-base font-bold text-slate-900">{{ $fac->name }}</h4>
+                        <h4 class="text-sm sm:text-base font-bold text-slate-900">{{ $fac->name }}</h4>
                         <p class="text-xs text-slate-600 leading-relaxed">{{ $fac->description }}</p>
-                        <span class="text-[11px] text-blue-600 font-semibold block pt-0.5">Gedung Vida View Panakkukang</span>
+                        <span class="text-[10px] sm:text-[11px] text-blue-600 font-semibold block pt-0.5">Gedung Vida View Panakkukang</span>
                     </div>
                 @endforeach
             </div>
@@ -441,14 +479,14 @@
     <!-- 5. LEGALITAS & TRUST BANNER -->
     <section id="legalitas" class="py-12 sm:py-16 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="p-6 sm:p-10 rounded-3xl glass-card border border-blue-200/80 relative overflow-hidden shadow-lg shadow-slate-200/40">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="p-5 sm:p-10 rounded-3xl glass-card border border-blue-200/80 relative overflow-hidden shadow-lg shadow-slate-200/40">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
                     
                     <div class="lg:col-span-8 space-y-4">
                         <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
                             Keamanan Transaksi & Legalitas
                         </span>
-                        <h3 class="text-2xl sm:text-3xl font-black text-slate-900">
+                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900">
                             Mengapa Tamu Memilih Sewa di VIDALIDAY?
                         </h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -456,15 +494,15 @@
                         </p>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 text-xs">
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                            <div class="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
                                 <span class="font-bold text-blue-700 block mb-1">Badan Usaha Resmi PT</span>
                                 <span class="text-slate-600">Berbadan hukum resmi terdaftar dengan manajemen terpercaya.</span>
                             </div>
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                            <div class="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
                                 <span class="font-bold text-blue-700 block mb-1">Staff Standby di Lokasi</span>
                                 <span class="text-slate-600">Penyerahan kunci & pendampingan check-in langsung di lobby.</span>
                             </div>
-                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                            <div class="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
                                 <span class="font-bold text-blue-700 block mb-1">Garansi Unit Real</span>
                                 <span class="text-slate-600">Foto kamar asli sesuai unit fisik yang akan ditempati.</span>
                             </div>
@@ -472,9 +510,9 @@
                     </div>
 
                     <div class="lg:col-span-4 text-center lg:text-right space-y-4">
-                        <div class="p-5 rounded-2xl bg-white border border-slate-200/90 text-left space-y-3 shadow-sm">
-                            <div class="text-[11px] font-bold text-blue-600 uppercase tracking-widest">Konsultasi Gratis</div>
-                            <div class="text-base font-bold text-slate-900">Butuh Rekomendasi Unit?</div>
+                        <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 text-left space-y-2.5 sm:space-y-3 shadow-sm">
+                            <div class="text-[10px] sm:text-[11px] font-bold text-blue-600 uppercase tracking-widest">Konsultasi Gratis</div>
+                            <div class="text-sm sm:text-base font-bold text-slate-900">Butuh Rekomendasi Unit?</div>
                             <p class="text-xs text-slate-500">Sampaikan rencana tanggal sewa Anda dan admin kami siap membantu mencarikan unit terbaik.</p>
                             @php
                                 $waAsk = "https://wa.me/{$waClean}?text=" . urlencode("Halo Admin VIDALIDAY, saya ingin tanya ketersediaan unit untuk rencana tanggal sewa saya.");
@@ -494,11 +532,11 @@
     <!-- 6. LOKASI STRATEGIS & AKSES POPULER -->
     <section id="jarak" class="py-12 sm:py-16 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+            <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-blue-700 text-xs font-bold uppercase tracking-wider">
                     Akses Strategis
                 </span>
-                <h2 class="text-2xl sm:text-3xl font-black text-slate-900">
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900">
                     Dekat dengan Berbagai Landmark Makassar
                 </h2>
                 <p class="text-xs sm:text-sm text-slate-600">
@@ -508,27 +546,66 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 @foreach($locations as $loc)
-                    <div class="p-6 rounded-2xl glass-card border border-slate-200/80 space-y-3.5 shadow-sm">
-                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                            <h4 class="text-base sm:text-lg font-bold text-slate-900">Dari Apartemen {{ $loc->name }}</h4>
-                            @if($loc->tagline)
-                                <span class="text-xs px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-200">{{ $loc->tagline }}</span>
-                            @endif
+                    <div class="p-5 sm:p-6 rounded-2xl glass-card border border-slate-200/80 space-y-3.5 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                                <h4 class="text-sm sm:text-lg font-bold text-slate-900">Dari Apartemen {{ $loc->name }}</h4>
+                                @if($loc->tagline)
+                                    <span class="text-[11px] sm:text-xs px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-200">{{ $loc->tagline }}</span>
+                                @endif
+                            </div>
+                            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 mt-3.5">
+                                @forelse($loc->landmarks as $landmark)
+                                    <li class="flex items-center justify-between gap-3">
+                                        <span class="truncate">{{ $landmark->name }}</span>
+                                        <strong class="text-blue-600 font-mono shrink-0">{{ $landmark->distance_time }}</strong>
+                                    </li>
+                                @empty
+                                    <li class="text-slate-400 text-xs italic py-2 text-center">
+                                        Informasi akses landmark untuk lokasi ini sedang diperbarui.
+                                    </li>
+                                @endforelse
+                            </ul>
                         </div>
-                        <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
-                            @forelse($loc->landmarks as $landmark)
-                                <li class="flex items-center justify-between gap-3">
-                                    <span class="truncate">{{ $landmark->name }}</span>
-                                    <strong class="text-blue-600 font-mono shrink-0">{{ $landmark->distance_time }}</strong>
-                                </li>
-                            @empty
-                                <li class="text-slate-400 text-xs italic py-2 text-center">
-                                    Informasi akses landmark untuk lokasi ini sedang diperbarui.
-                                </li>
-                            @endforelse
-                        </ul>
                     </div>
                 @endforeach
+            </div>
+
+            <!-- EMBED GOOGLE MAPS: APARTEMEN VIDA VIEW BY VIDALIDAY -->
+            <div class="mt-16 sm:mt-24 p-4 sm:p-6 rounded-3xl glass-card border border-slate-200/90 shadow-md">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+                            <h3 class="text-sm sm:text-lg font-extrabold text-slate-900">
+                                Peta Lokasi: APARTEMEN VIDA VIEW BY VIDALIDAY
+                            </h3>
+                        </div>
+                        <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                            Jl. Topaz Raya, Masale, Kec. Panakkukang, Kota Makassar, Sulawesi Selatan 90231
+                        </p>
+                    </div>
+
+                    <a href="https://maps.app.goo.gl/fkvUg2jpHedbgXXC9?g_st=ic" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 transition transform hover:-translate-y-0.5 shrink-0 w-full sm:w-auto justify-center">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+                        <span>Buka di Google Maps</span>
+                    </a>
+                </div>
+
+                <!-- Google Maps Interactive Iframe -->
+                <div class="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=APARTEMEN+VIDA+VIEW+BY+VIDALIDAY,+Jl.+Topaz+Raya,+Masale,+Kec.+Panakkukang,+Kota+Makassar,+Sulawesi+Selatan+90231&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        class="w-full h-full border-0" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Peta Lokasi APARTEMEN VIDA VIEW BY VIDALIDAY">
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -536,11 +613,11 @@
     <!-- 7. FAQ & ATURAN MENGINAP -->
     <section id="faq" class="py-12 sm:py-16 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 space-y-2">
+            <div class="text-center mb-8 sm:mb-10 space-y-2">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-badge text-blue-700 text-xs font-bold uppercase tracking-wider">
                     FAQ
                 </span>
-                <h2 class="text-2xl sm:text-3xl font-black text-slate-900">
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900">
                     Pertanyaan Seputar Sewa Apartemen
                 </h2>
                 <p class="text-xs sm:text-sm text-slate-600">
@@ -548,13 +625,13 @@
                 </p>
             </div>
 
-            <div class="space-y-3.5">
+            <div class="space-y-3 sm:space-y-3.5" id="faq-list">
                 @forelse($faqs as $faq)
-                    <div class="p-5 rounded-2xl glass-card border border-slate-200/80 space-y-1.5 shadow-sm hover:border-blue-200 transition">
-                        <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center justify-between gap-3">
+                    <div class="p-4 sm:p-5 rounded-2xl glass-card border border-slate-200/80 space-y-1.5 shadow-sm hover:border-blue-200 transition {{ $loop->index >= 3 ? 'faq-extra hidden' : '' }}">
+                        <h3 class="text-xs sm:text-base font-bold text-slate-900 flex items-start sm:items-center justify-between gap-2.5">
                             <span>{{ $faq->question }}</span>
                             @if($faq->badge)
-                                <span class="text-blue-600 text-xs sm:text-sm font-semibold shrink-0">{{ $faq->badge }}</span>
+                                <span class="text-blue-600 text-[11px] sm:text-sm font-semibold shrink-0">{{ $faq->badge }}</span>
                             @endif
                         </h3>
                         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -567,43 +644,55 @@
                     </div>
                 @endforelse
             </div>
+
+            @if(isset($faqs) && count($faqs) > 3)
+                <div class="text-center pt-6">
+                    <button type="button" 
+                            id="btn-toggle-faq" 
+                            onclick="toggleFaqList()" 
+                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-blue-600 hover:text-blue-700 font-extrabold text-xs sm:text-sm border border-blue-200 shadow-sm hover:shadow transition transform hover:-translate-y-0.5 cursor-pointer">
+                        <span id="faq-toggle-text">Lihat Semua FAQ ({{ count($faqs) - 3 }} Pertanyaan Lainnya)</span>
+                        <svg id="faq-toggle-icon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                </div>
+            @endif
         </div>
     </section>
 
     <!-- POP-UP MODAL RENCANA TANGGAL PEMESANAN (GLASSMORPHISM) -->
-    <div id="booking-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-card rounded-3xl border border-white/80 p-6 sm:p-7 max-w-lg w-full space-y-5 shadow-2xl bg-white/95 relative transform transition-all animate-fade-in max-h-[92vh] overflow-y-auto">
+    <div id="booking-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 hidden">
+        <div class="glass-card rounded-3xl border border-white/80 p-4 sm:p-7 max-w-lg w-full space-y-4 sm:space-y-5 shadow-2xl bg-white/95 relative transform transition-all animate-fade-in max-h-[92vh] overflow-y-auto">
             
             <!-- Close Button -->
             <button type="button" 
                     onclick="closeBookingModal()" 
-                    class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition">
+                    class="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
 
             <!-- Modal Header -->
-            <div class="flex items-start gap-4 pr-8">
-                <img id="modal-unit-img" src="" alt="Unit" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border border-slate-200 shrink-0 bg-slate-100 shadow-sm">
+            <div class="flex items-start gap-3 sm:gap-4 pr-7 sm:pr-8">
+                <img id="modal-unit-img" src="" alt="Unit" class="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl object-cover border border-slate-200 shrink-0 bg-slate-100 shadow-sm">
                 <div>
-                    <span id="modal-unit-location" class="text-[11px] font-bold text-blue-600 uppercase tracking-wider block"></span>
-                    <h3 id="modal-unit-name" class="text-base sm:text-lg font-black text-slate-900 leading-tight"></h3>
+                    <span id="modal-unit-location" class="text-[10px] sm:text-[11px] font-bold text-blue-600 uppercase tracking-wider block"></span>
+                    <h3 id="modal-unit-name" class="text-sm sm:text-lg font-black text-slate-900 leading-tight"></h3>
                     <div class="flex items-center gap-2 mt-1">
-                        <span id="modal-unit-room-type" class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[11px] font-semibold"></span>
+                        <span id="modal-unit-room-type" class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] sm:text-[11px] font-semibold"></span>
                         <span id="modal-unit-price" class="text-xs sm:text-sm font-extrabold text-blue-700"></span>
-                        <span id="modal-unit-period" class="text-[11px] text-slate-400"></span>
+                        <span id="modal-unit-period" class="text-[10px] sm:text-[11px] text-slate-400"></span>
                     </div>
                 </div>
             </div>
 
             <!-- Title & Hint -->
-            <div class="border-t border-b border-slate-100 py-3">
+            <div class="border-t border-b border-slate-100 py-2.5 sm:py-3">
                 <div class="flex items-center gap-2">
                     <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     </div>
                     <div>
                         <h4 class="text-xs sm:text-sm font-bold text-slate-900">Rencana Jadwal Menginap Anda</h4>
-                        <p class="text-[11px] text-slate-500">Tentukan perkiraan tanggal agar admin langsung mengecek ketersediaan unit.</p>
+                        <p class="text-[10px] sm:text-[11px] text-slate-500">Tentukan perkiraan tanggal agar admin langsung mengecek ketersediaan unit.</p>
                     </div>
                 </div>
             </div>
@@ -992,6 +1081,34 @@
             indicator.innerText = `Menampilkan semua kamar (${currentSort})`;
         } else {
             indicator.innerText = `Menampilkan 3 kamar teratas (${currentSort})`;
+        }
+    }
+
+    // -------------------------------------------------------------
+    // FITUR: TAMPILKAN 3 FAQ + LIHAT SEMUA / SEMBUNYIKAN
+    // -------------------------------------------------------------
+    function toggleFaqList() {
+        const extraFaqs = document.querySelectorAll('.faq-extra');
+        const toggleText = document.getElementById('faq-toggle-text');
+        const toggleIcon = document.getElementById('faq-toggle-icon');
+        if (!extraFaqs.length) return;
+
+        const isHidden = extraFaqs[0].classList.contains('hidden');
+
+        extraFaqs.forEach(el => {
+            if (isHidden) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        });
+
+        if (isHidden) {
+            toggleText.innerText = 'Sembunyikan FAQ';
+            toggleIcon.classList.add('rotate-180');
+        } else {
+            toggleText.innerText = `Lihat Semua FAQ (${extraFaqs.length} Pertanyaan Lainnya)`;
+            toggleIcon.classList.remove('rotate-180');
         }
     }
 

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 // Public Website
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/preview-client', [HomeController::class, 'previewClient'])->name('preview.client');
 Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about');
 
 // Alias for standard auth redirect

@@ -27,17 +27,13 @@
             
             <!-- Header Brand -->
             <div class="text-center space-y-2">
-                @if(!empty($siteLogo))
-                    <div class="h-16 max-w-[200px] mx-auto flex items-center justify-center p-1">
-                        <img src="{{ asset('storage/' . $siteLogo) }}" alt="Logo" class="max-h-16 w-auto object-contain">
-                    </div>
-                @else
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-500 text-white font-black text-2xl flex items-center justify-center shadow-md shadow-blue-500/20 mx-auto">
-                        V
-                    </div>
-                @endif
+                <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-slate-200/80 shadow-md mx-auto p-0.5 bg-white flex items-center justify-center">
+                    <img src="{{ !empty($siteLogo) ? asset('storage/' . $siteLogo) : asset('images/logo_vidaliday.png') }}" 
+                         alt="VIDALIDAY Logo" 
+                         class="w-full h-full object-cover rounded-full">
+                </div>
                 <h1 class="text-2xl font-black text-slate-900 tracking-tight">VIDALIDAY</h1>
-                <p class="text-xs text-slate-500">Panel Pengelola Unit & Diskon Promo Resmi</p>
+                <p class="text-xs text-slate-500">Apartment By Us • Panel Pengelola Unit & Promo Resmi</p>
             </div>
 
             <!-- Error Notification -->
