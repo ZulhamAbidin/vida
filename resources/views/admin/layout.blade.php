@@ -11,6 +11,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        /* Smooth Desktop Sidebar Collapse & Full Close */
+        @media (min-width: 768px) {
+            #main-sidebar {
+                transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            }
+            #main-sidebar.desktop-closed {
+                margin-left: -16rem !important;
+                transform: translateX(-100%) !important;
+                pointer-events: none !important;
+            }
+            html.sidebar-initially-closed #main-sidebar {
+                margin-left: -16rem !important;
+                transform: translateX(-100%) !important;
+                transition: none !important;
+            }
+        }
+    </style>
+    <script>
+        (function() {
+            try {
+                if (window.innerWidth >= 768 && localStorage.getItem('admin_sidebar_closed') === 'true') {
+                    document.documentElement.classList.add('sidebar-initially-closed');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen relative overflow-x-clip selection:bg-red-200 selection:text-slate-900">
 
@@ -26,7 +54,7 @@
         <div id="sidebar-overlay" onclick="closeSidebarMobile()" class="fixed inset-0 bg-slate-900/30 z-40 hidden md:hidden"></div>
 
 
-        <aside id="main-sidebar" class="fixed md:sticky top-0 h-screen h-[100dvh] w-72 max-w-[85vw] md:w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 z-50 transition-transform duration-300 -translate-x-full md:translate-x-0 shadow-2xl md:shadow-none overflow-hidden">
+        <aside id="main-sidebar" class="fixed md:sticky top-0 h-screen h-[100dvh] w-72 max-w-[85vw] md:w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 z-50 transition-all duration-300 -translate-x-full md:translate-x-0 shadow-2xl md:shadow-none overflow-hidden">
             <!-- Brand Header (Fixed Top) -->
             <div class="shrink-0 p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between bg-white">
                 <div class="flex items-center gap-3 sidebar-brand-text min-w-0">
@@ -42,9 +70,9 @@
                     </div>
                 </div>
 
-                <!-- Actions on mobile (Logout + Close) -->
-                <div class="flex items-center gap-1.5 md:hidden">
-                    <form method="POST" action="{{ route('admin.logout') }}" class="m-0 inline">
+                <!-- Actions: Logout (Mobile) + Close Sidebar (Mobile & Desktop) -->
+                <div class="flex items-center gap-1.5">
+                    <form method="POST" action="{{ route('admin.logout') }}" class="m-0 inline md:hidden">
                         @csrf
                         <button type="submit" class="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 text-xs font-bold border border-rose-200 transition" title="Keluar (Logout)">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
@@ -52,7 +80,7 @@
                         </button>
                     </form>
 
-                    <button type="button" onclick="closeSidebarMobile()" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Tutup Sidebar">
+                    <button type="button" onclick="closeSidebar()" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" title="Tutup Sidebar" aria-label="Tutup Sidebar">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
@@ -190,44 +218,105 @@
     <script>
         const sidebar = document.getElementById('main-sidebar');
         const overlay = document.getElementById('sidebar-overlay');
+        const toggleBtn = document.getElementById('sidebar-toggle-btn');
+
+        function updateToggleBtnState() {
+            if (!toggleBtn || !sidebar) return;
+            const isDesktop = window.innerWidth >= 768;
+            const isClosed = isDesktop 
+                ? sidebar.classList.contains('desktop-closed') 
+                : sidebar.classList.contains('-translate-x-full');
+            
+            toggleBtn.setAttribute('title', isClosed ? 'Buka Sidebar' : 'Tutup Sidebar');
+            toggleBtn.setAttribute('aria-expanded', isClosed ? 'false' : 'true');
+        }
+
+        function closeSidebarMobile() {
+            if (sidebar && overlay) {
+                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+                overlay.classList.add('hidden');
+                updateToggleBtnState();
+            }
+        }
+
+        function openSidebarMobile() {
+            if (sidebar && overlay) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                updateToggleBtnState();
+            }
+        }
+
+        function closeSidebarDesktop() {
+            if (sidebar) {
+                sidebar.classList.add('desktop-closed');
+                try { localStorage.setItem('admin_sidebar_closed', 'true'); } catch (e) {}
+                updateToggleBtnState();
+            }
+        }
+
+        function openSidebarDesktop() {
+            if (sidebar) {
+                sidebar.classList.remove('desktop-closed');
+                try { localStorage.setItem('admin_sidebar_closed', 'false'); } catch (e) {}
+                updateToggleBtnState();
+            }
+        }
+
+        function closeSidebar() {
+            if (window.innerWidth < 768) {
+                closeSidebarMobile();
+            } else {
+                closeSidebarDesktop();
+            }
+        }
+
+        function openSidebar() {
+            if (window.innerWidth < 768) {
+                openSidebarMobile();
+            } else {
+                openSidebarDesktop();
+            }
+        }
 
         function toggleSidebar() {
+            if (!sidebar) return;
             if (window.innerWidth < 768) {
-                // Mobile: slide in/out with overlay
                 const isOpen = !sidebar.classList.contains('-translate-x-full');
                 if (isOpen) {
                     closeSidebarMobile();
                 } else {
-                    sidebar.classList.remove('-translate-x-full');
-                    sidebar.classList.add('translate-x-0');
-                    overlay.classList.remove('hidden');
+                    openSidebarMobile();
                 }
             } else {
-                // Desktop toggle: collapse sidebar width
-                if (sidebar.classList.contains('w-64')) {
-                    sidebar.classList.remove('w-64');
-                    sidebar.classList.add('w-20');
-                    document.querySelectorAll('.sidebar-text').forEach(el => el.classList.add('hidden'));
+                const isClosed = sidebar.classList.contains('desktop-closed');
+                if (isClosed) {
+                    openSidebarDesktop();
                 } else {
-                    sidebar.classList.remove('w-20');
-                    sidebar.classList.add('w-64');
-                    document.querySelectorAll('.sidebar-text').forEach(el => el.classList.remove('hidden'));
+                    closeSidebarDesktop();
                 }
             }
         }
 
-        function closeSidebarMobile() {
-            if (window.innerWidth < 768 && sidebar) {
-                sidebar.classList.add('-translate-x-full');
-                sidebar.classList.remove('translate-x-0');
-                overlay.classList.add('hidden');
-            }
-        }
+        // Initialize state on load
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (window.innerWidth >= 768 && localStorage.getItem('admin_sidebar_closed') === 'true') {
+                    if (sidebar) sidebar.classList.add('desktop-closed');
+                }
+            } catch (e) {}
+            document.documentElement.classList.remove('sidebar-initially-closed');
+            updateToggleBtnState();
+        });
 
         // Close on Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                closeSidebarMobile();
+                if (window.innerWidth < 768) {
+                    closeSidebarMobile();
+                }
             }
         });
 
