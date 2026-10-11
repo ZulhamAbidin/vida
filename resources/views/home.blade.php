@@ -55,61 +55,74 @@
                             </p>
                         </div>
 
-                        <!-- Booking Widget: Full-Width Prominent PROMO Box (Sesuai Permintaan User: Disesuaikan dengan Card Hero Favorit) -->
-                        @php
-                            // Ambil harga dari unit Hero Favorit ($featuredUnit), jika belum diset fallback ke promo aktif terendah
-                            if ($featuredUnit) {
+                        <!-- Booking Widget: Full-Width Prominent PROMO Box (Hanya Tampil Jika Ada Hero Favorit) -->
+                        @if($featuredUnit)
+                            @php
                                 $displayPromoPrice = $featuredUnit->is_promo_active && $featuredUnit->promo_price > 0 
                                     ? $featuredUnit->formatted_promo_price 
                                     : $featuredUnit->formatted_normal_price;
                                 $hasStrikePrice = $featuredUnit->is_promo_active && $featuredUnit->normal_price > $featuredUnit->promo_price;
                                 $strikePrice = $hasStrikePrice ? $featuredUnit->formatted_normal_price : null;
                                 $rentalPeriod = strtolower($featuredUnit->rental_period ?? 'malam');
-                            } else {
-                                $lowestPromoPrice = \App\Models\Unit::where('is_available', true)->where('promo_price', '>', 0)->min('promo_price');
-                                $displayPromoPrice = $lowestPromoPrice ? ('Rp ' . number_format($lowestPromoPrice, 0, ',', '.')) : 'Rp 280.000';
-                                $hasStrikePrice = false;
-                                $strikePrice = null;
-                                $rentalPeriod = 'malam';
-                            }
-                        @endphp
-                        <div class="mb-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-50 via-orange-50/80 to-amber-100/60 border-2 border-amber-400/90 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
-                            <div class="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 text-white flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/30">
-                                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                </div>
-                                <div>
-                                    <div class="flex items-center gap-1.5">
-                                        <span class="px-1.5 sm:px-2 py-0.5 rounded-md bg-rose-600 text-white text-[9px] sm:text-[11px] font-black uppercase tracking-wider shadow-sm animate-pulse">
-                                            PROMO
-                                        </span>
-                                        <span class="text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider">HARGA SPESIAL MULAI DARI</span>
+                                $isPromo = $featuredUnit->is_promo_active && $featuredUnit->promo_price > 0;
+                            @endphp
+                            <div class="mb-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-50 via-orange-50/80 to-amber-100/60 border-2 border-amber-400/90 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
+                                <div class="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 text-white flex items-center justify-center shrink-0 shadow-lg shadow-amber-500/30">
+                                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                     </div>
-                                    <div class="flex items-baseline gap-2 mt-1 flex-wrap">
-                                        <span class="text-lg sm:text-2xl lg:text-3xl font-black text-slate-950 tracking-tight leading-none">
-                                            {{ $displayPromoPrice }}
-                                        </span>
-                                        @if($hasStrikePrice)
-                                            <span class="text-xs sm:text-sm font-semibold text-rose-500 line-through">
-                                                {{ $strikePrice }}
+                                    <div>
+                                        <div class="flex items-center gap-1.5">
+                                            @if($isPromo)
+                                                <span class="px-1.5 sm:px-2 py-0.5 rounded-md bg-rose-600 text-white text-[9px] sm:text-[11px] font-black uppercase tracking-wider shadow-sm animate-pulse">
+                                                    PROMO
+                                                </span>
+                                            @endif
+                                            <span class="text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                                {{ $isPromo ? 'HARGA SPESIAL MULAI DARI' : 'TARIF SEWA TERBAIK' }}
                                             </span>
-                                        @endif
-                                        <span class="text-[11px] sm:text-sm font-bold text-amber-600"> /{{ $rentalPeriod }}</span>
+                                        </div>
+                                        <div class="flex items-baseline gap-2 mt-1 flex-wrap">
+                                            <span class="text-lg sm:text-2xl lg:text-3xl font-black text-slate-950 tracking-tight leading-none">
+                                                {{ $displayPromoPrice }}
+                                            </span>
+                                            @if($hasStrikePrice)
+                                                <span class="text-xs sm:text-sm font-semibold text-rose-500 line-through">
+                                                    {{ $strikePrice }}
+                                                </span>
+                                            @endif
+                                            <span class="text-[11px] sm:text-sm font-bold text-amber-600"> /{{ $rentalPeriod }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Duration Tags & Guarantee -->
+                                <div class="flex items-center gap-2 text-[9px] sm:text-xs font-extrabold uppercase tracking-wider w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 border-amber-200/60 pt-2 sm:pt-0">
+                                    <div class="flex items-center gap-1 sm:gap-2 bg-white/80 px-2 sm:px-2.5 py-1 rounded-xl border border-amber-300/60 shadow-xs">
+                                        <span class="text-emerald-600 font-black">HARIAN</span>
+                                        <span class="text-slate-300">•</span>
+                                        <span class="text-slate-700">MINGGUAN</span>
+                                        <span class="text-slate-300">•</span>
+                                        <span class="text-slate-700">BULANAN</span>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Duration Tags & Guarantee -->
-                            <div class="flex items-center gap-2 text-[9px] sm:text-xs font-extrabold uppercase tracking-wider w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 border-amber-200/60 pt-2 sm:pt-0">
-                                <div class="flex items-center gap-1 sm:gap-2 bg-white/80 px-2 sm:px-2.5 py-1 rounded-xl border border-amber-300/60 shadow-xs">
-                                    <span class="text-emerald-600 font-black">HARIAN</span>
+                        @else
+                            <!-- Tampilan Rapi Ketika Belum Ada Unit Favorit Dipilih Admin -->
+                            <div class="mb-4 p-3 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-2 text-[10px] sm:text-xs font-bold text-slate-600">
+                                <span class="flex items-center gap-1.5 text-blue-700">
+                                    <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                                    Pilihan Durasi Sewa:
+                                </span>
+                                <div class="flex items-center gap-1.5 font-extrabold uppercase tracking-wider">
+                                    <span class="text-emerald-600">HARIAN</span>
                                     <span class="text-slate-300">•</span>
                                     <span class="text-slate-700">MINGGUAN</span>
                                     <span class="text-slate-300">•</span>
                                     <span class="text-slate-700">BULANAN</span>
                                 </div>
                             </div>
-                        </div>
+                        @endif
 
                         <!-- CTA Action Area -->
                         <div class="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3">
