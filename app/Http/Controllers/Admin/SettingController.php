@@ -17,8 +17,14 @@ class SettingController extends Controller
             $siteLogo = null;
         }
 
+        $heroImage = Setting::get('hero_image');
+        if ($heroImage && !Storage::disk('public')->exists($heroImage)) {
+            $heroImage = null;
+        }
+
         $settings = [
             'site_logo' => $siteLogo,
+            'hero_image' => $heroImage,
             'whatsapp_number' => Setting::get('whatsapp_number', '6281234567890'),
             'whatsapp_template' => Setting::get('whatsapp_template', ''),
             'promo_banner_text' => Setting::get('promo_banner_text', ''),
@@ -35,6 +41,7 @@ class SettingController extends Controller
     {
         $request->validate([
             'site_logo' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:5120',
+            'hero_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:8192',
             'whatsapp_number' => 'required|string|max:30',
             'company_legal_name' => 'required|string|max:255',
             'contact_phone' => 'nullable|string|max:50',
@@ -56,6 +63,20 @@ class SettingController extends Controller
             $oldLogo = Setting::get('site_logo');
             StorageHelper::delete($oldLogo);
             Setting::set('site_logo', null);
+        }
+
+        // Handle upload hero background baru
+        if ($request->hasFile('hero_image')) {
+            $oldHero = Setting::get('hero_image');
+            StorageHelper::delete($oldHero);
+
+            $path = $request->file('hero_image')->store('settings', 'public');
+            Setting::set('hero_image', $path);
+        } elseif ($request->has('remove_hero_image') && $request->input('remove_hero_image') == '1') {
+            // Handle hapus background hero kustom bila dipilih
+            $oldHero = Setting::get('hero_image');
+            StorageHelper::delete($oldHero);
+            Setting::set('hero_image', null);
         }
 
         $fields = [

@@ -7,18 +7,11 @@
 
     <!-- 1. HERO SECTION WHITE GLASSMORPHISM WITH HIGH-RES BUILDING BACKGROUND -->
     <section class="relative pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden">
-        <!-- Background Foto Gedung Asli (Brentsville Tower) Tampak Jernih & Menyeluruh -->
+        <!-- Background Foto Gedung Asli Tampak Bersih, Cerah & Alami (Tanpa Efek Gelap) -->
         <div class="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-            <img src="{{ asset('images/bg_brentsville_wide.jpg') }}" 
-                 alt="Brentsville Tower Vida View Makassar" 
-                 class="w-full h-full object-cover object-center opacity-90 transition-all duration-700">
-
-            <!-- Lapisan Shadow di Atas Background (Ditebalkan Sedikit agar Teks Jauh Lebih Tajam & Kontras) -->
-            <div class="absolute inset-0 bg-slate-950/55"></div>
-            <!-- Gradient Gradual Sisi Kiri Lebih Tebal di Area Teks -->
-            <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-transparent"></div>
-            <!-- Shadow Atas & Bawah -->
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40"></div>
+            <img src="{{ !empty($heroImage) ? asset('storage/' . $heroImage) : asset('images/bg_brentsville_wide.jpg') }}" 
+                 alt="Foto Gedung Apartemen VIDALIDAY Makassar" 
+                 class="w-full h-full object-cover object-center transition-all duration-700">
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -79,6 +79,62 @@
                     </div>
                 </div>
 
+                <!-- Section: Hero Background Image Upload -->
+                <div class="p-5 rounded-2xl bg-amber-50/50 border border-amber-200/80 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                        <h4 class="text-xs font-bold text-amber-800 uppercase tracking-wider">Foto Background Hero (Halaman Depan)</h4>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+                        <!-- Preview Hero Saat Ini -->
+                        <div class="sm:col-span-5 flex flex-col items-center justify-center p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-sm text-center">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 block">Background Aktif Saat Ini</span>
+                            
+                            <div class="w-full h-36 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden relative shadow-inner">
+                                <img id="hero-preview" 
+                                     src="{{ !empty($settings['hero_image']) ? asset('storage/' . $settings['hero_image']) : asset('images/bg_brentsville_wide.jpg') }}" 
+                                     alt="Preview Background Hero" 
+                                     class="w-full h-full object-cover">
+                            </div>
+
+                            @if(!empty($settings['hero_image']))
+                                <div class="mt-3">
+                                    <label class="inline-flex items-center gap-1.5 text-xs text-rose-600 hover:text-rose-700 cursor-pointer">
+                                        <input type="checkbox" name="remove_hero_image" value="1" class="rounded border-slate-300 text-rose-600 focus:ring-0">
+                                        <span>Gunakan Foto Default Gedung</span>
+                                    </label>
+                                </div>
+                            @endif
+                        </div>
+
+                        <!-- Upload Input & Petunjuk -->
+                        <div class="sm:col-span-7 space-y-3">
+                            <div>
+                                <label for="hero_image" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                                    Upload Foto Background Hero Baru (JPG / PNG / WEBP)
+                                </label>
+                                <input type="file" 
+                                       name="hero_image" 
+                                       id="hero_image" 
+                                       accept="image/jpeg,image/png,image/jpg,image/webp" 
+                                       onchange="previewUploadedHero(event)" 
+                                       class="w-full px-3.5 py-2.5 rounded-xl glass-input text-xs file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-600 file:text-white hover:file:bg-amber-700 file:cursor-pointer">
+                                <span class="text-[10px] text-slate-500 mt-1.5 block">
+                                    Maksimal ukuran file 8 MB. Disarankan foto lanskap horizontal beresolusi tinggi (contoh: 1920x1080 atau 2560x1440) agar tampilan tajam di layar desktop & HP.
+                                </span>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-white/70 border border-slate-200 text-[11px] text-slate-600 space-y-1">
+                                <strong class="text-slate-800 font-bold block">Di mana gambar ini akan tampil?</strong>
+                                <p class="text-slate-500">
+                                    Foto ini menjadi latar belakang utama (*hero background*) di bagian paling atas Halaman Depan (Landing Page) di belakang widget pencarian dan kartu favorit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section: WhatsApp Configuration -->
                 <div class="p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 space-y-4">
                     <div class="flex items-center gap-2">
@@ -130,7 +186,7 @@
                 <!-- Submit Button -->
                 <div class="pt-4 flex items-center justify-end gap-3 border-t border-slate-200">
                     <button type="submit" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wider shadow-md shadow-blue-500/25 transition text-center">
-                        SIMPAN SEMUA PENGATURAN & LOGO
+                        SIMPAN SEMUA PENGATURAN
                     </button>
                 </div>
             </form>
@@ -154,6 +210,19 @@
                 if (placeholder) {
                     placeholder.classList.add('hidden');
                 }
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function previewUploadedHero(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const previewImg = document.getElementById('hero-preview');
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
             }
             reader.readAsDataURL(file);
         }

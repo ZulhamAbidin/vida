@@ -25,6 +25,13 @@ class AppServiceProvider extends ServiceProvider
                 $logo = null;
             }
             $view->with('siteLogo', $logo);
+
+            $heroImage = \App\Models\Setting::get('hero_image');
+            if ($heroImage && !\Illuminate\Support\Facades\Storage::disk('public')->exists($heroImage)) {
+                $heroImage = null;
+            }
+            $view->with('heroImage', $heroImage);
+
             $view->with('companyLegalName', \App\Models\Setting::get('company_legal_name', 'PT PERDANA MEGA TRANS'));
         });
     }
