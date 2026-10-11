@@ -105,7 +105,6 @@
                     <a href="{{ route('home') }}#lokasi" class="hover:text-blue-600 transition-colors">Pilihan Apartemen</a>
                     <a href="{{ route('home') }}#katalog-kamar" class="hover:text-blue-600 transition-colors">Kamar & Promo</a>
                     <a href="{{ route('home') }}#fasilitas" class="hover:text-blue-600 transition-colors">Fasilitas</a>
-                    <a href="{{ route('home') }}#legalitas" class="hover:text-blue-600 transition-colors">Legalitas Resmi</a>
                     <a href="{{ route('home') }}#jarak" class="hover:text-blue-600 transition-colors">Lokasi</a>
                     <a href="{{ route('home') }}#faq" class="hover:text-blue-600 transition-colors">FAQ</a>
                     <a href="{{ route('about') }}" class="hover:text-blue-600 transition-colors {{ request()->routeIs('about') ? 'text-blue-600 font-bold' : '' }}">Tentang Kami</a>
@@ -133,7 +132,6 @@
                 <a href="{{ route('home') }}#lokasi" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Pilihan Apartemen</a>
                 <a href="{{ route('home') }}#katalog-kamar" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Daftar Kamar & Promo</a>
                 <a href="{{ route('home') }}#fasilitas" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Fasilitas Gedung</a>
-                <a href="{{ route('home') }}#legalitas" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Legalitas PT PERDANA MEGA TRANS</a>
                 <a href="{{ route('home') }}#jarak" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Lokasi & Landmark Sekitar</a>
                 <a href="{{ route('home') }}#faq" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-700 hover:text-blue-600">Tanya Jawab (FAQ)</a>
                 <a href="{{ route('about') }}" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-blue-600 hover:text-blue-700">Tentang Kami (About Us)</a>

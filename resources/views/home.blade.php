@@ -565,60 +565,7 @@
         </div>
     </section>
 
-    <!-- 5. LEGALITAS & TRUST BANNER -->
-    <section id="legalitas" class="py-12 sm:py-16 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="p-5 sm:p-10 rounded-3xl glass-card border border-blue-200/80 relative overflow-hidden shadow-lg shadow-slate-200/40">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
-                    
-                    <div class="lg:col-span-8 space-y-4">
-                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-                            Keamanan Transaksi & Legalitas
-                        </span>
-                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900">
-                            Mengapa Tamu Memilih Sewa di VIDALIDAY?
-                        </h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Bebas cemas dari maraknya penipuan sewa apartemen. VIDALIDAY beroperasi secara resmi dan profesional di bawah naungan <strong>{{ $settings['company_legal_name'] ?? 'PT PERDANA MEGA TRANS' }}</strong> dengan staff standby di lokasi.
-                        </p>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 text-xs">
-                            <div class="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
-                                <span class="font-bold text-blue-700 block mb-1">Badan Usaha Resmi PT</span>
-                                <span class="text-slate-600">Berbadan hukum resmi terdaftar dengan manajemen terpercaya.</span>
-                            </div>
-                            <div class="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
-                                <span class="font-bold text-blue-700 block mb-1">Staff Standby di Lokasi</span>
-                                <span class="text-slate-600">Penyerahan kunci & pendampingan check-in langsung di lobby.</span>
-                            </div>
-                            <div class="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
-                                <span class="font-bold text-blue-700 block mb-1">Garansi Unit Real</span>
-                                <span class="text-slate-600">Foto kamar asli sesuai unit fisik yang akan ditempati.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-4 text-center lg:text-right space-y-4">
-                        <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 text-left space-y-2.5 sm:space-y-3 shadow-sm">
-                            <div class="text-[10px] sm:text-[11px] font-bold text-blue-600 uppercase tracking-widest">Konsultasi Gratis</div>
-                            <div class="text-sm sm:text-base font-bold text-slate-900">Butuh Rekomendasi Unit?</div>
-                            <p class="text-xs text-slate-500">Sampaikan rencana tanggal sewa Anda dan admin kami siap membantu mencarikan unit terbaik.</p>
-                            @php
-                                $waAsk = "https://wa.me/{$waClean}?text=" . urlencode("Halo Admin VIDALIDAY, saya ingin tanya ketersediaan unit untuk rencana tanggal sewa saya.");
-                            @endphp
-                            <a href="{{ $waAsk }}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold shadow-md shadow-emerald-500/20 transition">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                                Hubungi Admin
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. LOKASI STRATEGIS & AKSES POPULER -->
+    <!-- 5. LOKASI STRATEGIS & AKSES POPULER -->
     <section id="jarak" class="py-12 sm:py-16 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
