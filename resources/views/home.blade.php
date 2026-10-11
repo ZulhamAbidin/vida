@@ -594,12 +594,11 @@
                     <div class="bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
                         <div>
                             <!-- Header Lokasi dengan Mini Banner Berkelas -->
-                            <div class="p-6 bg-gradient-to-r {{ $gradientHeader }} text-white relative overflow-hidden">
-                                <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full {{ $isDelft ? 'bg-blue-500/20' : 'bg-indigo-500/20' }} blur-xl pointer-events-none"></div>
+                            <div class="p-6 bg-slate-900 border-b border-slate-800 text-white relative">
                                 <div class="relative z-10 flex items-start justify-between gap-3">
                                     <div>
-                                        <div class="flex items-center gap-1.5 {{ $accentColor }} text-xs font-bold uppercase tracking-wider mb-1">
-                                            <svg class="w-4 h-4 text-rose-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                                        <div class="flex items-center gap-1.5 text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">
+                                            <svg class="w-4 h-4 text-rose-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
                                             {{ $isDelft ? 'Akses Waterfront Living' : 'Pusat Kota & Bisnis' }}
                                         </div>
                                         <h3 class="text-lg sm:text-xl font-black text-white">
@@ -607,7 +606,7 @@
                                         </h3>
                                     </div>
                                     @if($loc->tagline)
-                                        <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-white border border-white/30 shrink-0 shadow-sm">
+                                        <span class="px-3 py-1 rounded-full bg-slate-800 text-[10px] sm:text-[11px] font-bold text-slate-200 border border-slate-700 shrink-0">
                                             {{ $loc->tagline }}
                                         </span>
                                     @endif
