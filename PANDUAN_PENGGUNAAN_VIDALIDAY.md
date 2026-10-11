@@ -37,13 +37,13 @@
 
 ## 2. AKSES SISTEM & KREDENSIAL LOGIN
 
-### URL Akses Lokal (Development):
-| Halaman | Alamat URL | Keterangan |
-| :--- | :--- | :--- |
-| **Halaman Utama (Landing Page)** | `http://127.0.0.1:8000/` | Halaman katalog publik yang dilihat oleh tamu/calon penyewa. |
-| **Tentang Kami (About Us)** | `http://127.0.0.1:8000/about` | Profil legalitas PT PERDANA MEGA TRANS & komitmen layanan. |
-| **Login Panel Admin** | `http://127.0.0.1:8000/admin/login` | Pintu masuk otentikasi pengelola website. |
-| **Dashboard Admin** | `http://127.0.0.1:8000/admin` | Pusat kendali data, promo, dan unit kamar. |
+### Alamat URL Domain Resmi & Lokal:
+| Halaman | URL Domain Resmi | URL Server Lokal (Dev) | Keterangan |
+| :--- | :--- | :--- | :--- |
+| **Halaman Utama (Landing Page)** | `https://vidayliday.com/` | `http://127.0.0.1:8000/` | Halaman katalog publik yang dilihat oleh tamu/calon penyewa. |
+| **Tentang Kami (About Us)** | `https://vidayliday.com/about` | `http://127.0.0.1:8000/about` | Profil legalitas PT PERDANA MEGA TRANS & komitmen layanan. |
+| **Login Panel Admin** | `https://vidayliday.com/admin/login` | `http://127.0.0.1:8000/admin/login` | Pintu masuk otentikasi pengelola website. |
+| **Dashboard Admin** | `https://vidayliday.com/admin` | `http://127.0.0.1:8000/admin` | Pusat kendali data, promo, dan unit kamar. |
 
 ### Akun Login Admin Standar:
 - **Email:** `admin@vidaliday.com`
