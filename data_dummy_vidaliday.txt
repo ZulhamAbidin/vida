@@ -9,7 +9,7 @@ File ini berisi contoh data siap pakai yang terstruktur rapi. Anda cukup menyali
 
 ################################################################################
 1. MENU: KELOLA KAMAR & UNIT (Units) -> Tambah Unit Baru
-   URL Panel Admin: https://vidayliday.com/admin/units/create  (Lokal: http://127.0.0.1:8000/admin/units/create)
+   URL Panel Admin: https://vidayliday.com/admin/units/create
 ################################################################################
 
 --- [ CONTOH UNIT 1: DELFT CPI - STUDIO OCEAN VIEW ] ---
@@ -87,7 +87,7 @@ Master Bedroom King Bed, Second Bedroom Single Bed, 3 Unit AC, Smart TV 43 Inch,
 
 ################################################################################
 2. MENU: KELOLA FASILITAS GEDUNG (Facilities)
-   URL Panel Admin: https://vidayliday.com/admin/facilities  (Lokal: http://127.0.0.1:8000/admin/facilities)
+   URL Panel Admin: https://vidayliday.com/admin/facilities
 ################################################################################
 
 --- [ FASILITAS 1: DELFT CPI ] ---
@@ -130,7 +130,7 @@ Deskripsi        : Sistem pengamanan berlapis dengan petugas sekuriti 24 jam, CC
 
 ################################################################################
 3. MENU: KELOLA AKSES & LANDMARK MAKASSAR (Landmarks)
-   URL Panel Admin: https://vidayliday.com/admin/landmarks  (Lokal: http://127.0.0.1:8000/admin/landmarks)
+   URL Panel Admin: https://vidayliday.com/admin/landmarks
 ################################################################################
 
 --- [ LANDMARK DELFT CPI ] ---
@@ -200,7 +200,7 @@ Deskripsi        : Sistem pengamanan berlapis dengan petugas sekuriti 24 jam, CC
 
 ################################################################################
 4. MENU: KELOLA TANYA JAWAB (FAQ)
-   URL Panel Admin: https://vidayliday.com/admin/faqs  (Lokal: http://127.0.0.1:8000/admin/faqs)
+   URL Panel Admin: https://vidayliday.com/admin/faqs
 ################################################################################
 
 --- [ FAQ 1 ] ---
@@ -242,7 +242,7 @@ Ya, kami menyediakan paket sewa fleksibel mulai dari harian, mingguan, hingga bu
 
 ################################################################################
 5. MENU: KELOLA TENTANG KAMI (About Us)
-   URL Panel Admin: https://vidayliday.com/admin/about  (Lokal: http://127.0.0.1:8000/admin/about)
+   URL Panel Admin: https://vidayliday.com/admin/about
 ################################################################################
 
 Tagline Singkat   : Your Comfort, Our Priority
@@ -292,7 +292,7 @@ Kalimat Ajakan  : Rencanakan kunjungan Anda sekarang dan nikmati penawaran tarif
 
 ################################################################################
 6. MENU: PENGATURAN LOGO, KONTAK & BANNER (Settings)
-   URL Panel Admin: https://vidayliday.com/admin/settings  (Lokal: http://127.0.0.1:8000/admin/settings)
+   URL Panel Admin: https://vidayliday.com/admin/settings
 ################################################################################
 
 Nomor WhatsApp Admin (Kode Negara) : 6285711696970
