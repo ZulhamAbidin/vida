@@ -42,10 +42,20 @@
                     </div>
                 </div>
 
-                <!-- Close button on mobile -->
-                <button type="button" onclick="closeSidebarMobile()" class="md:hidden p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Tutup Sidebar">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
+                <!-- Actions on mobile (Logout + Close) -->
+                <div class="flex items-center gap-1.5 md:hidden">
+                    <form method="POST" action="{{ route('admin.logout') }}" class="m-0 inline">
+                        @csrf
+                        <button type="submit" class="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 text-xs font-bold border border-rose-200 transition" title="Keluar (Logout)">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                            <span>Logout</span>
+                        </button>
+                    </form>
+
+                    <button type="button" onclick="closeSidebarMobile()" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Tutup Sidebar">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
             </div>
 
             <!-- Navigation Links (Scrollable Middle Area) -->
@@ -116,7 +126,7 @@
                     <h1 class="text-sm sm:text-lg font-bold text-slate-900 truncate max-w-[170px] xs:max-w-[220px] sm:max-w-none">@yield('page_title', 'Dashboard')</h1>
                 </div>
 
-                <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+                <div class="flex items-center gap-2 sm:gap-3 shrink-0">
                     <div class="flex items-center gap-1.5 sm:gap-2 text-xs text-slate-600 font-medium">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         <span class="hidden sm:inline">{{ auth()->user()->name ?? 'Admin' }}</span>
@@ -126,6 +136,15 @@
                         <span class="hidden sm:inline">Web Depan</span>
                         <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
+
+                    <!-- Topbar Logout Button -->
+                    <form method="POST" action="{{ route('admin.logout') }}" class="m-0 inline">
+                        @csrf
+                        <button type="submit" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 text-xs font-bold transition shadow-xs" title="Keluar (Logout)">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                            <span class="hidden sm:inline">Logout</span>
+                        </button>
+                    </form>
                 </div>
             </header>
 
