@@ -38,21 +38,42 @@ class StorageHelper
             $cleanPath = substr($cleanPath, 7);
         }
 
+        $deleted = false;
+
+        // Delete from Laravel storage disk
         if (Storage::disk($disk)->exists($cleanPath)) {
-            return Storage::disk($disk)->delete($cleanPath);
+            $deleted = Storage::disk($disk)->delete($cleanPath);
         }
 
-        return false;
+        // Also check if public/storage contains direct copy (useful on shared hosting where files might be copied)
+        $publicFilePath = public_path('storage/' . $cleanPath);
+        if (File::exists($publicFilePath) && !is_dir($publicFilePath)) {
+            @File::delete($publicFilePath);
+            $deleted = true;
+        }
+
+        return $deleted;
     }
 
     /**
-     * Delete multiple files.
+     * Delete multiple files safely. Accepts array, json string, or iterable.
      */
-    public static function deleteMany(array $paths, string $disk = 'public'): void
+    public static function deleteMany(iterable|string|null $paths, string $disk = 'public'): void
     {
-        foreach ($paths as $path) {
-            if (is_string($path)) {
-                static::delete($path, $disk);
+        if (empty($paths)) {
+            return;
+        }
+
+        if (is_string($paths)) {
+            $decoded = json_decode($paths, true);
+            $paths = is_array($decoded) ? $decoded : [$paths];
+        }
+
+        if (is_iterable($paths)) {
+            foreach ($paths as $path) {
+                if (is_string($path)) {
+                    static::delete($path, $disk);
+                }
             }
         }
     }

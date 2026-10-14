@@ -157,7 +157,7 @@
 
             <!-- Box Deskripsi Kamar -->
             @if(!empty($unit->description))
-                <div class="text-xs text-slate-600 bg-slate-50/70 p-3 rounded-xl border border-slate-100 line-clamp-2 leading-relaxed">
+                <div class="text-xs text-slate-600 bg-slate-50/70 p-3 rounded-xl border border-slate-100 leading-relaxed">
                     <span class="font-bold text-slate-800 text-[11px] block mb-0.5">Deskripsi:</span>
                     {{ $unit->description }}
                 </div>

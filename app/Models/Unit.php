@@ -12,6 +12,12 @@ class Unit extends Model
 
     protected static function booted(): void
     {
+        static::creating(function (Unit $unit) {
+            if (empty($unit->slug)) {
+                $unit->slug = \Illuminate\Support\Str::slug($unit->name . '-' . rand(100, 999));
+            }
+        });
+
         static::deleting(function (Unit $unit) {
             StorageHelper::delete($unit->main_image);
 

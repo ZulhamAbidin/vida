@@ -17,12 +17,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Admin User
+        // 1. Admin Users
         User::updateOrCreate(
-            ['email' => 'admin@vidaliday.com'],
+            ['email' => 'ptperdanamegatrans@gmail.com'],
             [
-                'name' => 'Admin VIDALIDAY',
-                'password' => Hash::make('admin123'),
+                'name' => 'PT PERDANA MEGA TRANS',
+                'password' => Hash::make('Vidaliday-PMT'),
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'ptperdanamegatransdev@gmail.com'],
+            [
+                'name' => 'PT PERDANA MEGA TRANS Dev',
+                'password' => Hash::make('Vidaliday-PMT'),
             ]
         );
 

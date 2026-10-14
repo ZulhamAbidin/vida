@@ -36,15 +36,18 @@
                         </div>
 
                         <!-- Main Headline: Persis Permintaan User -->
-                        <div class="space-y-1 mb-3.5">
+                        <div class="space-y-2 mb-3.5">
                             <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
-                                Nikmati Hunian Mewah di
+                                Nikmati Hunian Nyaman di
                                 <span class="block text-red-600 font-black mt-0.5 text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-                                    DELFT CPI & VIDA VIEW
+                                    Delft & Vida View Makassar
                                 </span>
                             </h1>
-                            <p class="text-slate-600 text-xs sm:text-sm font-normal leading-relaxed pt-1">
-                                Pilihan tepat untuk kenyamanan menginap harian, mingguan, & bulanan dengan fasilitas lengkap, unit higienis, dan pemandangan terbaik kota Makassar.
+                            <p class="text-xs sm:text-sm md:text-base font-bold text-slate-800 tracking-tight">
+                                Stay Nyaman, Fasilitas Lengkap, Harga Bersahabat!
+                            </p>
+                            <p class="text-slate-600 text-xs sm:text-sm font-normal leading-relaxed pt-0.5">
+                                Temukan pengalaman menginap yang nyaman, bersih, dan privat bersama VIDALIDAY. Pilihan apartemen terbaik di Delft CPI dan Vida View Makassar, dengan fasilitas lengkap serta promo menarik untuk staycation, liburan, maupun perjalanan bisnis.
                             </p>
                         </div>
 

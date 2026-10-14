@@ -62,11 +62,11 @@
                     <input type="email" 
                            id="email" 
                            name="email" 
-                           value="{{ old('email', 'admin@vidaliday.com') }}" 
+                           value="{{ old('email') }}" 
                            required 
                            autocomplete="email" 
                            class="w-full px-4 py-3 rounded-xl glass-input text-sm"
-                           placeholder="nama@vidaliday.com">
+                           placeholder="Masukkan email pengelola">
                 </div>
 
                 <div>
@@ -76,7 +76,7 @@
                            name="password" 
                            required 
                            class="w-full px-4 py-3 rounded-xl glass-input text-sm"
-                           placeholder="••••••••">
+                           placeholder="Masukkan kata sandi">
                 </div>
 
                 <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
